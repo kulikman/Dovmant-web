@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import type { ContactState } from "@/lib/contact-schema";
+import { insertRow, logSubmission, sendEmail } from "@/lib/delivery";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Enter your full name."),
@@ -25,8 +26,25 @@ export async function requestDataRoom(
     }
     return { status: "error", errors: errors as ContactState["errors"] };
   }
-  if (parsed.data.website) return { status: "success" };
-  // TODO(phase 2): create a Supabase access request row + notify.
-  console.log("[data-room] access request", { ...parsed.data, website: undefined });
+
+  const { website, ...data } = parsed.data;
+  if (website) return { status: "success" };
+
+  try {
+    // supabase/migrations/0001_access_requests.sql creates this table.
+    const stored = await insertRow("access_requests", {
+      name: data.name,
+      email: data.email,
+      fund: data.fund,
+      check_size: data.checkSize || null,
+      link: data.link || null,
+    });
+    const sent = await sendEmail(`Data room request — ${data.fund}`, data);
+    if (!stored && !sent) logSubmission("data-room", data);
+  } catch (error) {
+    console.error("[data-room] delivery failed", error);
+    logSubmission("data-room", data);
+  }
+
   return { status: "success" };
 }

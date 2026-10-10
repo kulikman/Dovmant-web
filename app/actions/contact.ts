@@ -1,6 +1,7 @@
 "use server";
 
 import { contactSchema, type ContactState } from "@/lib/contact-schema";
+import { logSubmission, sendEmail } from "@/lib/delivery";
 
 export async function submitContact(
   _prev: ContactState,
@@ -15,8 +16,18 @@ export async function submitContact(
     }
     return { status: "error", errors };
   }
-  if (parsed.data.website) return { status: "success" }; // bot: pretend success
-  // TODO(phase 2): deliver to CRM / email provider. For now: log only.
-  console.log("[contact] new enquiry", { ...parsed.data, website: undefined });
+
+  const { website, ...data } = parsed.data;
+  if (website) return { status: "success" }; // bot: pretend success
+
+  try {
+    const sent = await sendEmail(`Enquiry — ${data.orgType} (${data.intent ?? "site"})`, data);
+    if (!sent) logSubmission("contact", data);
+  } catch (error) {
+    // Never lose a message because delivery is misconfigured.
+    console.error("[contact] delivery failed", error);
+    logSubmission("contact", data);
+  }
+
   return { status: "success" };
 }
