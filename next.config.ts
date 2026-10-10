@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
     },
   },
   images: { formats: ["image/avif", "image/webp"] },
+  async redirects() {
+    return [
+      { source: "/technology", destination: "/system", permanent: true },
+      { source: "/sports", destination: "/performance", permanent: true },
+      { source: "/rehabilitation", destination: "/research", permanent: true },
+      { source: "/medical-disclaimer", destination: "/research-use", permanent: true },
+      { source: "/investors/data-room", destination: "/investors", permanent: false },
+    ];
+  },
   async headers() {
     return [
       {

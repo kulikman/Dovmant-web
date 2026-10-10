@@ -1,11 +1,44 @@
-export type LegalDoc = { title: string; updated: string; sections: { h: string; p: string }[] };
+export type LegalDoc = {
+  title: string;
+  updated: string;
+  intro?: string;
+  sections: { h: string; p: string }[];
+};
 
 const tbd = (h: string) => ({
   h,
   p: "[TBD — legal review required] Content for this section has not been written yet.",
 });
 
-export const legal: Record<"privacy" | "terms" | "medical-disclaimer" | "cookies", LegalDoc> = {
+export const legal: Record<"privacy" | "terms" | "research-use" | "cookies", LegalDoc> = {
+  "research-use": {
+    title: "RESEARCH USE {STATEMENT}",
+    updated: "[TBD]",
+    intro:
+      "The wording below is pending review by FDA device regulatory counsel and must not be published until that review is complete.",
+    sections: [
+      {
+        h: "Device status",
+        p: "Dovmant is a research instrument. It is not a medical device and is not intended for the diagnosis, treatment, mitigation, or prevention of any disease or condition. It has not been evaluated or cleared by the FDA. [TBD — legal review required]",
+      },
+      {
+        h: "Intended use",
+        p: "The instrument is intended for research use in controlled settings, operated under the supervision of qualified personnel. [TBD — legal review required]",
+      },
+      {
+        h: "Responsibilities of the purchasing institution",
+        p: "IRB approval, informed consent, compliance with applicable human-subject research regulations, personnel qualification and participant selection are the responsibility of the purchasing institution. [TBD — legal review required]",
+      },
+      {
+        h: "No clinical claims",
+        p: "Dovmant makes no claim regarding safety or effectiveness for any clinical purpose. [TBD — legal review required]",
+      },
+      {
+        h: "Limitations of use",
+        p: "[TBD — legal review required] Who and what the instrument is not intended for.",
+      },
+    ],
+  },
   privacy: {
     title: "PRIVACY {POLICY}",
     updated: "[TBD]",
@@ -24,22 +57,17 @@ export const legal: Record<"privacy" | "terms" | "medical-disclaimer" | "cookies
     sections: [
       tbd("Scope"),
       tbd("Use of this website"),
+      {
+        h: "Supply of research equipment",
+        p: "[TBD — legal review required] Terms covering quotation validity, lead time, delivery, installation, warranty and service for research equipment.",
+      },
+      {
+        h: "Ownership of data",
+        p: "Engineering telemetry from the instrument — load, temperature, faults and usage profile — belongs to Dovmant. Physiological and participant data belongs to the purchasing institution, which also owns the findings and decides what is published. This must match the responsibility split published on the research partnerships page. [TBD — legal review required]",
+      },
       tbd("Intellectual property"),
       tbd("Liability"),
       tbd("Governing law"),
-    ],
-  },
-  "medical-disclaimer": {
-    title: "MEDICAL {DISCLAIMER}",
-    updated: "[TBD]",
-    sections: [
-      {
-        h: "Not medical advice",
-        p: "Nothing on this website is medical advice, a diagnosis or a treatment recommendation. Always consult a qualified healthcare professional. [TBD — legal review required]",
-      },
-      tbd("Regulatory status"),
-      tbd("Intended use"),
-      tbd("Reporting an incident"),
     ],
   },
   cookies: {

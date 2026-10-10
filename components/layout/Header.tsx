@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { nav } from "@/content/site";
+import { nav, primaryCta } from "@/content/site";
 import { Button } from "@/components/ui/Button";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { cn } from "@/lib/cn";
@@ -53,7 +53,7 @@ export function Header() {
         </nav>
         <div className="flex items-center gap-3">
           <span className="hidden md:block">
-            <Button href="/contact">Request a demo</Button>
+            <Button href={primaryCta.href}>{primaryCta.label}</Button>
           </span>
           <button
             type="button"

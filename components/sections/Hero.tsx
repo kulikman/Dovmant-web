@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SquareMarker } from "@/components/ui/SquareMarker";
 import { hero } from "@/content/home";
+import { site } from "@/content/site";
 import { HeroMedia } from "./HeroMedia";
 import { ImageSlot } from "@/components/media/ImageSlot";
 
@@ -11,12 +12,12 @@ export function Hero() {
       <div className="grid grid-cols-12 gap-x-6 gap-y-8 lg:min-h-[86vh]">
         {/* headline first on mobile, bottom-left on desktop */}
         <div className="order-1 col-span-12 flex flex-col justify-end lg:order-2 lg:col-span-7 lg:pb-4">
-          <SectionHeading as="h1" size="hero" text={"DOVMANT"} immediate />
+          <SectionHeading as="h1" size="hero" text="DOVMANT" immediate />
         </div>
 
         {/* small reference thumbnail, top-left */}
         <div className="order-0 col-span-4 hidden lg:col-span-2 lg:row-start-1 lg:block lg:self-start lg:pt-10">
-          <ImageSlot id="detail-knee-actuator" aspect="4/3" sizes="160px" className="w-[160px]" />
+          <ImageSlot id="detail-sensors" aspect="4/3" sizes="160px" className="w-[160px]" />
         </div>
 
         {/* claim column */}
@@ -26,7 +27,7 @@ export function Hero() {
             as="p"
             size="h2"
             text={hero.claim}
-            className="max-w-[12ch] !text-[clamp(22px,2.2vw,30px)] leading-[1.15]"
+            className="max-w-[20ch] !text-[clamp(20px,1.9vw,26px)] leading-[1.2]"
             immediate
           />
           <Link href={hero.moreInfo.href} className="link w-fit text-[15px]">
@@ -34,7 +35,7 @@ export function Hero() {
             <span className="sr-only"> {hero.moreInfo.about}</span>
           </Link>
           <p className="mt-6 max-w-[38ch] text-[13px] leading-[18px] text-ink-muted lg:mt-auto">
-            {hero.paragraph}
+            {site.tagline}
           </p>
           <Link href={hero.contact.href} className="link w-fit text-[15px]">
             {hero.contact.label}

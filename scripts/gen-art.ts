@@ -1,19 +1,19 @@
 /**
- * Generates the stand-in artwork that fills the image slots until real
- * photography exists. Run with `npm run art`.
+ * Generates the stand-in artwork that fills the image slots until the shoot.
+ * Run with `npm run art`.
  *
- * These are deliberately abstract: motion studies, schematics, textures and
- * geometric portraits. Nothing here depicts the Dovmant device, a real person
- * or a real organisation — see the "no invented facts" rule in CLAUDE.md.
- * Real files always win: set `src` in content/images.ts and the artwork is
- * ignored.
+ * These are technical illustrations, not photographs: a schematic device on a
+ * schematic figure, laboratory props drawn as line work, halftone fields.
+ * They exist so the layout can be judged with something in the frames, and they
+ * are meant to be replaced — set `src` in content/images.ts and the artwork is
+ * ignored. See docs/shot-list.md for what each slot actually needs.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { images, type ImageSlotId } from "../content/images";
 
 const OUT = "public/images/art";
 
-/* ── palette (greys only; the red block is added in CSS) ─────────────────── */
+/* ── palette (greys only; the accent block is added in CSS) ──────────────── */
 const BG = "#E6E6E6";
 const FAINT = "#D2D2D2";
 const SOFT = "#BDBDBD";
@@ -40,22 +40,45 @@ const svg = (w: number, h: number, body: string) =>
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img">` +
   `<rect width="${w}" height="${h}" fill="${BG}"/>${body}</svg>`;
 
-/** Ruler ticks down the left edge — the editorial "measured" feel. */
+const n = (v: number) => v.toFixed(1);
+
+/** Ruler ticks down the left edge and a baseline — the measured, editorial feel. */
 const ticks = (w: number, h: number, step = 48) => {
   let out = "";
   for (let y = step; y < h; y += step) {
     const long = y % (step * 4) === 0;
     out += `<line x1="0" y1="${y}" x2="${long ? 28 : 14}" y2="${y}" stroke="${SOFT}" stroke-width="2"/>`;
   }
-  out += `<line x1="0" y1="${h - 1}" x2="${w}" y2="${h - 1}" stroke="${SOFT}" stroke-width="2"/>`;
   return out;
 };
 
+type P = { x: number; y: number };
+
+/** A bar running parallel to a limb segment, offset laterally — the exo frame. */
+function frameBar(a: P, b: P, off: number, tone: string, weight: number) {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const nx = (-dy / len) * off;
+  const ny = (dx / len) * off;
+  return (
+    `<line x1="${n(a.x + nx)}" y1="${n(a.y + ny)}" x2="${n(b.x + nx)}" y2="${n(b.y + ny)}" stroke="${tone}" stroke-width="${weight}" stroke-linecap="round"/>` +
+    // two cuffs across the segment
+    [0.3, 0.72]
+      .map((t) => {
+        const px = a.x + dx * t;
+        const py = a.y + dy * t;
+        return `<line x1="${n(px)}" y1="${n(py)}" x2="${n(px + nx * 1.35)}" y2="${n(py + ny * 1.35)}" stroke="${tone}" stroke-width="${weight * 0.7}" stroke-linecap="round"/>`;
+      })
+      .join("")
+  );
+}
+
 /**
- * One leg in the sagittal plane, drawn as two segments and three joints.
- * `phase` walks the limb through a stride.
+ * A walking figure wearing the device: body as thin line work, device frame and
+ * actuators heavier on top of it.
  */
-function limb(
+function exoFigure(
   x: number,
   groundY: number,
   scale: number,
@@ -66,28 +89,41 @@ function limb(
   const hipY = groundY - 520 * scale;
   const thigh = 230 * scale;
   const shank = 240 * scale;
+  const off = 26 * scale;
 
-  const joint = (cx: number, cy: number, r: number) =>
-    `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${(r * scale).toFixed(1)}" fill="${BG}" stroke="${tone}" stroke-width="${weight}"/>`;
+  const joint = (c: P, r: number, w: number) =>
+    `<circle cx="${n(c.x)}" cy="${n(c.y)}" r="${n(r * scale)}" fill="${BG}" stroke="${tone}" stroke-width="${w}"/>`;
 
-  /** One leg; the two legs of a stride are half a cycle apart. */
-  const leg = (offset: number, lighter: boolean) => {
-    const hipAngle = Math.sin(phase + offset) * 0.5 - 0.1;
-    const kneeAngle = Math.max(0, Math.sin(phase + offset + 1.1)) * 0.9;
-    const kneeX = x + Math.sin(hipAngle) * thigh;
-    const kneeY = hipY + Math.cos(hipAngle) * thigh;
-    const ankleX = kneeX + Math.sin(hipAngle - kneeAngle) * shank;
-    const ankleY = kneeY + Math.cos(hipAngle - kneeAngle) * shank;
-    const toeX = ankleX + 64 * scale;
-    const w = lighter ? weight * 0.6 : weight;
+  const leg = (shift: number, back: boolean) => {
+    const hipAngle = Math.sin(phase + shift) * 0.5 - 0.1;
+    const kneeAngle = Math.max(0, Math.sin(phase + shift + 1.1)) * 0.9;
+    const hip: P = { x, y: hipY };
+    const knee: P = {
+      x: x + Math.sin(hipAngle) * thigh,
+      y: hipY + Math.cos(hipAngle) * thigh,
+    };
+    const ankle: P = {
+      x: knee.x + Math.sin(hipAngle - kneeAngle) * shank,
+      y: knee.y + Math.cos(hipAngle - kneeAngle) * shank,
+    };
+    const w = back ? weight * 0.55 : weight;
+    const sideOff = back ? -off : off;
+
     return (
+      // limb
       `<g stroke="${tone}" stroke-width="${w}" stroke-linecap="round" fill="none">` +
-      `<line x1="${x}" y1="${hipY}" x2="${kneeX.toFixed(1)}" y2="${kneeY.toFixed(1)}"/>` +
-      `<line x1="${kneeX.toFixed(1)}" y1="${kneeY.toFixed(1)}" x2="${ankleX.toFixed(1)}" y2="${ankleY.toFixed(1)}"/>` +
-      `<line x1="${ankleX.toFixed(1)}" y1="${ankleY.toFixed(1)}" x2="${toeX.toFixed(1)}" y2="${ankleY.toFixed(1)}"/>` +
+      `<line x1="${n(hip.x)}" y1="${n(hip.y)}" x2="${n(knee.x)}" y2="${n(knee.y)}"/>` +
+      `<line x1="${n(knee.x)}" y1="${n(knee.y)}" x2="${n(ankle.x)}" y2="${n(ankle.y)}"/>` +
+      `<line x1="${n(ankle.x)}" y1="${n(ankle.y)}" x2="${n(ankle.x + 64 * scale)}" y2="${n(ankle.y)}"/>` +
       `</g>` +
-      joint(kneeX, kneeY, 17) +
-      joint(ankleX, ankleY, 11)
+      // device frame over it
+      frameBar(hip, knee, sideOff, tone, w * 1.3) +
+      frameBar(knee, ankle, sideOff, tone, w * 1.3) +
+      // actuators at hip and knee
+      joint({ x: hip.x + sideOff, y: hip.y }, 20, w * 1.3) +
+      joint({ x: knee.x + sideOff, y: knee.y }, 26, w * 1.3) +
+      `<circle cx="${n(knee.x + sideOff)}" cy="${n(knee.y)}" r="${n(11 * scale)}" fill="${tone}"/>` +
+      joint(ankle, 11, w)
     );
   };
 
@@ -97,19 +133,19 @@ function limb(
 
   return (
     leg(Math.PI, true) +
-    // torso, shoulder line and head keep the study readable as a walking figure
     `<g stroke="${tone}" stroke-width="${weight}" stroke-linecap="round" fill="none">` +
-    `<line x1="${x}" y1="${hipY}" x2="${(x + lean).toFixed(1)}" y2="${shoulderY.toFixed(1)}"/>` +
-    `<line x1="${(x + lean - 70 * scale).toFixed(1)}" y1="${shoulderY.toFixed(1)}" x2="${(x + lean + 70 * scale).toFixed(1)}" y2="${shoulderY.toFixed(1)}"/>` +
-    `<line x1="${x - 46 * scale}" y1="${hipY}" x2="${x + 46 * scale}" y2="${hipY}"/>` +
+    `<line x1="${x}" y1="${n(hipY)}" x2="${n(x + lean)}" y2="${n(shoulderY)}"/>` +
+    `<line x1="${n(x + lean - 70 * scale)}" y1="${n(shoulderY)}" x2="${n(x + lean + 70 * scale)}" y2="${n(shoulderY)}"/>` +
+    `<line x1="${n(x - 46 * scale)}" y1="${n(hipY)}" x2="${n(x + 46 * scale)}" y2="${n(hipY)}"/>` +
     `</g>` +
-    `<circle cx="${(x + lean).toFixed(1)}" cy="${headY.toFixed(1)}" r="${(52 * scale).toFixed(1)}" fill="none" stroke="${tone}" stroke-width="${weight}"/>` +
-    leg(0, false) +
-    joint(x, hipY, 13)
+    `<circle cx="${n(x + lean)}" cy="${n(headY)}" r="${n(52 * scale)}" fill="none" stroke="${tone}" stroke-width="${weight}"/>` +
+    // control unit at the waist
+    `<rect x="${n(x - 58 * scale)}" y="${n(hipY - 74 * scale)}" width="${n(52 * scale)}" height="${n(64 * scale)}" fill="none" stroke="${tone}" stroke-width="${weight}"/>` +
+    leg(0, false)
   );
 }
 
-/** Stride study: ghosted phases of a walk, the last one solid. */
+/** Stride study: ghosted phases of a walk, the focus figure solid. */
 function motionStudy(w: number, h: number, seed: string, frames = 5) {
   const r = rng(seed);
   const groundY = h * 0.95;
@@ -119,23 +155,139 @@ function motionStudy(w: number, h: number, seed: string, frames = 5) {
   const tones = [FAINT, SOFT, MID, DARK, INK];
 
   let body = ticks(w, h);
-  // motion arcs above the ground line
   for (let i = 0; i < 3; i++) {
     const rad = h * (0.28 + i * 0.09);
-    body += `<path d="M ${w * 0.1} ${groundY} A ${rad} ${rad} 0 0 1 ${w * 0.9} ${groundY}" fill="none" stroke="${FAINT}" stroke-width="2"/>`;
+    body += `<path d="M ${n(w * 0.1)} ${n(groundY)} A ${n(rad)} ${n(rad)} 0 0 1 ${n(w * 0.9)} ${n(groundY)}" fill="none" stroke="${FAINT}" stroke-width="2"/>`;
   }
+  body += `<line x1="0" y1="${n(groundY)}" x2="${w}" y2="${n(groundY)}" stroke="${SOFT}" stroke-width="2"/>`;
   for (let i = 0; i < frames; i++) {
     const t = frames === 1 ? 0.5 : i / (frames - 1);
-    // Weight peaks in the middle so the solid figure survives any crop.
     const focus = 1 - Math.abs(t - 0.5) * 2;
     const tone = tones[Math.min(tones.length - 1, Math.round(focus * (tones.length - 1)))];
-    const weight = 3 + focus * 6;
-    body += limb(x0 + span * t, groundY, scale, r() * 0.6 + t * 4.2, tone, weight);
+    body += exoFigure(x0 + span * t, groundY, scale, r() * 0.6 + t * 4.2, tone, 3 + focus * 5);
   }
   return svg(w, h, body);
 }
 
-/** Halftone field — a soft grey texture that reads as photography at a glance. */
+/** Laboratory scene: capture cameras, force plates, optional incline or treadmill. */
+function labScene(
+  w: number,
+  h: number,
+  seed: string,
+  variant: "gait" | "incline" | "load" | "sprint" | "rig",
+) {
+  const r = rng(seed);
+  const groundY = h * 0.84;
+  const scale = h / 1150;
+  let body = ticks(w, h, 40);
+
+  // capture cameras on tripods, back of frame
+  const cams = variant === "rig" ? 4 : 3;
+  for (let i = 0; i < cams; i++) {
+    const cx = w * (0.12 + (i * 0.76) / Math.max(1, cams - 1));
+    const top = groundY - h * (0.42 + r() * 0.05);
+    body +=
+      `<line x1="${n(cx)}" y1="${n(top)}" x2="${n(cx)}" y2="${n(groundY)}" stroke="${SOFT}" stroke-width="2"/>` +
+      `<line x1="${n(cx - 16)}" y1="${n(groundY)}" x2="${n(cx + 16)}" y2="${n(groundY)}" stroke="${SOFT}" stroke-width="2"/>` +
+      `<rect x="${n(cx - 20)}" y="${n(top - 16)}" width="40" height="22" fill="none" stroke="${MID}" stroke-width="2.5"/>` +
+      `<circle cx="${n(cx)}" cy="${n(top - 5)}" r="5" fill="${MID}"/>`;
+  }
+
+  body += `<line x1="0" y1="${n(groundY)}" x2="${w}" y2="${n(groundY)}" stroke="${DARK}" stroke-width="2.5"/>`;
+
+  // floor-embedded force plates
+  if (variant === "gait" || variant === "rig" || variant === "load") {
+    const plates = 3;
+    const pw = w * 0.17;
+    for (let i = 0; i < plates; i++) {
+      const px = w * 0.16 + i * (pw + w * 0.03);
+      body += `<rect x="${n(px)}" y="${n(groundY + 6)}" width="${n(pw)}" height="${n(h * 0.06)}" fill="none" stroke="${MID}" stroke-width="2.5"/>`;
+    }
+  }
+
+  if (variant === "incline") {
+    body += `<path d="M ${n(w * 0.1)} ${n(groundY)} L ${n(w * 0.92)} ${n(groundY - h * 0.3)} L ${n(w * 0.92)} ${n(groundY)} Z" fill="none" stroke="${MID}" stroke-width="2.5"/>`;
+  }
+  if (variant === "sprint") {
+    for (let i = 0; i < 6; i++) {
+      const y = groundY + 8 + i * 4;
+      body += `<line x1="0" y1="${n(y)}" x2="${w}" y2="${n(y)}" stroke="${FAINT}" stroke-width="1.5"/>`;
+    }
+  }
+
+  // the figure, or the device on a bench for the rig frame
+  if (variant === "rig") {
+    body += deviceOnStand(w * 0.52, groundY, scale * 0.9, INK, 4);
+  } else {
+    const yOff = variant === "incline" ? -h * 0.12 : 0;
+    const phases = variant === "sprint" ? [1.2, 2.6, 4.0] : [2.3];
+    phases.forEach((ph, i) => {
+      const tone = i === phases.length - 1 ? INK : SOFT;
+      body += exoFigure(
+        w * (phases.length === 1 ? 0.52 : 0.26 + i * 0.26),
+        groundY + yOff,
+        scale,
+        ph,
+        tone,
+        i === phases.length - 1 ? 7 : 4,
+      );
+    });
+    if (variant === "load") {
+      const bx = w * 0.52 - 40;
+      body += `<rect x="${n(bx)}" y="${n(groundY + yOff - 620 * scale)}" width="80" height="90" fill="none" stroke="${INK}" stroke-width="5"/>`;
+    }
+  }
+  return svg(w, h, body);
+}
+
+/** The device alone, on a stand — the specification frame. */
+function deviceOnStand(cx: number, groundY: number, scale: number, tone: string, weight: number) {
+  const hipY = groundY - 560 * scale;
+  const kneeY = groundY - 300 * scale;
+  const ankleY = groundY - 60 * scale;
+  let out = "";
+
+  for (const side of [-1, 1]) {
+    const x = cx + side * 62 * scale;
+    out +=
+      `<line x1="${n(x)}" y1="${n(hipY)}" x2="${n(x)}" y2="${n(kneeY)}" stroke="${tone}" stroke-width="${weight * 1.4}" stroke-linecap="round"/>` +
+      `<line x1="${n(x)}" y1="${n(kneeY)}" x2="${n(x)}" y2="${n(ankleY)}" stroke="${tone}" stroke-width="${weight * 1.4}" stroke-linecap="round"/>` +
+      `<circle cx="${n(x)}" cy="${n(hipY)}" r="${n(24 * scale)}" fill="${BG}" stroke="${tone}" stroke-width="${weight}"/>` +
+      `<circle cx="${n(x)}" cy="${n(kneeY)}" r="${n(32 * scale)}" fill="${BG}" stroke="${tone}" stroke-width="${weight}"/>` +
+      `<circle cx="${n(x)}" cy="${n(kneeY)}" r="${n(13 * scale)}" fill="${tone}"/>` +
+      // cuffs
+      [0.35, 0.75]
+        .map((t) => {
+          const y = hipY + (kneeY - hipY) * t;
+          return `<path d="M ${n(x - side * 46 * scale)} ${n(y)} Q ${n(x)} ${n(y + 14 * scale)} ${n(x + side * 10 * scale)} ${n(y)}" fill="none" stroke="${tone}" stroke-width="${weight * 0.8}"/>`;
+        })
+        .join("") +
+      [0.35, 0.78]
+        .map((t) => {
+          const y = kneeY + (ankleY - kneeY) * t;
+          return `<path d="M ${n(x - side * 42 * scale)} ${n(y)} Q ${n(x)} ${n(y + 12 * scale)} ${n(x + side * 10 * scale)} ${n(y)}" fill="none" stroke="${tone}" stroke-width="${weight * 0.8}"/>`;
+        })
+        .join("") +
+      // foot plate
+      `<line x1="${n(x - 20 * scale)}" y1="${n(ankleY)}" x2="${n(x + 78 * scale)}" y2="${n(ankleY)}" stroke="${tone}" stroke-width="${weight}" stroke-linecap="round"/>`;
+  }
+  // pelvis bridge and control unit
+  out +=
+    `<line x1="${n(cx - 62 * scale)}" y1="${n(hipY)}" x2="${n(cx + 62 * scale)}" y2="${n(hipY)}" stroke="${tone}" stroke-width="${weight * 1.2}"/>` +
+    `<rect x="${n(cx - 44 * scale)}" y="${n(hipY - 96 * scale)}" width="${n(88 * scale)}" height="${n(76 * scale)}" fill="none" stroke="${tone}" stroke-width="${weight}"/>` +
+    `<line x1="${n(cx - 24 * scale)}" y1="${n(hipY - 58 * scale)}" x2="${n(cx + 24 * scale)}" y2="${n(hipY - 58 * scale)}" stroke="${tone}" stroke-width="${weight * 0.7}"/>` +
+    // stand
+    `<line x1="${n(cx)}" y1="${n(groundY)}" x2="${n(cx)}" y2="${n(groundY + 30 * scale)}" stroke="${SOFT}" stroke-width="2"/>` +
+    `<line x1="${n(cx - 90 * scale)}" y1="${n(groundY + 30 * scale)}" x2="${n(cx + 90 * scale)}" y2="${n(groundY + 30 * scale)}" stroke="${SOFT}" stroke-width="2.5"/>`;
+  return out;
+}
+
+function deviceStudio(w: number, h: number) {
+  const groundY = h * 0.86;
+  return svg(w, h, ticks(w, h, 40) + deviceOnStand(w / 2, groundY, h / 1150, INK, 5));
+}
+
+/** Halftone field — a soft grey texture. */
 function halftone(w: number, h: number, seed: string) {
   const r = rng(seed);
   const step = Math.round(Math.min(w, h) / 26);
@@ -149,7 +301,7 @@ function halftone(w: number, h: number, seed: string) {
       if (rad > 0.4) body += `<circle cx="${x}" cy="${y}" r="${rad.toFixed(2)}" fill="${MID}"/>`;
     }
   }
-  body += `<circle cx="${cx.toFixed(0)}" cy="${cy.toFixed(0)}" r="${(Math.min(w, h) * 0.13).toFixed(0)}" fill="none" stroke="${DARK}" stroke-width="3"/>`;
+  body += `<circle cx="${n(cx)}" cy="${n(cy)}" r="${n(Math.min(w, h) * 0.13)}" fill="none" stroke="${DARK}" stroke-width="3"/>`;
   return svg(w, h, body + ticks(w, h));
 }
 
@@ -166,18 +318,18 @@ function detailSchematic(w: number, h: number, seed: string) {
     const inner = R * 1.25;
     const outer = R * (i % 3 === 0 ? 1.44 : 1.34);
     body +=
-      `<line x1="${(cx + Math.cos(a) * inner).toFixed(1)}" y1="${(cy + Math.sin(a) * inner).toFixed(1)}"` +
-      ` x2="${(cx + Math.cos(a) * outer).toFixed(1)}" y2="${(cy + Math.sin(a) * outer).toFixed(1)}" stroke="${SOFT}" stroke-width="2"/>`;
+      `<line x1="${n(cx + Math.cos(a) * inner)}" y1="${n(cy + Math.sin(a) * inner)}"` +
+      ` x2="${n(cx + Math.cos(a) * outer)}" y2="${n(cy + Math.sin(a) * outer)}" stroke="${SOFT}" stroke-width="2"/>`;
   }
   body += `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="${INK}" stroke-width="7"/>`;
   body += `<circle cx="${cx}" cy="${cy}" r="${R * 0.55}" fill="none" stroke="${DARK}" stroke-width="4"/>`;
   body += `<circle cx="${cx}" cy="${cy}" r="${R * 0.12}" fill="${DARK}"/>`;
   for (let i = 0; i < 6; i++) {
     const a = (i / 6) * Math.PI * 2 + r();
-    body += `<circle cx="${(cx + Math.cos(a) * R * 0.78).toFixed(1)}" cy="${(cy + Math.sin(a) * R * 0.78).toFixed(1)}" r="7" fill="${MID}"/>`;
+    body += `<circle cx="${n(cx + Math.cos(a) * R * 0.78)}" cy="${n(cy + Math.sin(a) * R * 0.78)}" r="7" fill="${MID}"/>`;
   }
-  body += `<line x1="${cx - R * 1.9}" y1="${cy}" x2="${cx + R * 1.9}" y2="${cy}" stroke="${SOFT}" stroke-width="2" stroke-dasharray="10 10"/>`;
-  body += `<line x1="${cx}" y1="${cy - R * 1.9}" x2="${cx}" y2="${cy + R * 1.9}" stroke="${SOFT}" stroke-width="2" stroke-dasharray="10 10"/>`;
+  body += `<line x1="${n(cx - R * 1.9)}" y1="${cy}" x2="${n(cx + R * 1.9)}" y2="${cy}" stroke="${SOFT}" stroke-width="2" stroke-dasharray="10 10"/>`;
+  body += `<line x1="${cx}" y1="${n(cy - R * 1.9)}" x2="${cx}" y2="${n(cy + R * 1.9)}" stroke="${SOFT}" stroke-width="2" stroke-dasharray="10 10"/>`;
   return svg(w, h, body);
 }
 
@@ -185,116 +337,73 @@ function detailSchematic(w: number, h: number, seed: string) {
 function exploded(w: number, h: number) {
   const cy = h / 2;
   let body = ticks(w, h, 40);
-  body += `<line x1="${w * 0.06}" y1="${cy}" x2="${w * 0.94}" y2="${cy}" stroke="${SOFT}" stroke-width="2" stroke-dasharray="14 10"/>`;
+  body += `<line x1="${n(w * 0.06)}" y1="${cy}" x2="${n(w * 0.94)}" y2="${cy}" stroke="${SOFT}" stroke-width="2" stroke-dasharray="14 10"/>`;
   const pieces = [0.14, 0.32, 0.5, 0.68, 0.86];
   pieces.forEach((p, i) => {
     const x = w * p;
     const size = h * (i === 2 ? 0.34 : 0.22);
     const tone = i === 2 ? INK : i % 2 ? DARK : MID;
-    body += `<rect x="${(x - size / 2).toFixed(1)}" y="${(cy - size / 2).toFixed(1)}" width="${size.toFixed(1)}" height="${size.toFixed(1)}" fill="none" stroke="${tone}" stroke-width="${i === 2 ? 6 : 4}"/>`;
-    body += `<circle cx="${x.toFixed(1)}" cy="${cy}" r="${(size * 0.18).toFixed(1)}" fill="none" stroke="${tone}" stroke-width="3"/>`;
-    body += `<line x1="${x.toFixed(1)}" y1="${(cy + size / 2).toFixed(1)}" x2="${x.toFixed(1)}" y2="${(h * 0.88).toFixed(1)}" stroke="${SOFT}" stroke-width="2"/>`;
-    body += `<circle cx="${x.toFixed(1)}" cy="${(h * 0.88).toFixed(1)}" r="5" fill="${SOFT}"/>`;
+    body += `<rect x="${n(x - size / 2)}" y="${n(cy - size / 2)}" width="${n(size)}" height="${n(size)}" fill="none" stroke="${tone}" stroke-width="${i === 2 ? 6 : 4}"/>`;
+    body += `<circle cx="${n(x)}" cy="${cy}" r="${n(size * 0.18)}" fill="none" stroke="${tone}" stroke-width="3"/>`;
+    body += `<line x1="${n(x)}" y1="${n(cy + size / 2)}" x2="${n(x)}" y2="${n(h * 0.88)}" stroke="${SOFT}" stroke-width="2"/>`;
+    body += `<circle cx="${n(x)}" cy="${n(h * 0.88)}" r="5" fill="${SOFT}"/>`;
   });
   return svg(w, h, body);
 }
 
-/** Wireframe of a dashboard — structure only, no invented numbers. */
-function dashboard(w: number, h: number, seed: string) {
+/** Wireframe of the investigator console — structure only, no invented numbers. */
+function console_(w: number, h: number, seed: string) {
   const r = rng(seed);
-  let body = `<rect x="0" y="0" width="${w}" height="${h * 0.11}" fill="${FAINT}"/>`;
-  body += `<rect x="0" y="${h * 0.11}" width="${w * 0.2}" height="${h * 0.89}" fill="${FAINT}"/>`;
+  let body = `<rect x="0" y="0" width="${w}" height="${n(h * 0.11)}" fill="${FAINT}"/>`;
+  body += `<rect x="0" y="${n(h * 0.11)}" width="${n(w * 0.2)}" height="${n(h * 0.89)}" fill="${FAINT}"/>`;
   for (let i = 0; i < 6; i++)
-    body += `<rect x="${w * 0.04}" y="${h * (0.18 + i * 0.1)}" width="${w * 0.12}" height="${h * 0.035}" fill="${SOFT}"/>`;
-  body += `<rect x="${w * 0.04}" y="${h * 0.035}" width="${w * 0.08}" height="${h * 0.04}" fill="${DARK}"/>`;
+    body += `<rect x="${n(w * 0.04)}" y="${n(h * (0.18 + i * 0.1))}" width="${n(w * 0.12)}" height="${n(h * 0.035)}" fill="${SOFT}"/>`;
+  body += `<rect x="${n(w * 0.04)}" y="${n(h * 0.035)}" width="${n(w * 0.08)}" height="${n(h * 0.04)}" fill="${DARK}"/>`;
 
+  // two traces: commanded and measured torque over a gait cycle
   const gx = w * 0.25;
-  const gw = w * 0.45;
+  const gw = w * 0.7;
   const gy = h * 0.2;
-  const gh = h * 0.42;
-  body += `<rect x="${gx}" y="${gy}" width="${gw}" height="${gh}" fill="none" stroke="${SOFT}" stroke-width="2"/>`;
-  const bars = 14;
-  for (let i = 0; i < bars; i++) {
-    const bh = gh * (0.25 + r() * 0.7);
-    const bw = (gw / bars) * 0.55;
-    body += `<rect x="${(gx + (gw / bars) * (i + 0.22)).toFixed(1)}" y="${(gy + gh - bh).toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" fill="${i === bars - 1 ? INK : MID}"/>`;
-  }
-  let path = "";
-  for (let i = 0; i <= 20; i++) {
-    const x = gx + (gw / 20) * i;
-    const y = h * 0.78 + Math.sin(i * 0.7 + r()) * h * 0.05;
-    path += `${i ? "L" : "M"} ${x.toFixed(1)} ${y.toFixed(1)} `;
-  }
-  body += `<path d="${path}" fill="none" stroke="${DARK}" stroke-width="3"/>`;
-  for (let i = 0; i < 3; i++)
-    body += `<rect x="${w * 0.73}" y="${h * (0.2 + i * 0.2)}" width="${w * 0.22}" height="${h * 0.15}" fill="${FAINT}"/>`;
-  return svg(w, h, body);
-}
-
-/**
- * Stand-in for a portrait, printed as a halftone: dot size follows a head and
- * shoulders mass, so it reads as a newspaper print rather than an avatar.
- * There is no face — nothing here should be mistaken for a photograph.
- */
-function portrait(w: number, h: number, seed: string) {
-  const r = rng(seed);
-  const cx = w * (0.48 + r() * 0.04);
-  const headR = w * 0.23;
-  const headY = h * (0.34 + r() * 0.05);
-  const shoulderY = headY + headR * 1.75;
-
-  /** 0 outside the figure, 1 at its centre. */
-  const mass = (x: number, y: number) => {
-    const head = 1 - Math.hypot((x - cx) / headR, (y - headY) / (headR * 1.12));
-    const bodyW = w * 0.42;
-    const bodyT = (y - shoulderY) / (h - shoulderY);
-    const shoulder =
-      y > shoulderY
-        ? 1 - Math.abs(x - cx) / (bodyW * (0.62 + Math.min(1, Math.max(0, bodyT)) * 0.9))
-        : -1;
-    return Math.max(head, shoulder);
-  };
-
-  const step = Math.max(6, Math.round(w / 46));
-  let body = "";
-  for (let y = step / 2; y < h; y += step) {
-    for (let x = step / 2; x < w; x += step) {
-      const m = mass(x, y);
-      // A little tone outside the figure keeps the frame from going flat.
-      const t = m > 0 ? 0.35 + Math.min(1, m) * 0.65 : 0.16 - Math.min(0.12, -m * 0.25);
-      const rad = t * step * 0.62;
-      if (rad > 0.35)
-        body += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${rad.toFixed(2)}" fill="${m > 0.45 ? INK : m > 0 ? DARK : MID}"/>`;
+  const gh = h * 0.34;
+  body += `<rect x="${n(gx)}" y="${n(gy)}" width="${n(gw)}" height="${n(gh)}" fill="none" stroke="${SOFT}" stroke-width="2"/>`;
+  for (const [amp, tone, width, shift] of [
+    [1, DARK, 3, 0],
+    [0.88, INK, 3.5, 0.18],
+  ] as [number, string, number, number][]) {
+    let d = "";
+    for (let i = 0; i <= 60; i++) {
+      const t = i / 60;
+      const v = Math.sin(t * Math.PI * 2 + shift) * 0.5 + Math.sin(t * Math.PI * 4) * 0.22;
+      const x = gx + gw * t;
+      const y = gy + gh / 2 - v * gh * 0.42 * amp;
+      d += `${i ? "L" : "M"} ${n(x)} ${n(y)} `;
     }
+    body += `<path d="${d}" fill="none" stroke="${tone}" stroke-width="${width}"/>`;
   }
-  body += `<circle cx="${cx.toFixed(1)}" cy="${headY.toFixed(1)}" r="${(headR * 1.6).toFixed(1)}" fill="none" stroke="${SOFT}" stroke-width="2"/>`;
-  return svg(w, h, ticks(w, h, 36) + body);
-}
-
-/** Neutral mark for a partner slot — explicitly a placeholder, not a real logo. */
-function logoMark(w: number, h: number, n: string) {
-  const s = h * 0.34;
-  return svg(
-    w,
-    h,
-    `<rect x="${(w * 0.12).toFixed(1)}" y="${((h - s) / 2).toFixed(1)}" width="${s.toFixed(1)}" height="${s.toFixed(1)}" fill="${MID}"/>` +
-      `<text x="${(w * 0.12 + s * 1.5).toFixed(1)}" y="${(h / 2 + h * 0.08).toFixed(1)}" font-family="Inter, Helvetica, Arial, sans-serif"` +
-      ` font-size="${(h * 0.24).toFixed(1)}" font-weight="500" letter-spacing="2" fill="${MID}">PARTNER ${n}</text>`,
-  );
+  // a bar row below
+  const by = h * 0.64;
+  const bars = 18;
+  for (let i = 0; i < bars; i++) {
+    const bh = h * (0.06 + r() * 0.2);
+    body += `<rect x="${n(gx + (gw / bars) * (i + 0.22))}" y="${n(by + h * 0.26 - bh)}" width="${n((gw / bars) * 0.55)}" height="${n(bh)}" fill="${i === bars - 1 ? INK : MID}"/>`;
+  }
+  return svg(w, h, body);
 }
 
 /* ── which generator fills which slot ────────────────────────────────────── */
 function artFor(id: ImageSlotId, w: number, h: number): string {
-  if (id.startsWith("team-") || id.startsWith("testimonial-")) return portrait(w, h, id);
-  if (id.startsWith("partner-logo-")) return logoMark(w, h, id.slice(-1));
-  if (id.startsWith("detail-")) return detailSchematic(w, h, id);
+  if (id.startsWith("detail-") || id === "sync-port-detail") return detailSchematic(w, h, id);
   if (id === "exploded-view") return exploded(w, h);
-  if (id === "app-dashboard") return dashboard(w, h, id);
-  if (id === "faq-render" || id === "footer-render" || id === "page-hero-research")
-    return halftone(w, h, id);
+  if (id === "lab-console") return console_(w, h, id);
+  if (id === "device-standalone" || id === "page-hero-specifications") return deviceStudio(w, h);
+  if (id === "lab-instrumentation" || id === "page-hero-research") return labScene(w, h, id, "rig");
+  if (id === "incline-trial") return labScene(w, h, id, "incline");
+  if (id === "loaded-trial") return labScene(w, h, id, "load");
+  if (id === "sprint-trial" || id === "page-hero-performance") return labScene(w, h, id, "sprint");
+  if (id === "lab-gait-trial" || id === "transparent-mode") return labScene(w, h, id, "gait");
+  if (id === "footer-render" || id === "page-hero-about") return halftone(w, h, id);
   if (id === "hero-render") return motionStudy(w, h, id, 5);
-  if (id.startsWith("page-hero-")) return motionStudy(w, h, id, 3);
-  return motionStudy(w, h, id, 4); // wear-*
+  return motionStudy(w, h, id, 3); // faq-render, page-hero-system, page-hero-investors
 }
 
 /* ── write every slot ────────────────────────────────────────────────────── */

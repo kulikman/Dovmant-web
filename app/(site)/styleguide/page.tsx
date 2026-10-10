@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Section } from "@/components/ui/Section";
 import { SquareMarker } from "@/components/ui/SquareMarker";
 import { ArrowSquare } from "@/components/ui/ArrowSquare";
-import { ContactForm } from "@/components/sections/ContactForm";
+import { EnquiryForm } from "@/components/sections/EnquiryForm";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { NumberedSteps } from "@/components/sections/NumberedSteps";
 import { ProductDiagram } from "@/components/sections/ProductDiagram";
@@ -75,7 +75,7 @@ export default function Styleguide() {
         {h("Image slot + overlay")}
         <div className="grid max-w-[900px] grid-cols-2 gap-4">
           <ImageSlot id="hero-render" overlay="bottom-half" />
-          <ImageSlot id="wear-sport-training" overlay="bottom-third" />
+          <ImageSlot id="lab-gait-trial" overlay="bottom-third" />
         </div>
       </Section>
       <Section>
@@ -111,7 +111,7 @@ export default function Styleguide() {
       <Section>
         {h("Form + diagram")}
         <div className="grid gap-12 md:grid-cols-2">
-          <ContactForm intent="styleguide" />
+          <EnquiryForm kind="general" />
           <ProductDiagram describe />
         </div>
       </Section>

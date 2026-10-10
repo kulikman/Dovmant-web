@@ -7,7 +7,7 @@ test("keyboard: skip link, nav and FAQ accordion", async ({ page }) => {
   await page.keyboard.press("Tab");
   await expect(page.getByRole("link", { name: "Skip to content" })).toBeFocused();
 
-  const first = page.getByRole("button", { name: /Who is the device for/i });
+  const first = page.getByRole("button", { name: /Is Dovmant a medical device/i });
   await first.scrollIntoViewIfNeeded();
   await expect(first).toHaveAttribute("aria-expanded", "true");
   await first.focus();
@@ -17,7 +17,10 @@ test("keyboard: skip link, nav and FAQ accordion", async ({ page }) => {
 
 test("contact form shows accessible validation errors", async ({ page }) => {
   await page.goto("/contact");
-  await page.getByRole("button", { name: /send message/i }).click();
+  await page
+    .getByRole("button", { name: /^send$/i })
+    .first()
+    .click();
   const alert = page.getByRole("alert").first();
   await expect(alert).toBeVisible();
   await expect(alert).toContainText("Error");

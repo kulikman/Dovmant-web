@@ -1,18 +1,24 @@
 /**
  * Image slot registry. Drop real files at /public/images/<slot-id>.(webp|jpg)
- * then set `src` to the path. `src: null` renders a labelled placeholder.
- * NEVER use stock/AI images of the exoskeleton — the real device only.
+ * and set `src` — it always wins over the generated stand-in in `art`.
+ *
+ * Framing rule for the shoot: no clinical dressing. No gowns, couches, parallel
+ * bars, hospital corridors or anyone being helped to walk. We photograph a
+ * laboratory — markers on the body, force plates, capture cameras, monitors with
+ * traces, cables, hands at a laptop.
  */
 export type ImageSlotDef = {
   /** Real photography or render. Always wins over `art`. */
   src: string | null;
-  /** Generated stand-in (scripts/gen-art.ts). Abstract on purpose — see CLAUDE.md. */
+  /** Generated stand-in (scripts/gen-art.ts) — replace before launch. */
   art: string | null;
   alt: string;
   aspect: string; // "w/h"
   description: string;
   page: string;
   framing: string;
+  /** 1 = shoot first; needed for the pages that go live first. */
+  priority: 1 | 2 | 3;
 };
 
 const s = (
@@ -21,226 +27,191 @@ const s = (
   alt: string,
   description: string,
   framing: string,
-): ImageSlotDef => ({ src: null, art: null, alt, aspect, description, page, framing });
+  priority: 1 | 2 | 3 = 2,
+): ImageSlotDef => ({ src: null, art: null, alt, aspect, description, page, framing, priority });
 
 export const images = {
   "hero-render": s(
     "/",
-    "4/5",
-    "Dovmant exoskeleton worn on the legs, three-quarter side view",
-    "Exoskeleton worn on the legs, 3/4 side view, studio, B&W, tall frame",
-    "Full legs from hip to foot, studio backdrop, lower half free of detail (overlay covers it)",
+    "3/4",
+    "The Dovmant exoskeleton worn on the legs, three-quarter side view",
+    "Device worn on the legs, 3/4 side view, studio, B&W, vertical frame. Also the video poster",
+    "Full legs from hip to foot, studio backdrop, lower half kept free of detail — the accent block covers it",
+    1,
   ),
-  "wear-rehab-therapist": s(
-    "/ · /rehabilitation",
+  "device-standalone": s(
+    "/specifications · /system",
     "4/5",
-    "Patient walking in the exoskeleton assisted by a therapist",
-    "Patient walking in the exoskeleton, assisted by a therapist, clinic setting",
-    "Medium-wide, therapist beside patient, parallel bars or corridor, eye level",
-  ),
-  "wear-rehab-stairs": s(
-    "/ · /rehabilitation",
-    "4/5",
-    "Patient climbing stairs wearing the device",
-    "Patient climbing stairs wearing the device",
-    "Side view, full body, three steps visible",
-  ),
-  "wear-sport-training": s(
-    "/ · /sports",
-    "4/5",
-    "Athlete training while wearing the device",
-    "Athlete training (lunges / sprint start) wearing the device",
-    "Dynamic pose, side or 3/4 view, full body, gym or track",
-  ),
-  "wear-sport-return": s(
-    "/ · /sports",
-    "4/5",
-    "Athlete in return-to-play testing with a sports physician",
-    "Athlete in return-to-play testing with a sports physician",
-    "Medium shot, physician with tablet, athlete mid-test",
-  ),
-  "wear-everyday-walk": s(
-    "/",
-    "4/5",
-    "Person walking outdoors wearing the device",
-    "Walking outdoors, full body, side view",
-    "Full body, side view, urban or park path",
+    "The Dovmant exoskeleton on a stand",
+    "Device without a person, on a stand. The specification frame",
+    "Whole device, neutral backdrop, even light, no props",
+    1,
   ),
   "detail-knee-actuator": s(
-    "/technology",
+    "/system · /specifications",
     "1/1",
     "Close-up of the knee actuator",
-    "Close-up product detail: knee actuator",
+    "Macro of the knee actuator, mechanism visible",
     "Macro, 3/4 angle, shallow depth of field",
+    1,
   ),
   "detail-sensors": s(
-    "/technology",
+    "/system · /specifications",
     "1/1",
-    "Close-up of the sensors",
-    "Close-up product detail: sensors",
-    "Macro, sensor module on the thigh/shank frame",
+    "Close-up of a sensor on its mount",
+    "Macro of a sensor on its mount",
+    "Macro, sensor module on the thigh or shank frame",
+    1,
   ),
   "detail-fit-straps": s(
-    "/technology",
+    "/system · /specifications",
     "1/1",
-    "Close-up of the fit straps",
-    "Close-up product detail: fit straps and adjustment",
-    "Macro, hand adjusting strap",
+    "Close-up of the fit adjustment",
+    "Macro of the fit adjustment with the size scale visible",
+    "Macro, hand at the strap, scale markings legible",
+    1,
+  ),
+  "sync-port-detail": s(
+    "/system",
+    "1/1",
+    "Close-up of the synchronisation port",
+    "Macro of the sync connector with a cable attached",
+    "Macro, connector and cable, neutral background",
+    2,
   ),
   "exploded-view": s(
-    "/technology",
-    "16/10",
-    "Exploded technical render of the exoskeleton components",
-    "Technical render, exploded components, neutral background",
-    "Orthographic-feel, components spaced along the leg axis",
+    "/system",
+    "16/9",
+    "Exploded technical render of the device",
+    "Technical render, exploded components, part labels",
+    "Orthographic feel, components spaced along the leg axis",
+    2,
   ),
-  "app-dashboard": s(
-    "/technology · /sports",
-    "16/10",
-    "Clinician and coach dashboard screen",
-    "Clinician/coach dashboard screen",
-    "Flat screen capture or device mock, no real patient data",
+  "lab-gait-trial": s(
+    "/ · /research",
+    "3/2",
+    "Participant walking in the device across a force-plate runway",
+    "Participant in the device walking a runway with force plates, markers on the body, capture cameras behind",
+    "Medium-wide, side on, runway and cameras legible",
+    2,
   ),
-  "page-hero-technology": s(
-    "/technology",
-    "4/5",
-    "Exoskeleton technology",
-    "Hero: exoskeleton detail, B&W, lower third free for overlay",
-    "Tall frame, product centered",
+  "lab-instrumentation": s(
+    "/research",
+    "3/2",
+    "The device beside laboratory instrumentation",
+    "Device next to the lab rig: cameras, plates, synchronisation cables",
+    "Wide, equipment in frame, no people needed",
+    2,
   ),
-  "page-hero-rehabilitation": s(
-    "/rehabilitation",
-    "4/5",
-    "Rehabilitation with the exoskeleton",
-    "Hero: rehabilitation scene, B&W",
-    "Tall frame, clinic setting",
+  "lab-console": s(
+    "/system · /performance",
+    "16/9",
+    "Screen showing joint torque and angle traces (synthetic data)",
+    "Telemetry screen — joint moment and angle traces. Data is synthetic; say so in the alt text",
+    "Flat screen capture or device mock, no participant data",
+    2,
   ),
-  "page-hero-sports": s(
-    "/sports",
-    "4/5",
-    "Sports performance with the exoskeleton",
-    "Hero: athlete with the device, B&W",
-    "Tall frame, dynamic pose",
+  "transparent-mode": s(
+    "/ · /system",
+    "3/2",
+    "Participant walking in the device with assistance off",
+    "Participant walking in the device without assistance — the baseline condition frame",
+    "Side on, full body, lab floor",
+    2,
+  ),
+  "incline-trial": s(
+    "/",
+    "3/2",
+    "Incline work in the device",
+    "Work on an inclined treadmill or steps, laboratory setting",
+    "Side on, full body, incline legible",
+    2,
+  ),
+  "loaded-trial": s(
+    "/",
+    "3/2",
+    "Carriage task in the device with added external load",
+    "Carriage task with added external load",
+    "Side on, full body, load visible",
+    3,
+  ),
+  "sprint-trial": s(
+    "/ · /performance",
+    "3/2",
+    "Athlete in the device during high-rate movement",
+    "Athlete in the device, high-rate movement, gym or track",
+    "Dynamic pose, side or 3/4, full body",
+    2,
+  ),
+  "page-hero-system": s(
+    "/system",
+    "3/4",
+    "The system",
+    "Hero: device detail, B&W",
+    "Vertical frame, device centred",
+    2,
+  ),
+  "page-hero-specifications": s(
+    "/specifications",
+    "3/4",
+    "Specification sheet",
+    "Hero: device on a stand, B&W",
+    "Vertical frame, whole device",
+    2,
   ),
   "page-hero-research": s(
     "/research",
-    "4/5",
-    "Research",
-    "Hero: lab or motion-capture setting, B&W",
-    "Tall frame",
+    "3/4",
+    "Research partnerships",
+    "Hero: laboratory instrumentation, B&W",
+    "Vertical frame, capture rig",
+    2,
+  ),
+  "page-hero-performance": s(
+    "/performance",
+    "3/4",
+    "Performance research",
+    "Hero: athlete in the device, B&W",
+    "Vertical frame, dynamic pose",
+    2,
   ),
   "page-hero-about": s(
     "/about",
-    "4/5",
+    "3/4",
     "About Dovmant",
-    "Hero: team at work or workshop, B&W",
-    "Tall frame",
+    "Hero: workshop or bench, B&W",
+    "Vertical frame",
+    3,
   ),
   "page-hero-investors": s(
     "/investors",
-    "4/5",
-    "Investors",
-    "Hero: product studio render, B&W",
-    "Tall frame",
+    "3/4",
+    "Investor relations",
+    "Hero: device studio render, B&W",
+    "Vertical frame",
+    3,
   ),
   "faq-render": s(
     "/",
-    "4/5",
-    "Exoskeleton render",
-    "Render of the exoskeleton, B&W, lower part free for overlay",
-    "Tall frame, product upper two thirds",
+    "3/4",
+    "The device",
+    "Render of the device, B&W, lower part free for the accent block",
+    "Vertical frame, device in the upper two thirds",
+    2,
   ),
   "footer-render": s(
     "footer",
-    "4/5",
-    "Exoskeleton render",
+    "1/1",
+    "The device",
     "Compact render for the footer accent block, B&W",
     "Tight crop, knee area",
-  ),
-  "team-1": s(
-    "/about",
-    "4/5",
-    "Team portrait",
-    "Portrait, B&W, team member 1",
-    "Head and shoulders, neutral backdrop",
-  ),
-  "team-2": s("/about", "3/4", "Team portrait", "Portrait, B&W, team member 2", "Head to waist"),
-  "team-3": s(
-    "/about",
-    "4/5",
-    "Team portrait",
-    "Portrait, B&W, team member 3",
-    "Head and shoulders",
-  ),
-  "team-4": s(
-    "/about",
-    "1/1",
-    "Team portrait",
-    "Portrait, B&W, team member 4",
-    "Head and shoulders",
-  ),
-  "team-5": s("/about", "3/4", "Team portrait", "Portrait, B&W, team member 5", "Head to waist"),
-  "team-6": s(
-    "/about",
-    "4/5",
-    "Team portrait",
-    "Portrait, B&W, team member 6",
-    "Head and shoulders",
-  ),
-  "testimonial-1": s(
-    "/",
-    "4/5",
-    "Testimonial portrait",
-    "Portrait, B&W, testimonial author 1",
-    "Head and shoulders",
-  ),
-  "testimonial-2": s(
-    "/",
-    "4/5",
-    "Testimonial portrait",
-    "Portrait, B&W, testimonial author 2",
-    "Head and shoulders",
-  ),
-  "testimonial-3": s(
-    "/",
-    "4/5",
-    "Testimonial portrait",
-    "Portrait, B&W, testimonial author 3",
-    "Head and shoulders",
-  ),
-  "partner-logo-1": s(
-    "/ · /research",
-    "3/1",
-    "Partner logo",
-    "Partner logo 1 (mono, SVG preferred)",
-    "Transparent background, single-color",
-  ),
-  "partner-logo-2": s(
-    "/ · /research",
-    "3/1",
-    "Partner logo",
-    "Partner logo 2 (mono, SVG preferred)",
-    "Transparent background, single-color",
-  ),
-  "partner-logo-3": s(
-    "/ · /research",
-    "3/1",
-    "Partner logo",
-    "Partner logo 3 (mono, SVG preferred)",
-    "Transparent background, single-color",
-  ),
-  "partner-logo-4": s(
-    "/ · /research",
-    "3/1",
-    "Partner logo",
-    "Partner logo 4 (mono, SVG preferred)",
-    "Transparent background, single-color",
+    3,
   ),
 } satisfies Record<string, ImageSlotDef>;
 
 export type ImageSlotId = keyof typeof images;
 
-// Every slot has generated artwork at /images/art/<id>.svg (npm run art).
+// Every slot has generated stand-in artwork at /images/art/<id>.svg (npm run art).
 for (const [id, def] of Object.entries(images)) def.art = `/images/art/${id}.svg`;
 
 /** What the slot actually renders: real file first, generated stand-in second. */

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { footerColumns, legalLinks, site } from "@/content/site";
+import { footerColumns, legalLinks, researchUseNotice, site } from "@/content/site";
 import { ImageSlot } from "@/components/media/ImageSlot";
 import { SquareMarker } from "@/components/ui/SquareMarker";
 import { Wordmark } from "@/components/ui/Wordmark";
@@ -35,8 +35,13 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className="mt-16 flex flex-wrap items-end justify-between gap-4 pb-6 text-[13px] leading-[18px] text-ink-muted">
-          <p>© {new Date().getFullYear()} Dovmant. [TBD] legal entity.</p>
+        <p className="mt-16 max-w-[90ch] border-t border-line pt-6 text-[13px] leading-[18px] text-ink-muted md:pr-[220px]">
+          {researchUseNotice}
+        </p>
+        <div className="mt-8 flex flex-wrap items-end justify-between gap-4 pb-6 text-[13px] leading-[18px] text-ink-muted">
+          <p>
+            © {new Date().getFullYear()} Dovmant. {site.legalEntity}
+          </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2 md:pr-[220px]">
             {legalLinks.map((l) => (
               <li key={l.href}>

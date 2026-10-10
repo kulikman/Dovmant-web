@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Dovmant — AI-driven lower-limb exoskeleton";
+export const alt = "Dovmant — programmable lower-limb exoskeleton for locomotion research";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -25,7 +25,7 @@ export default function OgImage() {
           DOVMANT
         </div>
         <div style={{ marginTop: 24, fontSize: 28, color: "#5C5C5C" }}>
-          AI-driven lower-limb exoskeleton — rehabilitation and sports performance
+          Programmable lower-limb exoskeleton for locomotion research
         </div>
       </div>
     </div>,

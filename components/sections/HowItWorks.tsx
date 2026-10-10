@@ -11,7 +11,7 @@ import { Section } from "@/components/ui/Section";
 export function HowItWorks() {
   const [active, setActive] = useState<PartId>("sensors");
   return (
-    <Section>
+    <Section id="how-it-works">
       <SectionHeading text={how.heading} size="h1" className="mb-10 md:mb-16" />
       <div className="grid grid-cols-12 gap-x-6 gap-y-10">
         <div className="col-span-12 lg:col-span-8">

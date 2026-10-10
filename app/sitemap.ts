@@ -1,29 +1,27 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/content/site";
-import { newsItems } from "@/content/news";
 
+// /news stays out until it carries real entries; /styleguide is internal.
 const routes = [
   "",
-  "/technology",
-  "/rehabilitation",
-  "/sports",
+  "/system",
+  "/specifications",
   "/research",
+  "/performance",
   "/about",
-  "/news",
   "/contact",
   "/investors",
+  "/research-use",
   "/privacy",
   "/terms",
-  "/medical-disclaimer",
   "/cookies",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const all = [...routes, ...newsItems.map((n) => `/news/${n.slug}`)];
-  return all.map((r) => ({
+  return routes.map((r) => ({
     url: `${site.url}${r}`,
     lastModified: new Date(),
     changeFrequency: r === "" ? "weekly" : "monthly",
-    priority: r === "" ? 1 : 0.7,
+    priority: r === "" ? 1 : r === "/specifications" || r === "/research" ? 0.9 : 0.7,
   }));
 }

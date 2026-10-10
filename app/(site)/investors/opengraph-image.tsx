@@ -5,5 +5,8 @@ export const size = ogSize;
 export const contentType = ogContentType;
 
 export default function Image() {
-  return renderOg("Investors", "Thesis, market, traction and the current round.");
+  return renderOg(
+    "Investors",
+    "Why the category has not produced a venture outcome, and what we do differently.",
+  );
 }

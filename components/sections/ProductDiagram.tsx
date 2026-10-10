@@ -6,11 +6,13 @@ import { cn } from "@/lib/cn";
 
 /** Node positions on a 240×560 canvas. */
 const nodes: { id: PartId; x: number; y: number; labelSide: "l" | "r" }[] = [
-  { id: "controller", x: 80, y: 60, labelSide: "l" },
-  { id: "sensors", x: 80, y: 190, labelSide: "l" },
-  { id: "actuator", x: 80, y: 320, labelSide: "l" },
-  { id: "fit", x: 80, y: 450, labelSide: "l" },
-  { id: "app", x: 200, y: 190, labelSide: "r" },
+  { id: "control", x: 80, y: 40, labelSide: "l" },
+  { id: "sensors", x: 80, y: 140, labelSide: "l" },
+  { id: "hip", x: 80, y: 240, labelSide: "l" },
+  { id: "knee", x: 80, y: 340, labelSide: "l" },
+  { id: "fit", x: 80, y: 440, labelSide: "l" },
+  { id: "battery", x: 200, y: 140, labelSide: "r" },
+  { id: "sync", x: 200, y: 340, labelSide: "r" },
 ];
 
 type Props = {
@@ -22,7 +24,7 @@ type Props = {
 };
 
 export function ProductDiagram({ active: controlled, onSelect, className, describe }: Props) {
-  const [inner, setInner] = useState<PartId>("actuator");
+  const [inner, setInner] = useState<PartId>("knee");
   const active = controlled === undefined ? inner : controlled;
   const select = (id: PartId) => (onSelect ? onSelect(id) : setInner(id));
   const part = parts.find((p) => p.id === active);
@@ -30,12 +32,12 @@ export function ProductDiagram({ active: controlled, onSelect, className, descri
   return (
     <div className={className}>
       <svg
-        viewBox="0 0 280 520"
+        viewBox="0 0 380 500"
         role="group"
         aria-label="Schematic of the main parts"
         className="h-auto w-full max-w-[420px]"
       >
-        <line x1="80" y1="60" x2="80" y2="450" stroke="var(--steel)" strokeWidth="1" />
+        <line x1="80" y1="40" x2="80" y2="440" stroke="var(--steel)" strokeWidth="1" />
         <line
           x1="80"
           y1="190"
@@ -59,9 +61,9 @@ export function ProductDiagram({ active: controlled, onSelect, className, descri
                 style={{ transition: "fill 300ms" }}
               />
               <text
-                x={n.labelSide === "l" ? n.x + 20 : n.x - 10}
-                y={n.labelSide === "l" ? n.y + 5 : n.y - 20}
-                textAnchor={n.labelSide === "l" ? "start" : "middle"}
+                x={n.x + 20}
+                y={n.y + 5}
+                textAnchor="start"
                 fontSize="13"
                 fill="var(--ink)"
                 fontWeight={on ? 500 : 400}

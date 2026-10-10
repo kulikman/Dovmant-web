@@ -18,8 +18,12 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: "Dovmant — AI exoskeleton", template: "%s — Dovmant" },
-  description: site.tagline,
+  title: {
+    default: "Dovmant — Programmable Lower-Limb Exoskeleton for Locomotion Research",
+    template: "%s — Dovmant",
+  },
+  description:
+    "A research instrument with programmable torque, open telemetry and a transparent mode. Built for biomechanics and performance laboratories.",
   openGraph: { siteName: site.name, type: "website" },
 };
 

@@ -1,64 +1,73 @@
 export const site = {
   name: "Dovmant",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://dovmant.example",
-  tagline: "AI-driven lower-limb exoskeleton for rehabilitation and sports performance.",
-  address: "[TBD] Address line, City, Country",
-  phone: "[TBD] +00 000 000 000",
+  tagline:
+    "Programmable lower-limb exoskeleton for locomotion research. Open telemetry, controllable torque, transparent mode.",
+  location: "Denver, Colorado",
+  address: "[TBD] Street address, Denver, Colorado, USA",
+  phone: "[TBD] +1 000 000 0000",
   email: "[TBD] hello@dovmant.example",
+  grantsEmail: "[TBD] procurement@dovmant.example",
+  researchEmail: "[TBD] research@dovmant.example",
+  legalEntity: "[TBD] Legal entity name, Denver, Colorado",
   /** Flip on once the files in /public/video exist (see docs/shot-list.md). */
   heroVideo: process.env.NEXT_PUBLIC_HERO_VIDEO === "1",
   filmVideo: process.env.NEXT_PUBLIC_FILM_VIDEO === "1",
-  /** Set to the deck path once the PDF is published, e.g. "/investors/deck.pdf". */
-  deckUrl: null as string | null,
+  /** Set once the specification PDF is published, e.g. "/specifications/dovmant-spec.pdf". */
+  specSheetUrl: null as string | null,
 } as const;
+
+/**
+ * The exact wording sits in the footer of every page. Pending FDA device
+ * regulatory review — do not edit without legal sign-off.
+ */
+export const researchUseNotice =
+  "Dovmant is a research instrument. It is not a medical device and is not intended for the diagnosis, treatment, mitigation, or prevention of any disease or condition. It has not been evaluated or cleared by the FDA. Use in human-subject research is the responsibility of the purchasing institution and requires IRB approval.";
 
 export type NavItem = { label: string; href: string };
 
 export const nav: NavItem[] = [
-  { label: "Technology", href: "/technology" },
-  { label: "Rehabilitation", href: "/rehabilitation" },
-  { label: "Sports", href: "/sports" },
+  { label: "System", href: "/system" },
+  { label: "Specifications", href: "/specifications" },
   { label: "Research", href: "/research" },
+  { label: "Performance", href: "/performance" },
   { label: "About", href: "/about" },
-  { label: "Investors", href: "/investors" },
 ];
+
+export const primaryCta = { label: "Request a lab evaluation", href: "/research#evaluation" };
 
 export const footerColumns: { title: string; links: NavItem[] }[] = [
   {
-    title: "Product",
+    title: "Instrument",
     links: [
-      { label: "Technology", href: "/technology" },
-      { label: "Rehabilitation", href: "/rehabilitation" },
-      { label: "Sports", href: "/sports" },
+      { label: "The system", href: "/system" },
+      { label: "Specifications", href: "/specifications" },
+    ],
+  },
+  {
+    title: "Programmes",
+    links: [
+      { label: "Research partnerships", href: "/research" },
+      { label: "Performance research", href: "/performance" },
     ],
   },
   {
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "Research", href: "/research" },
+      { label: "Contact", href: "/contact" },
       { label: "News", href: "/news" },
     ],
   },
   {
     title: "Investors",
-    links: [
-      { label: "Investor relations", href: "/investors" },
-      { label: "Data room", href: "/investors/data-room" },
-    ],
-  },
-  {
-    title: "Contact",
-    links: [
-      { label: "Request a demo", href: "/contact" },
-      { label: "Questions", href: "/#faq" },
-    ],
+    links: [{ label: "Investor relations", href: "/investors" }],
   },
 ];
 
 export const legalLinks: NavItem[] = [
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
-  { label: "Medical Disclaimer", href: "/medical-disclaimer" },
+  { label: "Research Use Statement", href: "/research-use" },
   { label: "Cookies", href: "/cookies" },
 ];

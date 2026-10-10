@@ -41,7 +41,7 @@ export function WearGallery({ items }: { items: WearItem[] }) {
         className="scrollbar-none flex snap-x snap-mandatory scroll-pl-[var(--gutter)] gap-4 overflow-x-auto px-[var(--gutter)] pb-2"
       >
         {items.map((it) => (
-          <figure key={it.id} className="w-[72vw] shrink-0 snap-start sm:w-[340px] lg:w-[380px]">
+          <figure key={it.id} className="w-[82vw] shrink-0 snap-start sm:w-[420px] lg:w-[480px]">
             <ImageSlot
               id={it.id}
               aspect="4/5"

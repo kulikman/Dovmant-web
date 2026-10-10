@@ -5,5 +5,8 @@ export const size = ogSize;
 export const contentType = ogContentType;
 
 export default function Image() {
-  return renderOg("About", "Who we are and what we are building.");
+  return renderOg(
+    "About",
+    "Why we are building an exoskeleton meant to be measured. Denver, Colorado.",
+  );
 }

@@ -1,161 +1,151 @@
 import type { ImageSlotId } from "./images";
-import type { PartId } from "./parts";
 
 export const hero = {
-  claim: "AI-driven support for {every step.}",
-  moreInfo: {
-    label: "More info",
-    href: "/technology",
-    about: "about the technology",
-  },
-  paragraph:
-    "Dovmant is developing an AI-driven lower-limb exoskeleton for rehabilitation and sports performance. [TBD: regulatory status]",
-  contact: { label: "Request a demo", href: "/contact" },
-  label: "EXOSKELETON",
+  claim:
+    "A programmable lower-limb exoskeleton built to be {measured}, not just worn. Open telemetry, controllable torque, transparent mode.",
+  moreInfo: { label: "What it does", href: "#how-it-works", about: "— how the system works" },
+  contact: { label: "Request a lab evaluation", href: "/research#evaluation" },
+  label: "LOCOMOTION RESEARCH",
 };
 
-export const paths = {
-  heading: "ONE DEVICE\n~TWO~ {PATHS}",
+/** Three claims — the lab-facing argument, in place of audience segments. */
+export const claims = {
+  heading: "BUILT FOR THE {LAB}",
   items: [
     {
-      title: "Rehabilitation",
-      text: "A device for therapist-led gait training programs. [TBD: indications]",
-      href: "/rehabilitation",
-      image: "wear-rehab-therapist" as ImageSlotId,
-      overlay: true,
+      title: "Torque you program",
+      text: "Assistance is a function you define across the gait cycle, not a preset you pick.",
     },
     {
-      title: "Sports Performance",
-      text: "Support for training, load management and return to play. [TBD]",
-      href: "/sports",
-      image: "wear-sport-training" as ImageSlotId,
-      overlay: false,
+      title: "Data you own",
+      text: "Raw signals export in open formats. No closed ecosystem, no vendor dashboard between you and your data.",
+    },
+    {
+      title: "A true baseline",
+      text: "Transparent mode delivers near-zero torque so the device itself becomes the control condition.",
     },
   ],
+  /** "near-zero" and "across the gait cycle" are unverified until bench measurement. */
+  note: "[TBD: verify against bench measurements before publication]",
 };
 
 export const how = {
   heading: "HOW IT {WORKS}",
   steps: [
     {
-      title: "Sensors",
-      note: "[TBD] Measure how the leg moves and loads in real time.",
-      part: "sensors" as PartId,
+      title: "Sensing",
+      note: "Onboard sensors sample joint state and interaction forces at [TBD] Hz.",
+      part: "sensors",
     },
     {
-      title: "AI motion model",
-      note: "[TBD] Interprets movement and decides how much support to give.",
-      part: "controller" as PartId,
+      title: "Control",
+      note: "Torque profiles run on a real-time loop. Presets ship with the device; custom profiles are yours to write.",
+      part: "control",
     },
     {
-      title: "Actuators",
-      note: "[TBD] Deliver assistance at the joint, adapted step by step.",
-      part: "actuator" as PartId,
+      title: "Actuation",
+      note: "[TBD] N·m peak at the knee, [TBD] N·m at the hip. Total system mass 5–6 kg.",
+      part: "knee",
     },
     {
-      title: "App & data",
-      note: "[TBD] Sessions and progress available to clinicians and coaches.",
-      part: "app" as PartId,
+      title: "Sync and export",
+      note: "Hardware trigger and timestamped streams for alignment with motion capture, force plates and EMG. Export as CSV and HDF5.",
+      part: "sync",
     },
   ],
 };
 
-export const wear = {
-  heading: "WEAR IT\n~YOUR~ {WAY}",
+export const scenarios = {
+  heading: "RESEARCH {SCENARIOS}",
   items: [
     {
-      id: "wear-rehab-therapist" as ImageSlotId,
-      caption: "In the clinic — assisted walking",
-      overlay: true,
-    },
-    { id: "wear-rehab-stairs" as ImageSlotId, caption: "Stairs" },
-    { id: "wear-sport-training" as ImageSlotId, caption: "Training" },
-    { id: "wear-sport-return" as ImageSlotId, caption: "Return-to-play testing" },
-    { id: "wear-everyday-walk" as ImageSlotId, caption: "Everyday walking" },
-  ],
-};
-
-export const metrics = {
-  heading: "DOVMANT IN {NUMBERS}",
-  stats: [
-    { value: "[TBD]", label: "[TBD] metric label", note: "[TBD] short note", source: "[TBD]" },
-    { value: "[TBD]", label: "[TBD] metric label", source: "[TBD]" },
-    { value: "[TBD]", label: "[TBD] metric label", source: "[TBD]" },
-    { value: "[TBD]", label: "[TBD] metric label", source: "[TBD]" },
-    { value: "[TBD]", label: "[TBD] metric label", note: "[TBD] short note", source: "[TBD]" },
-  ],
-};
-
-export const research = {
-  heading: "RESEARCH &\n{PARTNERS}",
-  logos: ["partner-logo-1", "partner-logo-2", "partner-logo-3", "partner-logo-4"] as ImageSlotId[],
-  studies: [
-    {
-      title: "[TBD] Study title",
-      institution: "[TBD] Institution",
-      finding: "[TBD] Key finding.",
-      pdf: null,
-    },
-    {
-      title: "[TBD] Study title",
-      institution: "[TBD] Institution",
-      finding: "[TBD] Key finding.",
-      pdf: null,
-    },
-  ],
-  link: { label: "All research", href: "/research" },
-};
-
-export const testimonials = {
-  heading: "OUR RESULTS —\nOUR {PROOF}",
-  items: [
-    {
-      id: "testimonial-1" as ImageSlotId,
-      name: "[TBD] Name",
-      quote: "[TBD] Short quote from a clinician or athlete.",
+      id: "lab-gait-trial" as ImageSlotId,
+      caption:
+        "Overground gait — walking trials across a force-plate runway, device in transparent mode and under assistance.",
       overlay: true,
     },
     {
-      id: "testimonial-2" as ImageSlotId,
-      name: "[TBD] Name",
-      quote: "[TBD] Short quote from a clinician or athlete.",
+      id: "incline-trial" as ImageSlotId,
+      caption: "Incline and stairs — controlled elevation work where joint moments are highest.",
     },
     {
-      id: "testimonial-3" as ImageSlotId,
-      name: "[TBD] Name",
-      quote: "[TBD] Short quote from a clinician or athlete.",
+      id: "loaded-trial" as ImageSlotId,
+      caption: "Loaded locomotion — carriage tasks with added external load.",
+    },
+    {
+      id: "sprint-trial" as ImageSlotId,
+      caption:
+        "Sprint and change of direction — high-rate movement where control latency is the limiting factor.",
+    },
+    {
+      id: "transparent-mode" as ImageSlotId,
+      caption: "Extended-duration protocols — multi-hour sessions for fatigue and metabolic work.",
     },
   ],
 };
 
-export const investorTeaser = {
-  heading: "BUILDING THE NEXT\n{STANDARD} OF MOVEMENT",
+/** Engineering parameters in place of effectiveness figures. */
+export const specHighlights = {
+  heading: "THE {NUMBERS} THAT MATTER",
+  items: [
+    { param: "System mass", value: "5–6 kg" },
+    { param: "Peak knee torque", value: "[TBD] N·m" },
+    { param: "Peak hip torque", value: "[TBD] N·m" },
+    { param: "Control loop rate", value: "[TBD] Hz" },
+    { param: "Sensor sampling rate", value: "[TBD] Hz" },
+    { param: "Battery runtime", value: "[TBD] h" },
+    { param: "Data export", value: "CSV, HDF5" },
+    { param: "Sync interface", value: "[TBD]" },
+  ],
+  link: { label: "Full specification sheet", href: "/specifications" },
+};
+
+export const programme = {
+  heading: "WORK WITH {US}",
+  text: "We are placing units with biomechanics and performance laboratories. You design the protocol and own the data; we supply the instrument, the integration support and the engineering contact. Publications are yours.",
+  link: { label: "Partnership programme", href: "/research" },
+};
+
+export const investorStrip = {
+  heading: "BUILDING THE {MEASUREMENT} LAYER FOR HUMAN LOCOMOTION",
   cta: { label: "Investor relations", href: "/investors" },
 };
 
 export const faq = {
-  heading: "FREQUENTLY ASKED\n{QUESTIONS}",
+  heading: "FREQUENTLY ASKED {QUESTIONS}",
   items: [
     {
-      q: "Who is the device for?",
-      a: "[TBD] Describe intended users and indications once confirmed with regulatory and clinical teams.",
+      q: "Is Dovmant a medical device?",
+      a: "No. Dovmant is a research instrument. It is not cleared by the FDA and is not intended for diagnosis, treatment or prevention of any condition.",
     },
     {
-      q: "Is the device available to purchase?",
-      a: "[TBD] Availability, pilot programs and pre-order status.",
+      q: "Can we use it in a study with human participants?",
+      a: "That is the intended use. The protocol, the IRB submission and the ethical oversight are the purchasing institution's responsibility. We supply the device specification and engineering support for your application.",
     },
     {
-      q: "How is user data handled?",
-      a: "[TBD] Data handling, storage and privacy summary. See Privacy page.",
+      q: "What data comes out of it?",
+      a: "Timestamped joint state, commanded and measured torque, and interaction forces, exported as CSV and HDF5. Full schema in the specification sheet.",
     },
     {
-      q: "Has the device been clinically validated?",
-      a: "[TBD] Do not state any validation until studies are published.",
+      q: "Does it synchronise with our capture system?",
+      a: "[TBD — answer once synchronisation has been verified on the bench.]",
+    },
+    {
+      q: "Can we write our own control profiles?",
+      a: "Yes. [TBD: name the interface — API, SDK, profile file format.]",
+    },
+    {
+      q: "What does it cost and how long is delivery?",
+      a: "[TBD]. Price, lead time and warranty terms are on the specification sheet so they can go straight into a grant budget.",
+    },
+    {
+      q: "Do you help with instrumentation grant applications?",
+      a: "Yes. We provide the specification, a quotation and a letter of support for S10 and equivalent instrumentation funding.",
     },
   ],
 };
 
 export const contact = {
-  heading: "LET’S\nGET IN\n{TOUCH}",
-  text: "Leave your details and a question — our team will get back to you.",
+  heading: "REQUEST A\nLAB\n{EVALUATION}",
+  text: "Tell us what you study and what you run. We will work out whether the instrument fits your setup before you commit to anything.",
 };
