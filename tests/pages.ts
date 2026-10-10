@@ -6,6 +6,7 @@ export const pages = [
   "/research",
   "/about",
   "/news",
+  "/news/placeholder-update-1",
   "/contact",
   "/investors",
   "/investors/data-room",

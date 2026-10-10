@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/content/site";
+import { newsItems } from "@/content/news";
 
 const routes = [
   "",
@@ -18,7 +19,8 @@ const routes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((r) => ({
+  const all = [...routes, ...newsItems.map((n) => `/news/${n.slug}`)];
+  return all.map((r) => ({
     url: `${site.url}${r}`,
     lastModified: new Date(),
     changeFrequency: r === "" ? "weekly" : "monthly",

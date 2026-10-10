@@ -151,15 +151,6 @@ export const about = {
   careersText: "[TBD] Open roles will be listed here. Write to us in the meantime.",
 };
 
-export const news = {
-  title: "NEWS &\n{UPDATES}",
-  lead: "Company updates, research notes and events. [TBD]",
-  items: [
-    { date: "[TBD]", title: "[TBD] Headline", text: "[TBD] One-paragraph summary." },
-    { date: "[TBD]", title: "[TBD] Headline", text: "[TBD] One-paragraph summary." },
-  ],
-};
-
 export const contactPage = {
   title: "LET’S\nGET IN\n{TOUCH}",
   lead: "Tell us who you are and what you need. We read every message. [TBD: response time]",
