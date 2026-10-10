@@ -1,10 +1,9 @@
-import { writeFileSync } from 'node:fs'
-import { images } from '../content/images'
+import { writeFileSync } from "node:fs";
+import { images } from "../content/images";
 
 const rows = Object.entries(images).map(
-  ([id, d]) =>
-    `| \`${id}\` | ${d.page} | ${d.aspect} | ${d.framing} | ${d.description} |`,
-)
+  ([id, d]) => `| \`${id}\` | ${d.page} | ${d.aspect} | ${d.framing} | ${d.description} |`,
+);
 
 const md = `# Shot list
 
@@ -18,7 +17,7 @@ Deliver at least 2× the displayed size (e.g. 2400 px on the long edge for hero 
 
 | Slot id | Page | Aspect | Framing | Description |
 | --- | --- | --- | --- | --- |
-${rows.join('\n')}
+${rows.join("\n")}
 
 ## Video
 | File | Spec |
@@ -26,6 +25,6 @@ ${rows.join('\n')}
 | \`/public/video/hero.webm\`, \`/public/video/hero.mp4\` | B&W exoskeleton loop, 8–12 s, no audio, ≤ 3 MB, 4:5 |
 | \`/public/video/hero-vertical.webm\`, \`.mp4\` | Vertical 9:16 variant for mobile |
 | \`/public/video/film.mp4\` | Full film for the modal |
-`
-writeFileSync('docs/shot-list.md', md)
-console.log('docs/shot-list.md written')
+`;
+writeFileSync("docs/shot-list.md", md);
+console.log("docs/shot-list.md written");

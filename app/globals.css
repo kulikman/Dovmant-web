@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* ── Design tokens (CLAUDE.md is the source of truth) ───────────── */
 :root {
@@ -19,7 +19,7 @@
 }
 
 /* Dark theme — video modal + investor data room only */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --surface-100: #0e0e0e;
   --surface-200: #1a1a1a;
   --surface-300: #262626;
@@ -49,8 +49,8 @@
   --color-accent-overlay: var(--accent-overlay);
   --color-steel: var(--steel);
 
-  --font-display: var(--font-inter-tight), 'Inter Tight', sans-serif;
-  --font-sans: var(--font-inter), 'Inter', sans-serif;
+  --font-display: var(--font-inter-tight), "Inter Tight", sans-serif;
+  --font-sans: var(--font-inter), "Inter", sans-serif;
 
   --radius-pill: 999px;
   --radius-frame: 24px;
@@ -145,4 +145,27 @@ body {
 }
 .scrollbar-none::-webkit-scrollbar {
   display: none;
+}
+
+.line-in {
+  animation: line-in 500ms var(--ease-out) both;
+}
+@keyframes line-in {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.link-quiet {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 200ms var(--ease-out);
+}
+.link-quiet:hover {
+  text-decoration-color: currentColor;
 }
