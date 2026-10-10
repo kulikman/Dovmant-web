@@ -17,13 +17,49 @@ export type FieldDef = {
 
 export type FormDef = {
   subject: string;
+  /** accessible name of the arrow submit */
+  submit: string;
   fields: readonly FieldDef[];
   /** shown in place of the form once it is sent */
   done: string;
 };
 
 export const forms = {
+  /** The short form on the home page. */
+  "home-evaluation": {
+    submit: "Request a lab evaluation",
+    subject: "Lab evaluation request (home)",
+    done: "Thank you. We will come back to you about a lab evaluation. [TBD: response time]",
+    fields: [
+      { name: "name", label: "Full name", required: true, autoComplete: "name" },
+      { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
+      { name: "institution", label: "Institution", required: true, wide: true },
+      {
+        name: "role",
+        label: "Role",
+        type: "select",
+        options: [
+          "Principal investigator",
+          "Lab director",
+          "Core facility",
+          "Performance staff",
+          "Grants office",
+          "Investor",
+          "Other",
+        ],
+        wide: true,
+      },
+      {
+        name: "use",
+        label: "What you would use it for",
+        type: "textarea",
+        required: true,
+        wide: true,
+      },
+    ],
+  },
   "lab-evaluation": {
+    submit: "Request a lab evaluation",
     subject: "Lab evaluation request",
     done: "Thank you. We will come back to you about a lab evaluation. [TBD: response time]",
     fields: [
@@ -47,6 +83,7 @@ export const forms = {
     ],
   },
   quotation: {
+    submit: "Request a quotation",
     subject: "Quotation request",
     done: "Thank you. We will send a formal quotation. [TBD: response time]",
     fields: [
@@ -64,6 +101,7 @@ export const forms = {
     ],
   },
   "performance-evaluation": {
+    submit: "Arrange an evaluation",
     subject: "On-site evaluation request",
     done: "Thank you. We will come back to you about an on-site evaluation. [TBD: response time]",
     fields: [
@@ -81,6 +119,7 @@ export const forms = {
     ],
   },
   deck: {
+    submit: "Request the deck",
     subject: "Deck request",
     done: "Thank you. We review every request and share the deck directly. [TBD: response time]",
     fields: [
@@ -92,6 +131,7 @@ export const forms = {
     ],
   },
   general: {
+    submit: "Send",
     subject: "General enquiry",
     done: "Thank you. We have received your message. [TBD: response time]",
     fields: [

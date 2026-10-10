@@ -5,5 +5,5 @@ export const size = ogSize;
 export const contentType = ogContentType;
 
 export default function Image() {
-  return renderOg("Contact", "Research enquiries, procurement and grants, general contact.");
+  return renderOg("Contact");
 }

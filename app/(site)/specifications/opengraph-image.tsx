@@ -5,8 +5,5 @@ export const size = ogSize;
 export const contentType = ogContentType;
 
 export default function Image() {
-  return renderOg(
-    "Specifications",
-    "Parameters, interfaces, delivery terms and a quotation request.",
-  );
+  return renderOg("Specifications");
 }

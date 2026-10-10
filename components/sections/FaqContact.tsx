@@ -30,7 +30,7 @@ export function FaqContact() {
             <SectionHeading text={contact.heading} size="h1" stepped />
           </div>
           <div className="col-span-12 md:col-span-5">
-            <EnquiryForm kind="lab-evaluation" />
+            <EnquiryForm kind="home-evaluation" />
           </div>
         </div>
       </Section>

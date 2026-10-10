@@ -76,7 +76,7 @@ export function EnquiryForm({ kind, className }: { kind: FormKind; className?: s
         <button
           type="submit"
           disabled={pending}
-          aria-label="Send"
+          aria-label={def.submit}
           className="text-[56px] leading-none text-accent transition-transform duration-200 hover:translate-x-1 disabled:opacity-40"
         >
           <span aria-hidden>→</span>

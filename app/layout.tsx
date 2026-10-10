@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import { site } from "@/content/site";
+import { StructuredData } from "@/components/StructuredData";
 import "./globals.css";
 
 // Variable fonts: one file per family covers 300–600, instead of five static files.
@@ -32,7 +33,10 @@ export const viewport: Viewport = { themeColor: "#f2f2f2" };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${interTight.variable} ${inter.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <StructuredData />
+      </body>
     </html>
   );
 }
