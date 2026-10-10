@@ -123,6 +123,18 @@ test.describe("integrity", () => {
     }
   });
 
+  test("the accent block is actually painted", async ({ page }) => {
+    await page.goto("/", { waitUntil: "networkidle" });
+    const blocks = await page
+      .locator("div.bg-accent-overlay")
+      .evaluateAll((els) => els.map((e) => getComputedStyle(e).backgroundColor));
+    expect(blocks.length, "no accent blocks found on the home page").toBeGreaterThan(0);
+    expect(
+      blocks.filter((c) => c === "rgba(0, 0, 0, 0)" || c === "transparent"),
+      "accent blocks without a background — a Tailwind class that was never generated",
+    ).toEqual([]);
+  });
+
   test("reduced motion leaves nothing invisible", async ({ browser }) => {
     const ctx = await browser.newContext({ reducedMotion: "reduce" });
     const page = await ctx.newPage();

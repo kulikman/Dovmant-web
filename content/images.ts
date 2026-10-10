@@ -19,6 +19,8 @@ export type ImageSlotDef = {
   framing: string;
   /** 1 = shoot first; needed for the pages that go live first. */
   priority: 1 | 2 | 3;
+  /** Near-black frame: the accent block switches off `multiply`, which would vanish on it. */
+  tone?: "dark";
 };
 
 const s = (
@@ -47,11 +49,11 @@ export const images = {
     "Whole device, neutral backdrop, even light, no props",
     1,
   ),
-  "detail-knee-actuator": s(
+  "detail-hip-actuator": s(
     "/system",
     "1/1",
-    "Close-up of the knee actuator",
-    "Macro of the knee actuator, mechanism visible",
+    "Close-up of the hip actuator",
+    "Macro of the hip actuator, mechanism visible",
     "Macro, 3/4 angle, shallow depth of field",
     1,
   ),
@@ -211,8 +213,27 @@ export const images = {
 
 export type ImageSlotId = keyof typeof images;
 
-// Every slot has generated stand-in artwork at /images/art/<id>.svg (npm run art).
-for (const [id, def] of Object.entries(images)) def.art = `/images/art/${id}.svg`;
+// Real renders delivered so far. Everything else still falls back to the artwork.
+const delivered = [
+  "hero-render",
+  "device-standalone",
+  "page-hero-system",
+  "page-hero-specifications",
+  "page-hero-performance",
+  "faq-render",
+  "footer-render",
+  "detail-hip-actuator",
+  "detail-fit-straps",
+] as const;
+
+for (const [id, def] of Object.entries(images)) {
+  def.art = `/images/art/${id}.svg`;
+  if ((delivered as readonly string[]).includes(id)) {
+    def.src = `/images/${id}.webp`;
+    // The renders are shot on near-black; see `tone` above.
+    def.tone = "dark";
+  }
+}
 
 /** What the slot actually renders: real file first, generated stand-in second. */
 export const slotFile = (def: ImageSlotDef) => def.src ?? def.art;

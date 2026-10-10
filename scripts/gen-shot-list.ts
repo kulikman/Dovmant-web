@@ -1,12 +1,14 @@
 import { writeFileSync } from "node:fs";
 import { images } from "../content/images";
 
-const rows = Object.entries(images)
-  .sort((a, b) => a[1].priority - b[1].priority)
-  .map(
-    ([id, d]) =>
-      `| ${d.priority} | \`${id}\` | ${d.page} | ${d.aspect} | ${d.framing} | ${d.description} |`,
-  );
+const entries = Object.entries(images).sort((a, b) => a[1].priority - b[1].priority);
+const row = ([id, d]: (typeof entries)[number]) =>
+  `| ${d.priority} | \`${id}\` | ${d.page} | ${d.aspect} | ${d.framing} | ${d.description} |`;
+
+const outstanding = entries.filter(([, d]) => !d.src).map(row);
+const delivered = entries
+  .filter(([, d]) => d.src)
+  .map(([id, d]) => `| \`${id}\` | ${d.page} | ${d.src} |`);
 
 const md = [
   "# Shot list",
@@ -28,9 +30,17 @@ const md = [
   "(`npm run art`) — technical line illustrations, there so the layout can be judged. They are placeholders and are",
   "replaced the moment `src` is set.",
   "",
+  "## Still needed",
+  "",
   "| Priority | Slot id | Page | Aspect | Framing | Description |",
   "| --- | --- | --- | --- | --- | --- |",
-  ...rows,
+  ...outstanding,
+  "",
+  "## Delivered",
+  "",
+  "| Slot id | Page | File |",
+  "| --- | --- | --- |",
+  ...delivered,
   "",
   "## Video",
   "",

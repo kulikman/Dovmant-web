@@ -59,7 +59,9 @@ export function ImageSlot({
           <p className="mt-1 max-w-[28ch] text-[13px] leading-[18px]">{def.description}</p>
         </div>
       )}
-      {overlay !== "none" && <RedOverlay kind={overlay} immediate={overlayImmediate} />}
+      {overlay !== "none" && (
+        <RedOverlay kind={overlay} immediate={overlayImmediate} tone={def.tone} />
+      )}
     </div>
   );
 }
