@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { EASE } from "@/components/motion/Reveal";
 import { cn } from "@/lib/cn";
-import { parseRich, stripRich } from "@/lib/rich";
+import { parseRich } from "@/lib/rich";
 
 const sizes = {
   hero: "text-hero",
@@ -35,7 +35,6 @@ export function SectionHeading({
   const lines = parseRich(text);
   return (
     <Tag className={cn("display", sizes[size], className)}>
-      <span className="sr-only">{stripRich(text)}</span>
       {lines.map((segs, i) => {
         const inner = segs.map((s, j) => (
           <span key={j} className={cn(s.accent && "accent", s.light && "light")}>

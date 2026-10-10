@@ -9,7 +9,9 @@ export function SpecCards({ items }: { items: SpecItem[] }) {
       {items.map((s, i) => (
         <Reveal as="li" key={s.param} index={i}>
           <div className="flex h-full min-h-[180px] flex-col justify-between bg-surface-200 p-6">
-            <p className="display text-step">{s.value}</p>
+            <p className="font-display text-step leading-[0.95] font-medium tracking-[-0.03em]">
+              {s.value}
+            </p>
             <p className="mt-6 text-[13px] leading-[18px] text-ink-muted">{s.param}</p>
           </div>
         </Reveal>

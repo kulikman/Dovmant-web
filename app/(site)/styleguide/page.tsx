@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ImageSlot } from "@/components/media/ImageSlot";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -25,14 +26,21 @@ const swatches = [
 ] as const;
 
 const h = (t: string) => (
-  <p className="mb-6 flex items-center gap-3 text-[12px] leading-4 font-medium uppercase">
+  <h2 className="mb-6 flex items-center gap-3 text-[12px] leading-4 font-medium uppercase">
     <SquareMarker size={12} /> {t}
-  </p>
+  </h2>
 );
 
 export default function Styleguide() {
   return (
     <>
+      <Section className="pb-0">
+        <h1 className="display text-h2">Styleguide</h1>
+        <p className="mt-4 max-w-[52ch] text-[16px] leading-6 text-ink-muted">
+          Internal reference: tokens, type scale and every shared component in one place. Not linked
+          from the site and excluded from search.
+        </p>
+      </Section>
       <Section>
         {h("Colour")}
         <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -64,11 +72,11 @@ export default function Styleguide() {
           <Button variant="filled" arrow="→">
             Filled
           </Button>
-          <a href="#" className="link">
+          <Link href="/system" className="link">
             Underlined link
-          </a>
+          </Link>
           <SquareMarker /> <SquareMarker tone="accent" />
-          <ArrowSquare label="Example" href="#" size={72} />
+          <ArrowSquare label="Example" href="/system" size={72} />
         </div>
       </Section>
       <Section>

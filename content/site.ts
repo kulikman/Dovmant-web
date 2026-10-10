@@ -3,6 +3,8 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://dovmant.example",
   tagline:
     "Programmable lower-limb exoskeleton for locomotion research. Open telemetry, controllable torque, transparent mode.",
+  heroNote:
+    "Built for biomechanics laboratories and the research arms of performance centres. Based in Denver, Colorado.",
   location: "Denver, Colorado",
   address: "[TBD] Street address, Denver, Colorado, USA",
   phone: "[TBD] +1 000 000 0000",

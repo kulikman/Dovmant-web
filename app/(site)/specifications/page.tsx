@@ -54,14 +54,14 @@ export default function SpecificationsPage() {
       {spec.tables.map((t) => (
         <Section key={t.heading}>
           <SectionHeading text={t.heading} size="h2" className="mb-8" />
-          <SpecsTable rows={t.rows} />
+          <SpecsTable rows={t.rows} caption={t.heading} />
         </Section>
       ))}
 
       <Section>
         <SectionHeading text={spec.commercial.heading} size="h1" className="mb-8" />
         <p className="mb-10 max-w-[52ch] text-[20px] leading-[26px]">{spec.commercial.text}</p>
-        <SpecsTable rows={spec.commercial.rows} />
+        <SpecsTable rows={spec.commercial.rows} caption="Commercial terms" />
       </Section>
 
       <Section id="quotation">

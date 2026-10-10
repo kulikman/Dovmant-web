@@ -1,7 +1,7 @@
-export function SpecsTable({ rows }: { rows: [string, string][] }) {
+export function SpecsTable({ rows, caption }: { rows: [string, string][]; caption: string }) {
   return (
     <table className="w-full border-t border-line text-left">
-      <caption className="sr-only">Specifications</caption>
+      <caption className="sr-only">{caption}</caption>
       <tbody>
         {rows.map(([k, v]) => (
           <tr key={k} className="border-b border-line transition-colors hover:bg-surface-300/60">

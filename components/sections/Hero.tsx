@@ -35,7 +35,7 @@ export function Hero() {
             <span className="sr-only"> {hero.moreInfo.about}</span>
           </Link>
           <p className="mt-6 max-w-[38ch] text-[13px] leading-[18px] text-ink-muted lg:mt-auto">
-            {site.tagline}
+            {site.heroNote}
           </p>
           <Link href={hero.contact.href} className="link w-fit text-[15px]">
             {hero.contact.label}
