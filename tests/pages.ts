@@ -1,0 +1,17 @@
+export const pages = [
+  "/",
+  "/technology",
+  "/rehabilitation",
+  "/sports",
+  "/research",
+  "/about",
+  "/news",
+  "/contact",
+  "/investors",
+  "/investors/data-room",
+  "/privacy",
+  "/terms",
+  "/medical-disclaimer",
+  "/cookies",
+  "/styleguide",
+];

@@ -1,0 +1,55 @@
+import Link from "next/link";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { SquareMarker } from "@/components/ui/SquareMarker";
+import { hero } from "@/content/home";
+import { HeroMedia } from "./HeroMedia";
+
+export function Hero() {
+  return (
+    <section className="mx-auto max-w-[1440px] px-[var(--gutter)] pb-[var(--section)]">
+      <div className="grid grid-cols-12 gap-x-6 gap-y-8 lg:min-h-[86vh]">
+        {/* headline first on mobile, bottom-left on desktop */}
+        <div className="order-1 col-span-12 flex flex-col justify-end lg:order-2 lg:col-span-7 lg:pb-4">
+          <SectionHeading as="h1" size="hero" text={"DOVMANT"} immediate />
+        </div>
+
+        {/* claim column */}
+        <div className="order-2 col-span-12 flex flex-col gap-5 lg:order-1 lg:col-span-7 lg:col-start-4 lg:row-start-1 lg:justify-start lg:pt-10">
+          <SquareMarker size={14} />
+          <SectionHeading
+            as="p"
+            size="h2"
+            text={hero.claim}
+            className="max-w-[12ch] !text-[clamp(22px,2.2vw,30px)] leading-[1.15]"
+            immediate
+          />
+          <Link href={hero.moreInfo.href} className="link w-fit text-[15px]">
+            {hero.moreInfo.label}
+          </Link>
+          <p className="mt-6 max-w-[38ch] text-[13px] leading-[18px] text-ink-muted lg:mt-auto">
+            {hero.paragraph}
+          </p>
+          <Link href={hero.contact.href} className="link w-fit text-[15px]">
+            {hero.contact.label}
+          </Link>
+        </div>
+
+        {/* media */}
+        <div className="order-3 col-span-12 lg:order-3 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1">
+          <div className="relative flex gap-3">
+            <div className="aspect-4/5 w-full lg:aspect-auto lg:h-[86vh]">
+              <HeroMedia />
+            </div>
+            <p
+              aria-hidden
+              className="hidden shrink-0 self-start text-[12px] leading-4 tracking-[0.1em] uppercase lg:block"
+              style={{ writingMode: "vertical-rl" }}
+            >
+              {hero.label}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

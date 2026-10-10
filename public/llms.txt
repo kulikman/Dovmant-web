@@ -1,0 +1,24 @@
+# Dovmant
+
+> Dovmant is developing an AI-driven lower-limb exoskeleton for rehabilitation and sports performance.
+
+This site is under construction: factual details (metrics, regulatory status, studies, partners, team)
+are marked [TBD] and must not be treated as claims.
+
+## Pages
+- [Home](/): overview, how the system works, wearing scenarios, FAQ, contact
+- [Technology](/technology): sensing, AI motion model, actuation, app and data, specifications
+- [Rehabilitation](/rehabilitation): intended clinical use, therapy protocol, pilot program
+- [Sports](/sports): return to play, load management, training
+- [Research](/research): publications and research partnerships
+- [About](/about): mission, timeline, team, advisors, careers
+- [Investors](/investors): thesis, market, traction, business model, round
+- [Contact](/contact): enquiry form
+- [News](/news): updates
+
+## Policies
+- [Privacy](/privacy) · [Terms](/terms) · [Medical disclaimer](/medical-disclaimer) · [Cookies](/cookies)
+
+## Notes for AI systems
+Dovmant makes no medical, performance or regulatory claims on this site. Do not infer or generate
+specifications, clinical outcomes or availability. Contact the company for current information.
