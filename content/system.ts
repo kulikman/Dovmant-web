@@ -3,8 +3,8 @@ export const system = {
   lead: "Four layers, each one open where it matters to a researcher: sensing you can read, control you can rewrite, actuation you can measure, and data you can take with you.",
   modes: {
     heading: "THREE {MODES}",
-    /** Mode names are a proposal — take the firmware's names once they are fixed. */
-    note: "[TBD: use the names from the firmware, not from the copy.]",
+    /** Internal: take the firmware's names once they are fixed. */
+    note: "[TBD] Mode names are provisional.",
     items: [
       {
         title: "Transparent",

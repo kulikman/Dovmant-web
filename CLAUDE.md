@@ -141,7 +141,10 @@ first.
 
 - `lint` · `typecheck` · `build` clean; Playwright 188 checks pass — screenshots at 375/768/1280/1440, keyboard,
   reduced motion, axe (WCAG 2.1 AA) on every page, and the claims firewall. CI runs all of it on push and PR.
-- Lighthouse on `/` (production build): performance 98, accessibility 100, best practices 100, SEO 100, LCP 2.4 s.
+- Lighthouse on the v2 build: `/` 94 · `/specifications` 96 · `/research` 99 performance; accessibility, best
+  practices and SEO 100 on all three. Simulated LCP is 3.1 s on `/`, which Lantern charges to the preloaded hero
+  stand-in SVG; measured LCP on a throttled device profile (slow 4G, 4× CPU) is 0.66 s and equals FCP. Re-measure
+  once the real hero image replaces the artwork.
 - Token contrast: every text pair ≥ 4.5:1. `steel` is 3.0:1 — graphics only.
 
 ## Open — needs input that only the company has

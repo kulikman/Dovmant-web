@@ -61,10 +61,11 @@ export default function SystemPage() {
       </Section>
 
       <Section>
-        <div className="grid grid-cols-3 gap-3">
-          <ImageSlot id="detail-knee-actuator" aspect="1/1" sizes="30vw" />
-          <ImageSlot id="detail-sensors" aspect="1/1" sizes="30vw" />
-          <ImageSlot id="sync-port-detail" aspect="1/1" sizes="30vw" />
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          <ImageSlot id="detail-knee-actuator" aspect="1/1" sizes="(min-width:768px) 23vw, 48vw" />
+          <ImageSlot id="detail-sensors" aspect="1/1" sizes="(min-width:768px) 23vw, 48vw" />
+          <ImageSlot id="detail-fit-straps" aspect="1/1" sizes="(min-width:768px) 23vw, 48vw" />
+          <ImageSlot id="sync-port-detail" aspect="1/1" sizes="(min-width:768px) 23vw, 48vw" />
         </div>
       </Section>
 

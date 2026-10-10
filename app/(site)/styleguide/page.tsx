@@ -60,7 +60,7 @@ export default function Styleguide() {
       <Section>
         {h("Buttons, links, markers")}
         <div className="flex flex-wrap items-center gap-4">
-          <Button>Request a demo</Button>
+          <Button>Request a lab evaluation</Button>
           <Button variant="filled" arrow="→">
             Filled
           </Button>

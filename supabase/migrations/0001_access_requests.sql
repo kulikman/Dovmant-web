@@ -1,4 +1,4 @@
--- Investor data room, phase 1 of 2: store access requests.
+-- Stores investor deck requests submitted from /investors.
 -- Apply with the Supabase CLI (`supabase db push`) or paste into the SQL editor.
 -- The site writes with the service role key from a Server Action; no client ever
 -- touches this table, so RLS denies everything by default and no policy is added
@@ -25,10 +25,7 @@ create unique index if not exists access_requests_email_idx
 alter table public.access_requests enable row level security;
 
 -- No policies: only the service role (which bypasses RLS) can read or write.
--- When the data room itself is built, add a policy that lets a signed-in
--- investor read their own row, e.g.
---   create policy "read own request" on public.access_requests
---     for select to authenticated using (lower(email) = lower(auth.jwt() ->> 'email'));
+-- If signed-in access is ever added, a policy would go here. There is none today.
 
 comment on table public.access_requests is
-  'Investor data room access requests submitted from /investors.';
+  'Investor deck requests submitted from /investors.';

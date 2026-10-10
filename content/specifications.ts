@@ -72,7 +72,7 @@ export const specifications = {
   ] as { heading: string; rows: [string, string][] }[],
   commercial: {
     heading: "COMMERCIAL {TERMS}",
-    text: "An instrument counts as commercially available only if these are published. Every line is required before this page goes live.",
+    text: "Price, lead time, warranty and service terms, written so they can go straight into a grant budget.",
     rows: [
       ["List price (USD)", "[TBD]"],
       ["Academic pricing", "[TBD]"],

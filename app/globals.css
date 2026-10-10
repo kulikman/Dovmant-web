@@ -18,7 +18,7 @@
   --section: 48px;
 }
 
-/* Dark theme — video modal + investor data room only */
+/* Dark theme — the full-screen video modal only */
 [data-theme="dark"] {
   --surface-100: #0e0e0e;
   --surface-200: #1a1a1a;

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ImageSlot } from "@/components/media/ImageSlot";
 import { EnquiryForm } from "@/components/sections/EnquiryForm";
 import { PageHero } from "@/components/sections/PageHero";
 import { SpecsTable } from "@/components/sections/SpecsTable";
@@ -34,6 +35,21 @@ export default function SpecificationsPage() {
           </Button>
         </div>
       </PageHero>
+
+      <Section>
+        <div className="grid grid-cols-12 gap-x-6 gap-y-10">
+          <div className="col-span-12 md:col-span-5">
+            <ImageSlot id="device-standalone" aspect="4/5" sizes="(min-width:768px) 40vw, 100vw" />
+          </div>
+          <div className="col-span-12 flex flex-col justify-center gap-6 md:col-span-7">
+            <SquareMarker />
+            <p className="max-w-[48ch] text-[20px] leading-[26px]">
+              Every parameter below is measured on the instrument you receive. Values still marked
+              [TBD] are not published yet rather than estimated.
+            </p>
+          </div>
+        </div>
+      </Section>
 
       {spec.tables.map((t) => (
         <Section key={t.heading}>

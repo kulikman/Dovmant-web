@@ -9,8 +9,9 @@ human-subject research is the responsibility of the purchasing institution and r
 
 ## What it is
 A lower-limb exoskeleton for biomechanics and performance laboratories. Torque is programmable as a function of gait
-phase, telemetry exports in open formats (CSV, HDF5), and a transparent mode provides a near-zero-torque baseline so
-the device itself can serve as the control condition.
+phase, telemetry exports in open formats (CSV, HDF5), and a transparent mode is intended to provide a
+low-torque baseline so the device itself can serve as the control condition. The residual torque in that mode is
+not yet published.
 
 ## Pages
 - [Home](/): what the instrument is, how it works, research scenarios, key parameters

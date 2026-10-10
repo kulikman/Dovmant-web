@@ -40,7 +40,7 @@ export const images = {
     1,
   ),
   "device-standalone": s(
-    "/specifications · /system",
+    "/specifications",
     "4/5",
     "The Dovmant exoskeleton on a stand",
     "Device without a person, on a stand. The specification frame",
@@ -48,7 +48,7 @@ export const images = {
     1,
   ),
   "detail-knee-actuator": s(
-    "/system · /specifications",
+    "/system",
     "1/1",
     "Close-up of the knee actuator",
     "Macro of the knee actuator, mechanism visible",
@@ -56,7 +56,7 @@ export const images = {
     1,
   ),
   "detail-sensors": s(
-    "/system · /specifications",
+    "/ · /system",
     "1/1",
     "Close-up of a sensor on its mount",
     "Macro of a sensor on its mount",
@@ -64,7 +64,7 @@ export const images = {
     1,
   ),
   "detail-fit-straps": s(
-    "/system · /specifications",
+    "/system",
     "1/1",
     "Close-up of the fit adjustment",
     "Macro of the fit adjustment with the size scale visible",
@@ -88,7 +88,7 @@ export const images = {
     2,
   ),
   "lab-gait-trial": s(
-    "/ · /research",
+    "/",
     "3/2",
     "Participant walking in the device across a force-plate runway",
     "Participant in the device walking a runway with force plates, markers on the body, capture cameras behind",
@@ -104,7 +104,7 @@ export const images = {
     2,
   ),
   "lab-console": s(
-    "/system · /performance",
+    "/performance",
     "16/9",
     "Screen showing joint torque and angle traces (synthetic data)",
     "Telemetry screen — joint moment and angle traces. Data is synthetic; say so in the alt text",
@@ -112,7 +112,7 @@ export const images = {
     2,
   ),
   "transparent-mode": s(
-    "/ · /system",
+    "/",
     "3/2",
     "Participant walking in the device with assistance off",
     "Participant walking in the device without assistance — the baseline condition frame",

@@ -43,7 +43,7 @@ No secrets are committed to the repository.
 | ---------------------- | ----- | ----------- | ---------------------------------------------------------------------------------- |
 | `NEXT_PUBLIC_SITE_URL` | all   | recommended | Absolute base URL used by metadata, sitemap and robots. Defaults to a placeholder. |
 
-Phase 2 (investor data room on Supabase auth + RLS) will add:
+Optional, for storing investor deck requests:
 
 | Variable                        | Scope       | Purpose                                                                     |
 | ------------------------------- | ----------- | --------------------------------------------------------------------------- |
@@ -51,8 +51,8 @@ Phase 2 (investor data room on Supabase auth + RLS) will add:
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | all         | Supabase publishable key                                                    |
 | `SUPABASE_SERVICE_ROLE_KEY`     | server only | Server-side access for access-request handling — never expose to the client |
 
-The contact and data-room forms currently log to the server only (`app/actions/*.ts`); wiring them to a CRM or mail
-provider is a phase-2 task and will add its own variables.
+With none of these set, every form logs to the server and the visitor still gets the success state.
+See `lib/delivery.ts` and `lib/forms.ts`.
 
 ### Enabling the hero video
 
