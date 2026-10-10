@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dovmant website
 
-## Getting Started
+Marketing site for Dovmant — an AI-driven lower-limb exoskeleton for rehabilitation and sports performance.
+Next.js (App Router) · TypeScript · Tailwind CSS v4 · Motion · Playwright.
 
-First, run the development server:
+See [CLAUDE.md](./CLAUDE.md) for the design tokens, style rules and the "no invented facts" rule.
+
+## Develop
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Command                              | What it does                                                                 |
+| ------------------------------------ | ---------------------------------------------------------------------------- |
+| `npm run dev`                        | Dev server on http://localhost:3000                                          |
+| `npm run build` / `npm start`        | Production build and server                                                  |
+| `npm run lint` · `npm run typecheck` | ESLint · TypeScript                                                          |
+| `npm run test`                       | Playwright: screenshots at 375/1280/1440, keyboard and reduced-motion checks |
+| `npm run shot-list`                  | Regenerate `docs/shot-list.md` from `content/images.ts`                      |
+| `npm run format`                     | Prettier                                                                     |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content and images
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- All copy lives in `content/*.ts`. Values that are not yet confirmed are marked `[TBD]` — never replace one with a guess.
+- Images are slots: `content/images.ts` maps a slot id to a file. While `src` is `null` the page renders a labelled
+  placeholder. Drop files at `public/images/<slot-id>.webp` and set `src`.
+- `docs/shot-list.md` is the brief for the photographer / 3D artist.
+- Video goes to `public/video/` (`hero.webm`, `hero.mp4`, `hero-vertical.*`, `film.mp4`). The poster renders until a
+  file exists, so missing video degrades gracefully.
 
-## Learn More
+## Deploy (Vercel)
 
-To learn more about Next.js, take a look at the following resources:
+Import the repository in Vercel; the framework preset, build command and output are detected automatically.
+No secrets are committed to the repository.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Environment variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable               | Scope | Required    | Purpose                                                                            |
+| ---------------------- | ----- | ----------- | ---------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | all   | recommended | Absolute base URL used by metadata, sitemap and robots. Defaults to a placeholder. |
 
-## Deploy on Vercel
+Phase 2 (investor data room on Supabase auth + RLS) will add:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Variable                        | Scope       | Purpose                                                                     |
+| ------------------------------- | ----------- | --------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | all         | Supabase project URL                                                        |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | all         | Supabase publishable key                                                    |
+| `SUPABASE_SERVICE_ROLE_KEY`     | server only | Server-side access for access-request handling — never expose to the client |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The contact and data-room forms currently log to the server only (`app/actions/*.ts`); wiring them to a CRM or mail
+provider is a phase-2 task and will add its own variables.

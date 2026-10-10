@@ -38,7 +38,7 @@ export function WearGallery({ items }: { items: WearItem[] }) {
         tabIndex={0}
         role="region"
         aria-label="Wearing scenarios — scroll horizontally"
-        className="scrollbar-none flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--gutter)] pb-2"
+        className="scrollbar-none flex snap-x snap-mandatory scroll-pl-[var(--gutter)] gap-4 overflow-x-auto px-[var(--gutter)] pb-2"
       >
         {items.map((it) => (
           <figure key={it.id} className="w-[72vw] shrink-0 snap-start sm:w-[340px] lg:w-[380px]">

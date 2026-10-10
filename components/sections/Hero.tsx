@@ -3,6 +3,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SquareMarker } from "@/components/ui/SquareMarker";
 import { hero } from "@/content/home";
 import { HeroMedia } from "./HeroMedia";
+import { ImageSlot } from "@/components/media/ImageSlot";
 
 export function Hero() {
   return (
@@ -13,8 +14,13 @@ export function Hero() {
           <SectionHeading as="h1" size="hero" text={"DOVMANT"} immediate />
         </div>
 
+        {/* small reference thumbnail, top-left */}
+        <div className="order-0 col-span-4 hidden lg:col-span-2 lg:row-start-1 lg:block lg:self-start lg:pt-10">
+          <ImageSlot id="detail-knee-actuator" aspect="4/3" sizes="160px" className="w-[160px]" />
+        </div>
+
         {/* claim column */}
-        <div className="order-2 col-span-12 flex flex-col gap-5 lg:order-1 lg:col-span-7 lg:col-start-4 lg:row-start-1 lg:justify-start lg:pt-10">
+        <div className="order-2 col-span-12 flex flex-col gap-5 lg:order-1 lg:col-span-4 lg:col-start-4 lg:row-start-1 lg:justify-start lg:pt-10">
           <SquareMarker size={14} />
           <SectionHeading
             as="p"

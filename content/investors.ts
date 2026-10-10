@@ -16,7 +16,7 @@ export const investors = {
     points: ["[TBD] What we built.", "[TBD] Why it is different.", "[TBD] What it unlocks."],
   },
   market: {
-    heading: "{MARKET}",
+    heading: "MARKET {SIZE}",
     stats: [
       { value: "[TBD]", label: "TAM", source: "[TBD]" },
       { value: "[TBD]", label: "SAM", source: "[TBD]" },
@@ -29,7 +29,7 @@ export const investors = {
     note: "[TBD] Position competitors once the landscape review is complete. The grid is intentionally empty.",
   },
   traction: {
-    heading: "{TRACTION}",
+    heading: "OUR {TRACTION}",
     items: [
       { year: "[TBD]", title: "[TBD] Milestone", note: "[TBD]" },
       { year: "[TBD]", title: "[TBD] Milestone", note: "[TBD]" },
@@ -49,7 +49,7 @@ export const investors = {
     ],
   },
   roadmap: {
-    heading: "{ROADMAP}",
+    heading: "THE {ROADMAP}",
     items: [
       { year: "[TBD]", title: "[TBD] Milestone", note: "[TBD]" },
       { year: "[TBD]", title: "[TBD] Milestone", note: "[TBD]" },
@@ -57,7 +57,7 @@ export const investors = {
     ],
   },
   team: {
-    heading: "{TEAM}",
+    heading: "THE {TEAM}",
     note: "[TBD] Founders and key hires. See the About page.",
   },
   round: {

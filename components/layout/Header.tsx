@@ -52,9 +52,9 @@ export function Header() {
           </ul>
         </nav>
         <div className="flex items-center gap-3">
-          <Button href="/contact" className="hidden sm:inline-flex">
-            Request a demo
-          </Button>
+          <span className="hidden md:block">
+            <Button href="/contact">Request a demo</Button>
+          </span>
           <button
             type="button"
             className="rounded-pill border border-ink px-4 py-2 text-[15px] lg:hidden"
