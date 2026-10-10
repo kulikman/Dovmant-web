@@ -34,7 +34,8 @@ export function SectionHeading({
   const reduce = useReducedMotion();
   const lines = parseRich(text);
   return (
-    <Tag className={cn("display", sizes[size], className)} aria-label={stripRich(text)}>
+    <Tag className={cn("display", sizes[size], className)}>
+      <span className="sr-only">{stripRich(text)}</span>
       {lines.map((segs, i) => {
         const inner = segs.map((s, j) => (
           <span key={j} className={cn(s.accent && "accent", s.light && "light")}>

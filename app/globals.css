@@ -148,6 +148,18 @@ body {
   display: none;
 }
 
+.overlay-in {
+  animation: overlay-in 600ms var(--ease-out) both;
+}
+@keyframes overlay-in {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
 .line-in {
   animation: line-in 500ms var(--ease-out) both;
 }

@@ -10,9 +10,24 @@ export type OverlayKind = "bottom-half" | "bottom-third" | "none";
  * The viewport target is the full-size wrapper — a scaled-to-zero element has a
  * zero-height intersection rect and would not reliably trigger on its own.
  */
-export function RedOverlay({ kind }: { kind: Exclude<OverlayKind, "none"> }) {
+export function RedOverlay({
+  kind,
+  immediate,
+}: {
+  kind: Exclude<OverlayKind, "none">;
+  /** paint with the server HTML and animate in CSS — for above-the-fold blocks */
+  immediate?: boolean;
+}) {
   const reduce = useReducedMotion();
   const height = kind === "bottom-half" ? "50%" : "33.333%";
+  if (immediate)
+    return (
+      <div
+        aria-hidden
+        className="overlay-in pointer-events-none absolute inset-x-0 bottom-0 origin-bottom bg-accent-overlay mix-blend-multiply"
+        style={{ height }}
+      />
+    );
   return (
     <motion.div
       aria-hidden

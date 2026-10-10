@@ -13,6 +13,8 @@ type Props = {
   className?: string;
   /** disable inner hover zoom (e.g. non-interactive hero) */
   still?: boolean;
+  /** overlay paints with the server HTML (above the fold) */
+  overlayImmediate?: boolean;
 };
 
 export function ImageSlot({
@@ -24,6 +26,7 @@ export function ImageSlot({
   sizes = "(min-width: 1024px) 40vw, 100vw",
   className,
   still,
+  overlayImmediate,
 }: Props) {
   const def = images[id];
   const ratio = (aspect ?? def.aspect).replace("/", " / ");
@@ -52,7 +55,7 @@ export function ImageSlot({
           <p className="mt-1 max-w-[28ch] text-[13px] leading-[18px]">{def.description}</p>
         </div>
       )}
-      {overlay !== "none" && <RedOverlay kind={overlay} />}
+      {overlay !== "none" && <RedOverlay kind={overlay} immediate={overlayImmediate} />}
     </div>
   );
 }

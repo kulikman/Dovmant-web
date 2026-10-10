@@ -31,6 +31,7 @@ export function Hero() {
           />
           <Link href={hero.moreInfo.href} className="link w-fit text-[15px]">
             {hero.moreInfo.label}
+            <span className="sr-only"> {hero.moreInfo.about}</span>
           </Link>
           <p className="mt-6 max-w-[38ch] text-[13px] leading-[18px] text-ink-muted lg:mt-auto">
             {hero.paragraph}

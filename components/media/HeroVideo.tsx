@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import { ImageSlot } from "./ImageSlot";
+import { site } from "@/content/site";
 
 /** Poster paints first; the video mounts after first paint and fades in only once it can play. */
 export function HeroVideo() {
@@ -12,7 +13,7 @@ export function HeroVideo() {
   const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (reduce) return;
+    if (reduce || !site.heroVideo) return;
     const start = () => setMount(true);
     if ("requestIdleCallback" in window) {
       const h = window.requestIdleCallback(start, { timeout: 2000 });

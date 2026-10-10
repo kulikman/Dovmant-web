@@ -51,3 +51,9 @@ Phase 2 (investor data room on Supabase auth + RLS) will add:
 
 The contact and data-room forms currently log to the server only (`app/actions/*.ts`); wiring them to a CRM or mail
 provider is a phase-2 task and will add its own variables.
+
+### Enabling the hero video
+
+Video files are not in the repository. Once `public/video/hero.{webm,mp4}` (and the vertical variants) exist, set
+`NEXT_PUBLIC_HERO_VIDEO=1`; for the modal film (`public/video/film.mp4`) set `NEXT_PUBLIC_FILM_VIDEO=1`. Until then the
+poster/placeholder renders and no 404s are requested.

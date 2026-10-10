@@ -5,6 +5,9 @@ export const site = {
   address: "[TBD] Address line, City, Country",
   phone: "[TBD] +00 000 000 000",
   email: "[TBD] hello@dovmant.example",
+  /** Flip on once the files in /public/video exist (see docs/shot-list.md). */
+  heroVideo: process.env.NEXT_PUBLIC_HERO_VIDEO === "1",
+  filmVideo: process.env.NEXT_PUBLIC_FILM_VIDEO === "1",
 } as const;
 
 export type NavItem = { label: string; href: string };

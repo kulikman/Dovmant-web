@@ -3,7 +3,11 @@ import type { PartId } from "./parts";
 
 export const hero = {
   claim: "AI-driven support for {every step.}",
-  moreInfo: { label: "More info", href: "/technology" },
+  moreInfo: {
+    label: "More info",
+    href: "/technology",
+    about: "about the technology",
+  },
   paragraph:
     "Dovmant is developing an AI-driven lower-limb exoskeleton for rehabilitation and sports performance. [TBD: regulatory status]",
   contact: { label: "Request a demo", href: "/contact" },

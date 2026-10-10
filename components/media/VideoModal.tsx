@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { site } from "@/content/site";
 
 /** Dark-theme full-screen film. Native <dialog> gives focus trap + Esc. */
 export function VideoModal({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -30,12 +31,16 @@ export function VideoModal({ open, onClose }: { open: boolean; onClose: () => vo
         >
           Close
         </button>
-        {open && (
-          <video className="max-h-full max-w-full" controls playsInline preload="metadata">
-            <source src="/video/film.mp4" type="video/mp4" />
-            <p>The film is not available yet. [TBD]</p>
-          </video>
-        )}
+        {open &&
+          (site.filmVideo ? (
+            <video className="max-h-full max-w-full" controls playsInline preload="metadata">
+              <source src="/video/film.mp4" type="video/mp4" />
+            </video>
+          ) : (
+            <p className="max-w-[40ch] text-[20px] leading-[26px]">
+              The film is not published yet. [TBD]
+            </p>
+          ))}
       </div>
     </dialog>
   );

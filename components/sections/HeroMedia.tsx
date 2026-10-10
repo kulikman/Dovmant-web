@@ -11,7 +11,7 @@ export function HeroMedia() {
   return (
     <div className="relative isolate h-full w-full overflow-hidden bg-surface-300">
       <HeroVideo />
-      <RedOverlay kind="bottom-half" />
+      <RedOverlay kind="bottom-half" immediate />
       <ArrowSquare
         label="Watch the film"
         onClick={() => setOpen(true)}
