@@ -57,4 +57,3 @@ several patterns from the reference no longer have a place here.
 
 - Re-run this comparison once real photography, renders and the hero video land — the overlay-on-photo effect and the
   grayscale treatment cannot be judged against line art.
-- The specification PDF and the research PDFs are placeholders and resolve to nothing.

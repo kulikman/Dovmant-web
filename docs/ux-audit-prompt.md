@@ -14,7 +14,7 @@ Scope: every route in `tests/pages.ts`, at 375, 768, 1280 and 1440, in light the
 - Every in-page anchor (`#how-it-works`, `#evaluation`, `#quotation`, `#faq`, `#deck`) has a matching element, and
   the sticky header does not cover the target after the jump.
 - Header nav marks the current page. The wordmark returns to `/`. Footer columns match the live page map.
-- Nothing promises a file that does not exist: a missing PDF is stated as such, never a dead link.
+- Nothing promises a file or a document that does not exist.
 - Outbound links, if any: correct `rel`, and they say where they go.
 
 ## 2. Buttons and controls

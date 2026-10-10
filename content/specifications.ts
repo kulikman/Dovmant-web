@@ -1,6 +1,6 @@
 export const specifications = {
   title: "SPECIFICATION {SHEET}",
-  lead: "Everything a grant application needs in one document: parameters, interfaces, delivery terms and a quotation request. Download the PDF or request a formal quote.",
+  lead: "Everything a grant application needs: parameters, interfaces, delivery terms and a formal quotation on request.",
   tables: [
     {
       heading: "MECHANICAL",

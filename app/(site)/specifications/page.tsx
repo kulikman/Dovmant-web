@@ -8,7 +8,6 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SquareMarker } from "@/components/ui/SquareMarker";
 import { specifications as spec } from "@/content/specifications";
-import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Specification Sheet",
@@ -21,15 +20,6 @@ export default function SpecificationsPage() {
     <>
       <PageHero title={spec.title} lead={spec.lead} image="page-hero-specifications">
         <div className="flex flex-wrap items-center gap-4">
-          {site.specSheetUrl ? (
-            <Button href={site.specSheetUrl} variant="filled" arrow={null}>
-              Download specification (PDF) ↓
-            </Button>
-          ) : (
-            <p className="text-[15px] text-ink-muted">
-              Specification PDF: [TBD] — request it below.
-            </p>
-          )}
           <Button href="#quotation" arrow="→">
             Request a quotation
           </Button>
