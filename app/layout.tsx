@@ -3,17 +3,16 @@ import { Inter, Inter_Tight } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
 
+// Variable fonts: one file per family covers 300–600, instead of five static files.
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
   subsets: ["latin"],
-  weight: ["300", "500", "600"],
   display: "swap",
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500"],
   display: "swap",
 });
 

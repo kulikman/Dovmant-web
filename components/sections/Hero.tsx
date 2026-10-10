@@ -44,7 +44,7 @@ export function Hero() {
         {/* media */}
         <div className="order-3 col-span-12 lg:order-3 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1">
           <div className="relative flex gap-3">
-            <div className="aspect-4/5 w-full lg:aspect-auto lg:h-[86vh]">
+            <div className="aspect-4/5 w-full md:aspect-16/10 lg:aspect-auto lg:h-[86vh]">
               <HeroMedia />
             </div>
             <p

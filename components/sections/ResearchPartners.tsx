@@ -28,9 +28,13 @@ export function ResearchPartners() {
               <p className="text-[12px] leading-4 uppercase text-ink-muted">{s.institution}</p>
               <h3 className="display mt-3 text-step">{s.title}</h3>
               <p className="mt-4 max-w-[48ch] text-[16px] leading-6">{s.finding}</p>
-              <a href={s.pdf} className="link mt-5 inline-block text-[15px]">
-                PDF ↘
-              </a>
+              {s.pdf ? (
+                <a href={s.pdf} className="link mt-5 inline-block text-[15px]">
+                  PDF ↘
+                </a>
+              ) : (
+                <p className="mt-5 text-[15px] text-ink-muted">PDF [TBD]</p>
+              )}
             </article>
           </Reveal>
         ))}

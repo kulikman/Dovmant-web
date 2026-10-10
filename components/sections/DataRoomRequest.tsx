@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { requestDataRoom } from "@/app/actions/data-room";
 import { Section } from "@/components/ui/Section";
+import { site } from "@/content/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { UnderlineInput } from "@/components/ui/UnderlineInput";
 import type { ContactState } from "@/lib/contact-schema";
@@ -21,9 +22,15 @@ export function DataRoomRequest() {
           <p className="mt-6 max-w-[40ch] text-[16px] leading-6 text-ink-muted">
             We review every request manually. The deck is shared after a short call. [TBD]
           </p>
-          <a href="/investors/deck.pdf" className="link mt-6 inline-block text-[15px]">
-            Download deck [TBD] ↘
-          </a>
+          {site.deckUrl ? (
+            <a href={site.deckUrl} className="link mt-6 inline-block text-[15px]">
+              Download deck ↘
+            </a>
+          ) : (
+            <p className="mt-6 text-[15px] text-ink-muted">
+              Deck download: [TBD] — shared on request for now.
+            </p>
+          )}
         </div>
         <div className="col-span-12 md:col-span-7">
           {state.status === "success" ? (

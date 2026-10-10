@@ -47,9 +47,13 @@ export default function ResearchPage() {
                 <td className="py-4 pr-4 text-ink-muted">{row.year}</td>
                 <td className="py-4 pr-4 text-ink-muted">{row.status}</td>
                 <td className="py-4">
-                  <a href={row.pdf} className="link">
-                    PDF ↘
-                  </a>
+                  {row.pdf ? (
+                    <a href={row.pdf} className="link">
+                      PDF ↘
+                    </a>
+                  ) : (
+                    <span className="text-ink-muted">[TBD]</span>
+                  )}
                 </td>
               </tr>
             ))}

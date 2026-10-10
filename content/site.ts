@@ -8,6 +8,8 @@ export const site = {
   /** Flip on once the files in /public/video exist (see docs/shot-list.md). */
   heroVideo: process.env.NEXT_PUBLIC_HERO_VIDEO === "1",
   filmVideo: process.env.NEXT_PUBLIC_FILM_VIDEO === "1",
+  /** Set to the deck path once the PDF is published, e.g. "/investors/deck.pdf". */
+  deckUrl: null as string | null,
 } as const;
 
 export type NavItem = { label: string; href: string };

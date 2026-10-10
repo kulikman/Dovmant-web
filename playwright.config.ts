@@ -19,6 +19,10 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"], viewport: { width: 375, height: 812 } },
     },
     {
+      name: "tablet",
+      use: { ...devices["Desktop Chrome"], viewport: { width: 768, height: 1024 } },
+    },
+    {
       name: "reduced-motion",
       use: {
         ...devices["Desktop Chrome"],
