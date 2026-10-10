@@ -4,7 +4,10 @@
  * NEVER use stock/AI images of the exoskeleton — the real device only.
  */
 export type ImageSlotDef = {
+  /** Real photography or render. Always wins over `art`. */
   src: string | null;
+  /** Generated stand-in (scripts/gen-art.ts). Abstract on purpose — see CLAUDE.md. */
+  art: string | null;
   alt: string;
   aspect: string; // "w/h"
   description: string;
@@ -18,7 +21,7 @@ const s = (
   alt: string,
   description: string,
   framing: string,
-): ImageSlotDef => ({ src: null, alt, aspect, description, page, framing });
+): ImageSlotDef => ({ src: null, art: null, alt, aspect, description, page, framing });
 
 export const images = {
   "hero-render": s(
@@ -236,3 +239,9 @@ export const images = {
 } satisfies Record<string, ImageSlotDef>;
 
 export type ImageSlotId = keyof typeof images;
+
+// Every slot has generated artwork at /images/art/<id>.svg (npm run art).
+for (const [id, def] of Object.entries(images)) def.art = `/images/art/${id}.svg`;
+
+/** What the slot actually renders: real file first, generated stand-in second. */
+export const slotFile = (def: ImageSlotDef) => def.src ?? def.art;

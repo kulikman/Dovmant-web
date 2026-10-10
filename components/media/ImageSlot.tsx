@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { images, type ImageSlotId } from "@/content/images";
+import { images, slotFile, type ImageSlotId } from "@/content/images";
 import { cn } from "@/lib/cn";
 import { RedOverlay, type OverlayKind } from "./RedOverlay";
 
@@ -29,20 +29,24 @@ export function ImageSlot({
   overlayImmediate,
 }: Props) {
   const def = images[id];
+  const file = slotFile(def);
+  const generated = !def.src && Boolean(def.art);
   const ratio = (aspect ?? def.aspect).replace("/", " / ");
   return (
     <div
       className={cn("group relative isolate overflow-hidden bg-surface-300", className)}
       style={{ aspectRatio: ratio }}
       data-slot={id}
+      data-generated={generated || undefined}
     >
-      {def.src ? (
+      {file ? (
         <Image
-          src={def.src}
+          src={file}
           alt={alt ?? def.alt}
           fill
           sizes={sizes}
           priority={priority}
+          unoptimized={file.endsWith(".svg")}
           className={cn(
             "bw object-cover",
             !still &&

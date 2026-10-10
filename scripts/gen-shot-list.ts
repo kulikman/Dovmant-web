@@ -13,6 +13,10 @@ All images are delivered **black & white** (the site applies \`grayscale(1)\` an
 Only the **real Dovmant device** may appear. No stock or AI-generated exoskeletons.
 
 File location: \`/public/images/<slot-id>.webp\` (or \`.jpg\`), then set \`src\` in \`content/images.ts\`.
+
+Until a real file exists, each slot shows generated stand-in artwork from \`/public/images/art/<slot-id>.svg\`
+(\`npm run art\`). That artwork is deliberately abstract — motion studies, schematics, halftones — and depicts
+neither the device nor any real person or organisation. Setting \`src\` replaces it.
 Deliver at least 2× the displayed size (e.g. 2400 px on the long edge for hero frames).
 
 | Slot id | Page | Aspect | Framing | Description |

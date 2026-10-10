@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "shot-list": "tsx scripts/gen-shot-list.ts",
     "test": "playwright test",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "art": "tsx scripts/gen-art.ts"
   },
   "dependencies": {
     "motion": "^14.1.0",
