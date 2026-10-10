@@ -11,7 +11,12 @@ const heights: Record<string, string> = {
 
 export function PortraitRow({ people }: { people: Portrait[] }) {
   return (
-    <div className="scrollbar-none flex snap-x scroll-pl-[var(--gutter)] items-end gap-3 overflow-x-auto px-[var(--gutter)] pb-2">
+    <div
+      tabIndex={0}
+      role="region"
+      aria-label="Portraits — scroll horizontally"
+      className="scrollbar-none flex snap-x scroll-pl-[var(--gutter)] items-end gap-3 overflow-x-auto px-[var(--gutter)] pb-2"
+    >
       {people.map((p, i) => (
         <figure key={p.id} className="w-[58vw] shrink-0 snap-start sm:w-[220px]">
           <div className={heights[p.h ?? "mid"]}>

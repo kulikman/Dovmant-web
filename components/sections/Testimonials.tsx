@@ -9,7 +9,12 @@ export function Testimonials() {
   const [first, ...rest] = testimonials.items;
   return (
     <Section bleed>
-      <div className="scrollbar-none flex snap-x scroll-pl-[var(--gutter)] gap-4 overflow-x-auto px-[var(--gutter)] lg:grid lg:grid-cols-[1fr_1.1fr_1fr_1fr] lg:items-end lg:overflow-visible">
+      <div
+        tabIndex={0}
+        role="region"
+        aria-label="Testimonials — scroll horizontally"
+        className="scrollbar-none flex snap-x scroll-pl-[var(--gutter)] gap-4 overflow-x-auto px-[var(--gutter)] lg:grid lg:grid-cols-[1fr_1.1fr_1fr_1fr] lg:items-end lg:overflow-visible"
+      >
         <Reveal>
           <TestimonialCard t={first} />
         </Reveal>
