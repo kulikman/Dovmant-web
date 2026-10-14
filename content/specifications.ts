@@ -20,6 +20,8 @@ export const specifications = {
     {
       heading: "ACTUATION",
       rows: [
+        ["Actuated joint", "Hip"],
+        ["Knee module", "In development, not part of the current device"],
         ["Peak torque per joint", "[TBD] N·m"],
         ["Continuous torque per joint", "[TBD] N·m"],
         ["Peak angular velocity", "[TBD]"],

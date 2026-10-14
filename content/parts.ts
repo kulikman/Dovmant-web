@@ -1,7 +1,7 @@
 /** Abstract schematic of the system's parts (a diagram, not a depiction of the device). */
 export type PartId = "control" | "sensors" | "knee" | "hip" | "battery" | "fit" | "sync";
 
-export const parts: { id: PartId; label: string; description: string }[] = [
+export const parts: { id: PartId; label: string; description: string; planned?: boolean }[] = [
   {
     id: "control",
     label: "Control unit",
@@ -20,8 +20,10 @@ export const parts: { id: PartId; label: string; description: string }[] = [
   },
   {
     id: "knee",
-    label: "Knee actuator",
-    description: "[TBD] N·m peak, [TBD] N·m continuous.",
+    label: "Knee module",
+    planned: true,
+    description:
+      "In development. The device shipping today actuates the hip only; the knee module is not part of it. Figures follow once there is hardware to measure.",
   },
   {
     id: "battery",

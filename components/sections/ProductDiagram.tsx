@@ -49,7 +49,8 @@ export function ProductDiagram({ active: controlled, onSelect, className, descri
         />
         {nodes.map((n) => {
           const on = n.id === active;
-          const label = parts.find((p) => p.id === n.id)!.label;
+          const part = parts.find((p) => p.id === n.id)!;
+          const label = part.planned ? `${part.label} — in development` : part.label;
           return (
             <g key={n.id}>
               <rect
@@ -57,7 +58,10 @@ export function ProductDiagram({ active: controlled, onSelect, className, descri
                 y={n.y - 9}
                 width="18"
                 height="18"
-                fill={on ? "var(--accent)" : "var(--steel)"}
+                fill={part.planned ? "none" : on ? "var(--accent)" : "var(--steel)"}
+                stroke={part.planned ? (on ? "var(--accent)" : "var(--steel)") : "none"}
+                strokeWidth="2"
+                strokeDasharray={part.planned ? "4 3" : undefined}
                 style={{ transition: "fill 300ms" }}
               />
               <text

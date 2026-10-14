@@ -44,8 +44,8 @@ export const how = {
     },
     {
       title: "Actuation",
-      note: "[TBD] N·m peak at the knee, [TBD] N·m at the hip. Total system mass 5–6 kg.",
-      part: "knee",
+      note: "[TBD] N·m peak at the hip. Total system mass 5–6 kg. A knee module is in development and is not part of the current device.",
+      part: "hip",
     },
     {
       title: "Sync and export",
@@ -89,8 +89,8 @@ export const specHighlights = {
   heading: "THE {NUMBERS} THAT MATTER",
   items: [
     { param: "System mass", value: "5–6 kg" },
-    { param: "Peak knee torque", value: "[TBD] N·m" },
     { param: "Peak hip torque", value: "[TBD] N·m" },
+    { param: "Residual torque, transparent mode", value: "[TBD] N·m" },
     { param: "Control loop rate", value: "[TBD] Hz" },
     { param: "Sensor sampling rate", value: "[TBD] Hz" },
     { param: "Battery runtime", value: "[TBD] h" },

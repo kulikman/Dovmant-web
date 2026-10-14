@@ -206,7 +206,7 @@ export const images = {
     "1/1",
     "The device",
     "Compact render for the footer accent block, B&W",
-    "Tight crop, knee area",
+    "Tight crop, hip actuator area",
     3,
   ),
 } satisfies Record<string, ImageSlotDef>;
