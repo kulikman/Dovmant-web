@@ -11,6 +11,7 @@ const routes = [
   "/about",
   "/contact",
   "/investors",
+  "/roadmap",
   "/research-use",
   "/privacy",
   "/terms",

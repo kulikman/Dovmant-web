@@ -109,6 +109,7 @@ export const programme = {
 export const investorStrip = {
   heading: "BUILDING THE {MEASUREMENT} LAYER FOR HUMAN LOCOMOTION",
   cta: { label: "Investor relations", href: "/investors" },
+  secondary: { label: "Roadmap", href: "/roadmap" },
 };
 
 export const faq = {

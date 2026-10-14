@@ -47,6 +47,7 @@ replaced the moment `src` is set.
 | `page-hero-specifications` | /specifications | /images/page-hero-specifications.webp |
 | `page-hero-performance` | /performance | /images/page-hero-performance.webp |
 | `faq-render` | / | /images/faq-render.webp |
+| `page-hero-roadmap` | /roadmap | /images/page-hero-roadmap.webp |
 | `footer-render` | footer | /images/footer-render.webp |
 
 ## Video

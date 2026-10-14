@@ -130,6 +130,18 @@ export const forms = {
       { name: "portfolio", label: "Portfolio link", wide: true },
     ],
   },
+  investor: {
+    submit: "Send",
+    subject: "Investor enquiry",
+    done: "Thank you. We answer investor messages ourselves and will come back to you. [TBD: response time]",
+    fields: [
+      { name: "name", label: "Name", required: true, autoComplete: "name" },
+      { name: "fund", label: "Fund / organisation", required: true },
+      { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
+      { name: "portfolio", label: "Portfolio link" },
+      { name: "message", label: "Message", type: "textarea", required: true, wide: true },
+    ],
+  },
   general: {
     submit: "Send",
     subject: "General enquiry",

@@ -59,9 +59,14 @@ export default function Home() {
       <section className="mx-auto max-w-[1440px] px-[var(--gutter)] py-[var(--section)]">
         <div className="flex flex-col items-start justify-between gap-8 border-y border-ink py-10 md:flex-row md:items-end">
           <SectionHeading text={investorStrip.heading} size="h2" className="max-w-[18ch]" />
-          <Link href={investorStrip.cta.href} className="link text-[20px] leading-[26px]">
-            {investorStrip.cta.label} →
-          </Link>
+          <div className="flex flex-wrap items-center gap-x-10 gap-y-3">
+            <Link href={investorStrip.cta.href} className="link text-[20px] leading-[26px]">
+              {investorStrip.cta.label} →
+            </Link>
+            <Link href={investorStrip.secondary.href} className="link text-[20px] leading-[26px]">
+              {investorStrip.secondary.label} →
+            </Link>
+          </div>
         </div>
       </section>
 

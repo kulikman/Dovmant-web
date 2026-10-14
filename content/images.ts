@@ -185,6 +185,14 @@ export const images = {
     "Vertical frame",
     3,
   ),
+  "page-hero-roadmap": s(
+    "/roadmap",
+    "3/4",
+    "The device on a stand",
+    "Hero: device on a stand or on the bench, B&W",
+    "Vertical frame, whole device",
+    3,
+  ),
   "page-hero-investors": s(
     "/investors",
     "3/4",
@@ -219,6 +227,7 @@ const delivered = [
   "device-standalone",
   "page-hero-system",
   "page-hero-specifications",
+  "page-hero-roadmap",
   "page-hero-performance",
   "faq-render",
   "footer-render",

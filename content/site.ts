@@ -61,7 +61,10 @@ export const footerColumns: { title: string; links: NavItem[] }[] = [
   },
   {
     title: "Investors",
-    links: [{ label: "Investor relations", href: "/investors" }],
+    links: [
+      { label: "Investor relations", href: "/investors" },
+      { label: "Roadmap", href: "/roadmap" },
+    ],
   },
 ];
 

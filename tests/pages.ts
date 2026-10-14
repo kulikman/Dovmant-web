@@ -7,6 +7,7 @@ export const pages = [
   "/about",
   "/contact",
   "/investors",
+  "/roadmap",
   "/news",
   "/research-use",
   "/privacy",
