@@ -73,6 +73,23 @@ export const legal: Record<"privacy" | "terms" | "research-use" | "cookies", Leg
   cookies: {
     title: "COOKIE {POLICY}",
     updated: "[TBD]",
-    sections: [tbd("What cookies we use"), tbd("How to control them"), tbd("Third parties")],
+    sections: [
+      {
+        h: "This site sets no cookies",
+        p: "We set no cookies of any kind, and nothing on these pages is loaded from a third party: no analytics, no embedded players, no fonts or scripts from another domain. There is nothing to consent to, which is why you are not being asked.",
+      },
+      {
+        h: "What that means for you",
+        p: "Nothing about your visit is stored in your browser by us, and no third party can observe it through this site. Your browser and your network provider still see the pages you request, as they do for any website.",
+      },
+      {
+        h: "Forms",
+        p: "What you type into a form is sent to us when you submit it, and nothing before that. How that information is handled is described in the privacy policy. [TBD — legal review required]",
+      },
+      {
+        h: "If this changes",
+        p: "If we ever add analytics, this page is updated before the change goes live, and anything that would require consent will ask for it. [TBD — legal review required]",
+      },
+    ],
   },
 };

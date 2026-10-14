@@ -37,7 +37,7 @@ export function Header() {
       <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-[var(--gutter)]">
         <Wordmark />
         <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex gap-10 text-[15px] leading-5">
+          <ul className="flex gap-6 text-[15px] leading-5 xl:gap-10">
             {nav.map((n) => (
               <li key={n.href}>
                 <Link
