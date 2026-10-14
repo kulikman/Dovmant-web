@@ -19,43 +19,43 @@ replaced the moment `src` is set.
 
 ## Still needed
 
-| Priority | Slot id | Page | Aspect | Framing | Description |
-| --- | --- | --- | --- | --- | --- |
-| 1 | `detail-sensors` | / · /system | 1/1 | Macro, sensor module on the thigh or shank frame | Macro of a sensor on its mount |
-| 2 | `sync-port-detail` | /system | 1/1 | Macro, connector and cable, neutral background | Macro of the sync connector with a cable attached |
-| 2 | `exploded-view` | /system | 16/9 | Orthographic feel, components spaced along the leg axis | Technical render, exploded components, part labels |
-| 2 | `lab-gait-trial` | / | 3/2 | Medium-wide, side on, runway and cameras legible | Participant in the device walking a runway with force plates, markers on the body, capture cameras behind |
-| 2 | `lab-instrumentation` | /research | 3/2 | Wide, equipment in frame, no people needed | Device next to the lab rig: cameras, plates, synchronisation cables |
-| 2 | `lab-console` | /performance | 16/9 | Flat screen capture or device mock, no participant data | Telemetry screen — joint moment and angle traces. Data is synthetic; say so in the alt text |
-| 2 | `transparent-mode` | / | 3/2 | Side on, full body, lab floor | Participant walking in the device without assistance — the baseline condition frame |
-| 2 | `incline-trial` | / | 3/2 | Side on, full body, incline legible | Work on an inclined treadmill or steps, laboratory setting |
-| 2 | `sprint-trial` | / · /performance | 3/2 | Dynamic pose, side or 3/4, full body | Athlete in the device, high-rate movement, gym or track |
-| 2 | `page-hero-research` | /research | 3/4 | Vertical frame, capture rig | Hero: laboratory instrumentation, B&W |
-| 3 | `loaded-trial` | / | 3/2 | Side on, full body, load visible | Carriage task with added external load |
-| 3 | `page-hero-about` | /about | 3/4 | Vertical frame | Hero: workshop or bench, B&W |
-| 3 | `page-hero-investors` | /investors | 3/4 | Vertical frame | Hero: device studio render, B&W |
+| Priority | Slot id               | Page             | Aspect | Framing                                                 | Description                                                                                               |
+| -------- | --------------------- | ---------------- | ------ | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| 1        | `detail-sensors`      | / · /system      | 1/1    | Macro, sensor module on the thigh or shank frame        | Macro of a sensor on its mount                                                                            |
+| 2        | `sync-port-detail`    | /system          | 1/1    | Macro, connector and cable, neutral background          | Macro of the sync connector with a cable attached                                                         |
+| 2        | `exploded-view`       | /system          | 16/9   | Orthographic feel, components spaced along the leg axis | Technical render, exploded components, part labels                                                        |
+| 2        | `lab-gait-trial`      | /                | 3/2    | Medium-wide, side on, runway and cameras legible        | Participant in the device walking a runway with force plates, markers on the body, capture cameras behind |
+| 2        | `lab-instrumentation` | /research        | 3/2    | Wide, equipment in frame, no people needed              | Device next to the lab rig: cameras, plates, synchronisation cables                                       |
+| 2        | `lab-console`         | /performance     | 16/9   | Flat screen capture or device mock, no participant data | Telemetry screen — joint moment and angle traces. Data is synthetic; say so in the alt text               |
+| 2        | `transparent-mode`    | /                | 3/2    | Side on, full body, lab floor                           | Participant walking in the device without assistance — the baseline condition frame                       |
+| 2        | `incline-trial`       | /                | 3/2    | Side on, full body, incline legible                     | Work on an inclined treadmill or steps, laboratory setting                                                |
+| 2        | `sprint-trial`        | / · /performance | 3/2    | Dynamic pose, side or 3/4, full body                    | Athlete in the device, high-rate movement, gym or track                                                   |
+| 2        | `page-hero-research`  | /research        | 3/4    | Vertical frame, capture rig                             | Hero: laboratory instrumentation, B&W                                                                     |
+| 3        | `loaded-trial`        | /                | 3/2    | Side on, full body, load visible                        | Carriage task with added external load                                                                    |
+| 3        | `page-hero-about`     | /about           | 3/4    | Vertical frame                                          | Hero: workshop or bench, B&W                                                                              |
+| 3        | `page-hero-investors` | /investors       | 3/4    | Vertical frame                                          | Hero: device studio render, B&W                                                                           |
 
 ## Delivered
 
-| Slot id | Page | File |
-| --- | --- | --- |
-| `hero-render` | / | /images/hero-render.webp |
-| `device-standalone` | /specifications | /images/device-standalone.webp |
-| `detail-hip-actuator` | /system | /images/detail-hip-actuator.webp |
-| `detail-fit-straps` | /system | /images/detail-fit-straps.webp |
-| `page-hero-system` | /system | /images/page-hero-system.webp |
+| Slot id                    | Page            | File                                  |
+| -------------------------- | --------------- | ------------------------------------- |
+| `hero-render`              | /               | /images/hero-render.webp              |
+| `device-standalone`        | /specifications | /images/device-standalone.webp        |
+| `detail-hip-actuator`      | /system         | /images/detail-hip-actuator.webp      |
+| `detail-fit-straps`        | /system         | /images/detail-fit-straps.webp        |
+| `page-hero-system`         | /system         | /images/page-hero-system.webp         |
 | `page-hero-specifications` | /specifications | /images/page-hero-specifications.webp |
-| `page-hero-performance` | /performance | /images/page-hero-performance.webp |
-| `faq-render` | / | /images/faq-render.webp |
-| `page-hero-roadmap` | /roadmap | /images/page-hero-roadmap.webp |
-| `footer-render` | footer | /images/footer-render.webp |
+| `page-hero-performance`    | /performance    | /images/page-hero-performance.webp    |
+| `faq-render`               | /               | /images/faq-render.webp               |
+| `page-hero-roadmap`        | /roadmap        | /images/page-hero-roadmap.webp        |
+| `footer-render`            | footer          | /images/footer-render.webp            |
 
 ## Video
 
-| File | Spec |
-| --- | --- |
+| File                                                | Spec                                           |
+| --------------------------------------------------- | ---------------------------------------------- |
 | `/public/video/hero.webm`, `/public/video/hero.mp4` | B&W device loop, 8–12 s, no audio, ≤ 3 MB, 3:4 |
-| `/public/video/hero-vertical.webm`, `.mp4` | Vertical 9:16 variant for mobile |
-| `/public/video/film.mp4` | Full film for the modal |
+| `/public/video/hero-vertical.webm`, `.mp4`          | Vertical 9:16 variant for mobile               |
+| `/public/video/film.mp4`                            | Full film for the modal                        |
 
 Enable with `NEXT_PUBLIC_HERO_VIDEO=1` and `NEXT_PUBLIC_FILM_VIDEO=1` once the files are in place.

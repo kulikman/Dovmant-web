@@ -71,7 +71,8 @@ are allow-listed there by exact phrase.
 
 ## Page map
 
-Nav: System · Specifications · Research · Performance · About. Header CTA: "Request a lab evaluation ↘".
+Nav: System · Specifications · Research · Performance · Roadmap · Investors · About. Header CTA:
+"Request a lab evaluation ↘". Seven items is the ceiling at 1280 — the next page goes in the footer.
 
 | Route                                             | Role                                                                                                    |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -81,7 +82,8 @@ Nav: System · Specifications · Research · Performance · About. Header CTA: "
 | `/research`                                       | Partnership programme, responsibility split, three routes — the conversion page                         |
 | `/performance`                                    | Side branch for performance groups, same regulatory frame                                               |
 | `/about`, `/contact`, `/news`                     | `/news` is empty, out of the nav and out of the sitemap until it has entries                            |
-| `/investors`                                      | One strip plus a deck request; no TAM/SAM/SOM, no open deck link                                        |
+| `/roadmap`                                        | Five phases with a status per item; dates stay [TBD] because a published date is a promise              |
+| `/investors`                                      | Thesis, why now, market with a source column, model, traction, round, team, deck, contact               |
 | `/research-use`, `/privacy`, `/terms`, `/cookies` | `/terms` data ownership must match the split on `/research`                                             |
 | `/styleguide`                                     | Internal, noindex                                                                                       |
 
@@ -139,12 +141,14 @@ first.
 
 ## Verified (last run)
 
-- `lint` · `typecheck` · `build` clean; Playwright 188 checks pass — screenshots at 375/768/1280/1440, keyboard,
-  reduced motion, axe (WCAG 2.1 AA) on every page, and the claims firewall. CI runs all of it on push and PR.
-- Lighthouse on the v2 build: `/` 94 · `/specifications` 96 · `/research` 99 performance; accessibility, best
-  practices and SEO 100 on all three. Simulated LCP is 3.1 s on `/`, which Lantern charges to the preloaded hero
-  stand-in SVG; measured LCP on a throttled device profile (slow 4G, 4× CPU) is 0.66 s and equals FCP. Re-measure
-  once the real hero image replaces the artwork.
+- `lint` · `typecheck` · `build` clean; Playwright 280 checks pass — screenshots at 375/768/1280/1440, keyboard,
+  reduced motion, axe (WCAG 2.1 AA) on every page, the claims firewall, and the integrity suite: dead links,
+  missing anchors, broken images, heading order, console errors, horizontal overflow, a painted accent block,
+  one hero image per page, and no section mixing photography with stand-in artwork. CI runs all of it.
+- Lighthouse with the real renders in place: performance `/` 91 · `/specifications` 93 · `/roadmap` 95 ·
+  `/investors` 96 · `/research` 99; accessibility, best practices and SEO 100 on all five. Simulated LCP is
+  3.5 s on `/`, up from 3.1 s with the drawn hero — a photograph is heavier and Lantern charges it to the
+  preloaded hero image. Measured LCP on a throttled device profile was 0.66 s before the swap.
 - Token contrast: every text pair ≥ 4.5:1. `steel` is 3.0:1 — graphics only.
 
 ## Open — needs input that only the company has

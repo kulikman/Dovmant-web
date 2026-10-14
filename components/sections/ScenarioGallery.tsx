@@ -4,9 +4,9 @@ import { useRef } from "react";
 import { ImageSlot } from "@/components/media/ImageSlot";
 import type { ImageSlotId } from "@/content/images";
 
-export type WearItem = { id: ImageSlotId; caption: string; overlay?: boolean };
+export type ScenarioItem = { id: ImageSlotId; caption: string; overlay?: boolean };
 
-export function WearGallery({ items }: { items: WearItem[] }) {
+export function ScenarioGallery({ items }: { items: ScenarioItem[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const scroll = (dir: 1 | -1) =>
     ref.current?.scrollBy({

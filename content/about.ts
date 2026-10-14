@@ -66,16 +66,3 @@ export const news = {
   empty:
     "Nothing published yet. This page stays empty until there is something real to report — it is linked from the footer and will return to the navigation once it carries its third entry.",
 };
-
-export const investors = {
-  title: "INVESTOR {RELATIONS}",
-  paragraphs: [
-    "Powered exoskeletons have had a decade of clinical approvals and reimbursement codes, and the category still has not produced a venture outcome. We think the reason is that the industry built devices before it built evidence, and then had to buy the evidence itself.",
-    "Dovmant starts from the other end. We are placing a programmable, instrumented device with research laboratories, who design the studies, own the data and publish the findings. The asset that compounds is not unit sales — it is an independent body of published work and the dataset underneath it.",
-    "That evidence base is what makes a later clinical path credible, and it is the one thing in this category that cannot be bought.",
-  ],
-  cta: {
-    heading: "REQUEST THE {DECK}",
-    text: "The deck is shared directly rather than left on an open link.",
-  },
-};

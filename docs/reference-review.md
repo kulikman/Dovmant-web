@@ -5,7 +5,9 @@ names, photography — is reused. This file records what was borrowed, what was 
 deliberately departs from the reference.
 
 Rewritten after the v2 repositioning: the site is now a research instrument's sales material for one audience, so
-several patterns from the reference no longer have a place here.
+several patterns from the reference no longer have a place here. `/roadmap` and the expanded `/investors`
+came later and borrow nothing new: the phase list and the market table are tables and hairlines, both already in
+the system.
 
 ## Patterns taken from the reference
 

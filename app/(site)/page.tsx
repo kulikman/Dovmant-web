@@ -4,7 +4,7 @@ import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { SpecCards } from "@/components/sections/SpecCards";
 import { ThreeUp } from "@/components/sections/ThreeUp";
-import { WearGallery } from "@/components/sections/WearGallery";
+import { ScenarioGallery } from "@/components/sections/ScenarioGallery";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SquareMarker } from "@/components/ui/SquareMarker";
@@ -27,7 +27,7 @@ export default function Home() {
         <div className="px-[var(--gutter)]">
           <SectionHeading text={scenarios.heading} size="h1" className="mb-10 md:mb-16" />
         </div>
-        <WearGallery items={scenarios.items} />
+        <ScenarioGallery items={scenarios.items} />
       </Section>
 
       <Section>

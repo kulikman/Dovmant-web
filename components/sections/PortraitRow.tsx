@@ -9,6 +9,10 @@ const heights: Record<string, string> = {
   short: "h-[220px] md:h-[300px]",
 };
 
+/**
+ * Renders nothing until `about.team.people` has entries — one slot per real
+ * person, by the rule in CLAUDE.md. Kept deliberately, not dead code.
+ */
 export function PortraitRow({ people }: { people: Portrait[] }) {
   return (
     <div

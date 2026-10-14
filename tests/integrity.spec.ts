@@ -1,3 +1,4 @@
+import { readdirSync, readFileSync } from "node:fs";
 import { test, expect } from "@playwright/test";
 import { pages } from "./pages";
 
@@ -121,6 +122,56 @@ test.describe("integrity", () => {
         expect(overflow, `horizontal overflow on ${path} at ${width}px`).toBeLessThanOrEqual(1);
       }
     }
+  });
+
+  const PUBLIC_PAGES = pages.filter((p) => p !== "/styleguide");
+
+  test("no two pages share a hero image", () => {
+    // Read from the source rather than the browser: the hero slot is whatever a
+    // page passes to PageHero, and a static check cannot time out mid-crawl.
+    const owners = new Map<string, string[]>();
+    const root = "app/(site)";
+    const files = readdirSync(root, { recursive: true, encoding: "utf8" }).filter((f) =>
+      f.endsWith("page.tsx"),
+    );
+    for (const file of files) {
+      const src = readFileSync(`${root}/${file}`, "utf8");
+      const match = src.match(/image="([^"]+)"/);
+      if (!match) continue;
+      owners.set(match[1], [...(owners.get(match[1]) ?? []), file]);
+    }
+    const shared = [...owners.entries()]
+      .filter(([, files]) => files.length > 1)
+      .map(([slot, files]) => `${slot}: ${files.join(", ")}`);
+    expect(shared, "pages opening with the same image").toEqual([]);
+  });
+
+  test("no section mixes photography with stand-in artwork", async ({ page }) => {
+    // ImageSlot marks a generated stand-in with data-generated. A real frame beside
+    // a drawing reads as a fault rather than as a style.
+    const mixed: string[] = [];
+    for (const path of PUBLIC_PAGES) {
+      await page.goto(path, { waitUntil: "domcontentloaded" });
+      const bad = await page.locator("main section").evaluateAll((sections) =>
+        sections
+          .filter((s) => {
+            const slots = [...s.querySelectorAll("[data-slot]")];
+            if (slots.length < 2) return false;
+            const generated = new Set(slots.map((el) => el.getAttribute("data-generated") ?? "no"));
+            return generated.size > 1;
+          })
+          .map((s) =>
+            [...s.querySelectorAll("[data-slot]")]
+              .map(
+                (el) =>
+                  `${el.getAttribute("data-slot")}${el.getAttribute("data-generated") ? "*" : ""}`,
+              )
+              .join(" + "),
+          ),
+      );
+      mixed.push(...bad.map((b) => `${path}: ${b}`));
+    }
+    expect(mixed, "sections mixing real images (plain) with artwork (*)").toEqual([]);
   });
 
   test("the accent block is actually painted", async ({ page }) => {

@@ -17,7 +17,7 @@ export function Hero() {
 
         {/* small reference thumbnail, top-left */}
         <div className="order-0 col-span-4 hidden lg:col-span-2 lg:row-start-1 lg:block lg:self-start lg:pt-10">
-          <ImageSlot id="detail-sensors" aspect="4/3" sizes="160px" className="w-[160px]" />
+          <ImageSlot id="detail-hip-actuator" aspect="4/3" sizes="160px" className="w-[160px]" />
         </div>
 
         {/* claim column */}

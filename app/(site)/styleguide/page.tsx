@@ -10,7 +10,7 @@ import { EnquiryForm } from "@/components/sections/EnquiryForm";
 import { FAQAccordion } from "@/components/sections/FAQAccordion";
 import { NumberedSteps } from "@/components/sections/NumberedSteps";
 import { ProductDiagram } from "@/components/sections/ProductDiagram";
-import { StatGrid } from "@/components/sections/StatGrid";
+import { SpecCards } from "@/components/sections/SpecCards";
 
 export const metadata: Metadata = { title: "Styleguide", robots: { index: false, follow: false } };
 
@@ -96,12 +96,13 @@ export default function Styleguide() {
         />
       </Section>
       <Section>
-        {h("Stat grid")}
-        <StatGrid
-          stats={[
-            { value: "[TBD]", label: "[TBD] label", note: "[TBD] note", source: "[TBD]" },
-            { value: "[TBD]", label: "[TBD] label" },
-            { value: "[TBD]", label: "[TBD] label" },
+        {h("Specification cards")}
+        <SpecCards
+          items={[
+            { param: "System mass", value: "5–6 kg" },
+            { param: "Peak hip torque", value: "[TBD] N·m" },
+            { param: "Data export", value: "CSV, HDF5" },
+            { param: "Sync interface", value: "[TBD]" },
           ]}
         />
       </Section>

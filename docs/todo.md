@@ -1,5 +1,8 @@
 # Fix list
 
+**Status: everything that did not depend on an outside answer is done** — §2, §3, §4 in full, and 1.1 and 1.3
+from §1. What remains needs a shoot, a re-render or an answer. 280 checks pass.
+
 Found by reading the repository and the current build, not by guesswork. Ordered by what it costs us to leave
 alone. Size: **S** under an hour · **M** half a day · **L** a day or more.
 "Blocked" means the work cannot start until someone outside this repository answers — see
@@ -9,7 +12,7 @@ alone. Size: **S** under an hour · **M** half a day · **L** a day or more.
 
 ## 1. Visible defects
 
-**1.1 The detail row on `/system` mixes photographs with line drawings.** S
+**1.1 ~~The detail row on `/system` mixes photographs with line drawings.~~ DONE** — the row now shows the two delivered frames only; the other two join it when they are shot.
 Four frames side by side: a real macro of the hip actuator, a drawn schematic, a real macro of the cuff, a drawn
 schematic. The two registers next to each other read as a broken page rather than as a style.
 _Fix now:_ show only the two real frames until the others are shot.
@@ -22,7 +25,7 @@ _Fix now:_ a decision — either drop the gallery to the two or three scenarios 
 keep it and accept the mixed register until the lab shoot.
 _Blocked on:_ the laboratory shoot (14.3 in the brief).
 
-**1.3 `/roadmap` and `/specifications` share the same hero image.** S
+**1.3 ~~`/roadmap` and `/specifications` share the same hero image.~~ DONE** — the roadmap hero is a tighter crop on the belt and hip actuator, and a test now fails if two pages open with the same slot.
 `page-hero-roadmap.webp` is a copy of `page-hero-specifications.webp`. Two pages with an identical hero look
 like a mistake to anyone who moves between them.
 _Fix:_ crop a different angle from the delivered renders, or shoot the slot.
@@ -40,50 +43,50 @@ _No action, recorded so the next person does not add one._
 
 ## 2. Stale documentation
 
-**2.1 `CLAUDE.md` is behind the build.** S
+**2.1 ~~`CLAUDE.md` is behind the build.~~ DONE**
 No `/roadmap` in the page map; the navigation is described as five items when it is seven; "Playwright 188
 checks" when there are 272; the Lighthouse figures predate the real renders and the two new pages.
 
-**2.2 `public/llms.txt` does not know about `/roadmap`.** S
+**2.2 ~~`public/llms.txt` does not know about `/roadmap`.~~ DONE**
 It also still describes `/investors` as a single strip. Language models quote this file; a stale page list comes
 back as a wrong answer about the company.
 
-**2.3 `docs/content-questionnaire.md` says 114 placeholders.** S
+**2.3 ~~`docs/content-questionnaire.md` says 114 placeholders.~~ DONE** — the fixed number is replaced by the command that counts them.
 The roadmap and the expanded investor page added their own, so the count is now higher. Either regenerate the
 number or drop it — a wrong count makes the document look unmaintained.
 
-**2.4 `docs/reference-review.md` predates both new pages.** S
+**2.4 ~~`docs/reference-review.md` predates both new pages.~~ DONE**
 Harmless, but it claims to describe the site as built.
 
 ## 3. Code that no longer earns its place
 
-**3.1 `content/about.ts` still exports `investors`.** S
+**3.1 ~~`content/about.ts` still exports `investors`.~~ DONE**
 The investor copy moved to `content/investors.ts` and nothing imports the old export. Two sources of truth for
 the same page is how a page ends up with last month's wording.
 
-**3.2 `WearGallery` is a name from the deleted version of the site.** S
+**3.2 ~~`WearGallery` is a name from the deleted version of the site.~~ DONE** — now `ScenarioGallery`.
 It renders research scenarios now. Rename to `ScenarioGallery` so the file says what it does.
 
-**3.3 `StatGrid` is only used by the styleguide.** S
+**3.3 ~~`StatGrid` is only used by the styleguide.~~ DONE** — deleted; the styleguide shows `SpecCards`, which replaced it.
 It was the metrics block, which v2 replaced with `SpecCards`. Either delete it or state in the styleguide that
 it is kept deliberately as a pattern.
 
-**3.4 `stripRich` in `lib/rich.ts` is exported and unused.** S
+**3.4 ~~`stripRich` in `lib/rich.ts` is exported and unused.~~ DONE**
 Left over from when headings carried a screen-reader copy. Delete.
 
-**3.5 `PortraitRow` renders nothing until there is a team.** S
+**3.5 ~~`PortraitRow` renders nothing until there is a team.~~ DONE** — a comment in the file says so.
 Correct as written — recorded so nobody deletes it as dead code.
 
 ## 4. Measurement and checks
 
-**4.1 Lighthouse has not been re-run since the real renders and the two new pages landed.** S
+**4.1 ~~Lighthouse has not been re-run.~~ DONE** — five pages measured, figures in `CLAUDE.md`. The home page is 91 with an LCP of 3.5 s simulated, down from 94 and 3.1 s: the photographic hero is heavier than the drawing it replaced.
 The last figures in `CLAUDE.md` are from the build before either. The hero is now a photograph rather than an
 SVG, which changes the picture — probably for the better, but it is unmeasured.
 
-**4.2 No check that a page carries its own hero image.** S
+**4.2 ~~No check that a page carries its own hero image.~~ DONE** — a static check over the page sources.
 1.3 would have been caught by a test asserting that no two pages share a hero slot.
 
-**4.3 No check that real photography and stand-in artwork are not mixed inside one section.** M
+**4.3 ~~No check that real photography and stand-in artwork are not mixed inside one section.~~ DONE** — it immediately caught a third instance: the thumbnail in the hero was still a drawing beside the photograph. The styleguide is exempt, since mixing registers is its job.
 1.1 and 1.2 are the same defect twice. A test over the registry could flag any section whose slots are not all
 delivered or all pending.
 

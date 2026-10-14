@@ -61,11 +61,11 @@ export default function SystemPage() {
       </Section>
 
       <Section>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          <ImageSlot id="detail-hip-actuator" aspect="1/1" sizes="(min-width:768px) 23vw, 48vw" />
-          <ImageSlot id="detail-sensors" aspect="1/1" sizes="(min-width:768px) 23vw, 48vw" />
-          <ImageSlot id="detail-fit-straps" aspect="1/1" sizes="(min-width:768px) 23vw, 48vw" />
-          <ImageSlot id="sync-port-detail" aspect="1/1" sizes="(min-width:768px) 23vw, 48vw" />
+        {/* Only delivered frames go here. detail-sensors and sync-port-detail join
+            the row once they are shot — a photograph beside a drawing reads as a fault. */}
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+          <ImageSlot id="detail-hip-actuator" aspect="1/1" sizes="(min-width:768px) 46vw, 100vw" />
+          <ImageSlot id="detail-fit-straps" aspect="1/1" sizes="(min-width:768px) 46vw, 100vw" />
         </div>
       </Section>
 

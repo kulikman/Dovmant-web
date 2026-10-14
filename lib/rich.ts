@@ -17,5 +17,3 @@ export function parseRich(input: string): Seg[][] {
     return segs;
   });
 }
-
-export const stripRich = (s: string) => s.replace(/[{}~]/g, "").replace(/\n/g, " ");

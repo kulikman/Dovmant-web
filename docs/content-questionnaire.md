@@ -1,6 +1,7 @@
 # Content questionnaire
 
-Every `[TBD]` in the pages already built, as a question. 114 placeholders, grouped by who can answer them.
+Every `[TBD]` in the pages already built, as a question, grouped by who can answer them. The count moves as
+pages are added — `grep -ro "\[TBD" content | wc -l` gives today's figure.
 For the whole picture — positioning, safety, regulatory, integration, infrastructure, launch — see
 `docs/site-brief-questions.md`; this file is the subset that blocks the current build.
 Each line says where the answer lands, so a filled-in copy of this file can be applied directly.
