@@ -10,6 +10,7 @@ export const pages = [
   "/roadmap",
   "/news",
   "/research-use",
+  "/accessibility",
   "/privacy",
   "/terms",
   "/cookies",

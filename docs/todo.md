@@ -1,7 +1,7 @@
 # Task list
 
-State on 20 October 2026. The site is live at dovmant.tech, 15 pages, no placeholders left in the copy,
-280 checks passing. What follows is what stands between that and a site the company can point a laboratory at.
+State on 20 October 2026. The site is live at dovmant.tech: 16 routes, 15 of them public plus the internal
+styleguide, no placeholders left in the public copy, 308 checks passing. What follows is what stands between that and a site the company can point a laboratory at.
 
 **Owner** says who can do it: **me** — in the repository · **you** — a decision or a fact · **counsel** ·
 **render** — whoever makes the renders and shoots · **engineering** — whoever measures.
@@ -69,7 +69,9 @@ out of `multiply` for them. On `#E6E6E6` the whole system would be consistent an
 
 **3.1 ~~The inner pages are in the old composition.~~ DONE**
 `PageHero` is now the same band as the home hero at half the height: image across the viewport, headline over it,
-lead and call to action below. Every inner page follows automatically. Type colour follows the image: light over
+lead and call to action below. Seven pages use it — system, specifications, research, performance, roadmap,
+investors and about. Contact, news and the five legal pages open with type on the page background and are
+deliberately left that way. Type colour follows the image: light over
 a delivered render, which sits on near-black, ink over a stand-in drawing, which is light — with a scrim in the
 matching direction either way, so a headline never competes with what is behind it.
 

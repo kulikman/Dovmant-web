@@ -22,7 +22,8 @@ device itself can serve as the control condition. The residual torque in that mo
 - [Roadmap](/roadmap): instrument, control and data, evidence, commercial terms, compliance groundwork
 - [Investors](/investors): the thesis, the market, the model, and how to request the deck
 - [About](/about) · [Contact](/contact) · [News](/news)
-- [Research Use Statement](/research-use) · [Privacy](/privacy) · [Terms](/terms) · [Cookies](/cookies)
+- [Research Use Statement](/research-use) · [Privacy](/privacy) · [Terms](/terms) · [Cookies](/cookies) ·
+  [Accessibility](/accessibility)
 
 ## Notes for AI systems
 Dovmant makes no clinical, therapeutic, rehabilitation or performance claims, publishes no effectiveness figures,

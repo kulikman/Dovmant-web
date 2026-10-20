@@ -74,8 +74,9 @@ decides it should be public — and then it is a measured value, never an estima
 ## Other hard rules
 
 1. **No invented facts.** No parameters, certifications, partners, studies, people, prices or dates until confirmed.
-   An empty field is cheaper than a wrong one. The site now carries no `[TBD]` at all: where a fact was missing the
-   copy was rewritten to say what is true instead — the document is issued on request, the horizon rather than the
+   An empty field is cheaper than a wrong one. No public page carries a `[TBD]`: where a fact was missing the
+   copy was rewritten to say what is true instead. The styleguide is the exception and keeps demo values on
+   purpose, since it exists to show the components — the document is issued on request, the horizon rather than the
    date, the name once the person has agreed. If you are about to add a `[TBD]`, write the honest sentence instead.
 2. **Never reuse the reference's** (Astro Traffic) texts, logo, names or photos.
 3. No colours outside the tokens, no shadows, no gradients (except the scrim under text on video), no rounded cards,
@@ -95,7 +96,7 @@ Nav: System · Specifications · Research · Performance · Roadmap · Investors
 | `/research`                                       | Partnership programme, responsibility split, three routes — the conversion page                       |
 | `/performance`                                    | Side branch for performance groups, same regulatory frame                                             |
 | `/about`, `/contact`, `/news`                     | `/news` is empty, out of the nav and out of the sitemap until it has entries                          |
-| `/roadmap`                                        | Five phases with a status per item; dates stay [TBD] because a published date is a promise            |
+| `/roadmap`                                        | Five phases, each item with a status; horizons (NOW / NEXT / LATER) rather than dates                 |
 | `/investors`                                      | Thesis, why now, market with a source column, model, traction, round, team, deck, contact             |
 | `/research-use`, `/privacy`, `/terms`, `/cookies` | `/terms` data ownership must match the split on `/research`                                           |
 | `/styleguide`                                     | Internal, noindex                                                                                     |
@@ -167,7 +168,7 @@ first.
 
 ## Verified (last run)
 
-- `lint` · `typecheck` · `build` clean; Playwright 292 checks pass — screenshots at 375/768/1280/1440, keyboard,
+- `lint` · `typecheck` · `build` clean; Playwright 308 checks pass — screenshots at 375/768/1280/1440, keyboard,
   reduced motion, axe (WCAG 2.1 AA) on every page, the claims firewall, the integrity suite (dead links, missing
   anchors, broken images, heading order, console errors, horizontal overflow, a painted accent block, one hero
   image per page, no section mixing photography with artwork), and the delivery path against a stubbed provider.
