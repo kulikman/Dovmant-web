@@ -51,10 +51,12 @@ export default function Home() {
           {scenarios.items.map((s, i) => (
             <Reveal as="li" key={s.title} index={i}>
               <div className="grid grid-cols-12 items-baseline gap-x-6 gap-y-2 border-b border-line py-6 transition-colors hover:bg-surface-300/60">
-                <span className="display col-span-2 text-step-no font-light text-accent md:col-span-1">
+                <span className="display col-span-3 text-step-no font-light text-accent md:col-span-2 lg:col-span-1">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="display col-span-10 text-step md:col-span-5">{s.title}</h3>
+                <h3 className="display col-span-9 text-step md:col-span-4 lg:col-span-5">
+                  {s.title}
+                </h3>
                 <p className="col-span-12 max-w-[52ch] text-[16px] leading-6 text-ink-muted md:col-span-6">
                   {s.text}
                 </p>
@@ -68,7 +70,7 @@ export default function Home() {
         <div className="grid grid-cols-12 gap-x-6 gap-y-8">
           <div className="col-span-12 flex flex-col gap-6 md:col-span-5">
             <SquareMarker tone="accent" />
-            <SectionHeading text={specNote.heading} size="h1" />
+            <SectionHeading text={specNote.heading} size="h2" />
           </div>
           <div className="col-span-12 md:col-span-7">
             <p className="max-w-[52ch] text-[20px] leading-[26px]">{specNote.text}</p>
@@ -83,7 +85,7 @@ export default function Home() {
         <div className="grid grid-cols-12 gap-x-6 gap-y-8">
           <div className="col-span-12 flex flex-col gap-6 md:col-span-5">
             <SquareMarker tone="accent" />
-            <SectionHeading text={programme.heading} size="h1" />
+            <SectionHeading text={programme.heading} size="h2" />
           </div>
           <div className="col-span-12 md:col-span-7">
             <p className="max-w-[52ch] text-[20px] leading-[26px]">{programme.text}</p>

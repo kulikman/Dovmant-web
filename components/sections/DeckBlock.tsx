@@ -17,7 +17,7 @@ export function DeckBlock({ id = "deck" }: { id?: string }) {
       <div className="grid grid-cols-12 gap-x-6 gap-y-10">
         <div className="col-span-12 flex flex-col gap-6 md:col-span-5">
           <SquareMarker tone="accent" size={16} />
-          <SectionHeading text={heading} size="h1" />
+          <SectionHeading text={heading} size="h2" />
           <p className="max-w-[40ch] text-[16px] leading-6 text-ink-muted">{text}</p>
         </div>
         <div className="col-span-12 md:col-span-7">

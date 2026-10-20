@@ -52,7 +52,7 @@ export default function InvestorsPage() {
       <Section>
         <div className="grid grid-cols-12 gap-x-6 gap-y-8">
           <div className="col-span-12 md:col-span-5">
-            <SectionHeading text={inv.market.heading} size="h1" />
+            <SectionHeading text={inv.market.heading} size="h2" />
           </div>
           <p className="col-span-12 max-w-[56ch] text-[20px] leading-[26px] md:col-span-7">
             {inv.market.text}
@@ -84,7 +84,7 @@ export default function InvestorsPage() {
       <Section>
         <div className="grid grid-cols-12 gap-x-6 gap-y-8">
           <div className="col-span-12 md:col-span-5">
-            <SectionHeading text={inv.round.heading} size="h1" />
+            <SectionHeading text={inv.round.heading} size="h2" />
           </div>
           <p className="col-span-12 max-w-[52ch] text-[20px] leading-[26px] md:col-span-7">
             {inv.round.text}
@@ -95,7 +95,7 @@ export default function InvestorsPage() {
       <Section>
         <div className="grid grid-cols-12 gap-x-6 gap-y-8">
           <div className="col-span-12 md:col-span-5">
-            <SectionHeading text={inv.team.heading} size="h1" />
+            <SectionHeading text={inv.team.heading} size="h2" />
           </div>
           <div className="col-span-12 md:col-span-7">
             <p className="max-w-[52ch] text-[20px] leading-[26px]">{inv.team.text}</p>
@@ -111,7 +111,7 @@ export default function InvestorsPage() {
       <Section id="contact">
         <div className="grid grid-cols-12 gap-x-6 gap-y-10">
           <div className="col-span-12 flex flex-col gap-6 md:col-span-5">
-            <SectionHeading text={inv.contact.heading} size="h1" />
+            <SectionHeading text={inv.contact.heading} size="h2" />
             <p className="max-w-[40ch] text-[20px] leading-[26px]">{inv.contact.text}</p>
             <Link href="/roadmap" className="link w-fit text-[15px]">
               See the roadmap →

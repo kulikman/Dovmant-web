@@ -55,7 +55,7 @@ export default function PerformancePage() {
       <Section id="evaluation">
         <div className="grid grid-cols-12 gap-x-6 gap-y-10">
           <div className="col-span-12 flex flex-col gap-6 md:col-span-5">
-            <SectionHeading text={p.cta.heading} size="h1" />
+            <SectionHeading text={p.cta.heading} size="h2" />
             <p className="max-w-[40ch] text-[20px] leading-[26px]">{p.cta.text}</p>
           </div>
           <div className="col-span-12 md:col-span-7">

@@ -69,7 +69,7 @@ export default function SpecificationsPage() {
         <div className="grid grid-cols-12 gap-x-6 gap-y-10">
           <div className="col-span-12 flex flex-col gap-6 md:col-span-5">
             <SquareMarker tone="accent" size={16} />
-            <SectionHeading text={spec.grants.heading} size="h1" />
+            <SectionHeading text={spec.grants.heading} size="h2" />
             <p className="max-w-[42ch] text-[20px] leading-[26px]">{spec.grants.text}</p>
             <p className="max-w-[42ch] text-[13px] leading-[18px] text-ink-muted">
               {spec.grants.note}

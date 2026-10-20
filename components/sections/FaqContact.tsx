@@ -23,13 +23,13 @@ export function FaqContact() {
       <Section id="evaluation">
         <div className="grid grid-cols-12 gap-x-6 gap-y-10">
           <SquareMarker tone="accent" size={16} className="col-span-12 md:hidden" />
-          <p className="col-span-12 max-w-[30ch] text-[13px] leading-[18px] md:col-span-3 md:self-center">
+          <p className="col-span-12 max-w-[30ch] text-[13px] leading-[18px] lg:col-span-3 lg:self-center">
             {contact.text}
           </p>
-          <div className="col-span-12 md:col-span-4">
+          <div className="col-span-12 md:col-span-5 lg:col-span-4">
             <SectionHeading text={contact.heading} size="h1" stepped />
           </div>
-          <div className="col-span-12 md:col-span-5">
+          <div className="col-span-12 md:col-span-7 lg:col-span-5">
             <EnquiryForm kind="home-evaluation" />
           </div>
         </div>
