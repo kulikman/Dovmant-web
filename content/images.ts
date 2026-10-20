@@ -33,6 +33,14 @@ const s = (
 ): ImageSlotDef => ({ src: null, art: null, alt, aspect, description, page, framing, priority });
 
 export const images = {
+  "hero-band": s(
+    "/",
+    "16/9",
+    "The Dovmant exoskeleton, side view",
+    "Wide hero band: the device alone, side view, on its own dark ground",
+    "Landscape frame with space to the left for the wordmark. Deliver at 2400 px wide",
+    1,
+  ),
   "hero-render": s(
     "/",
     "3/4",
@@ -223,6 +231,7 @@ export type ImageSlotId = keyof typeof images;
 
 // Real renders delivered so far. Everything else still falls back to the artwork.
 const delivered = [
+  "hero-band",
   "hero-render",
   "device-standalone",
   "page-hero-system",

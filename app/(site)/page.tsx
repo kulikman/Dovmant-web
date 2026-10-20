@@ -3,7 +3,10 @@ import { FaqContact } from "@/components/sections/FaqContact";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { ThreeUp } from "@/components/sections/ThreeUp";
-import { ScenarioGallery } from "@/components/sections/ScenarioGallery";
+import { TwoCards } from "@/components/sections/TwoCards";
+import { ImageSlot } from "@/components/media/ImageSlot";
+import { FullBleed } from "@/components/media/FullBleed";
+import { Reveal } from "@/components/motion/Reveal";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SquareMarker } from "@/components/ui/SquareMarker";
@@ -14,18 +17,51 @@ export default function Home() {
     <>
       <Hero />
 
+      <Section className="pt-0">
+        <TwoCards />
+      </Section>
+
       <Section>
         <SectionHeading text={claims.heading} size="h1" className="mb-10 md:mb-16" />
         <ThreeUp items={claims.items} />
       </Section>
 
+      {/* the macros are the closest thing we have to the hardware itself */}
+      <Section bleed className="py-0">
+        <FullBleed>
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            <ImageSlot id="detail-hip-actuator" aspect="4/3" sizes="50vw" />
+            <ImageSlot id="detail-fit-straps" aspect="4/3" overlay="bottom-third" sizes="50vw" />
+          </div>
+        </FullBleed>
+      </Section>
+
       <HowItWorks />
 
-      <Section bleed>
-        <div className="px-[var(--gutter)]">
-          <SectionHeading text={scenarios.heading} size="h1" className="mb-10 md:mb-16" />
+      <Section>
+        <div className="grid grid-cols-12 gap-x-6 gap-y-8">
+          <div className="col-span-12 md:col-span-5">
+            <SectionHeading text={scenarios.heading} size="h1" />
+          </div>
+          <p className="col-span-12 max-w-[52ch] text-[16px] leading-6 text-ink-muted md:col-span-7">
+            {scenarios.lead}
+          </p>
         </div>
-        <ScenarioGallery items={scenarios.items} />
+        <ol className="mt-10 border-t border-line md:mt-16">
+          {scenarios.items.map((s, i) => (
+            <Reveal as="li" key={s.title} index={i}>
+              <div className="grid grid-cols-12 items-baseline gap-x-6 gap-y-2 border-b border-line py-6 transition-colors hover:bg-surface-300/60">
+                <span className="display col-span-2 text-step-no font-light text-accent md:col-span-1">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="display col-span-10 text-step md:col-span-5">{s.title}</h3>
+                <p className="col-span-12 max-w-[52ch] text-[16px] leading-6 text-ink-muted md:col-span-6">
+                  {s.text}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </ol>
       </Section>
 
       <Section>

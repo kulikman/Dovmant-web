@@ -15,6 +15,10 @@ type Props = {
   still?: boolean;
   /** overlay paints with the server HTML (above the fold) */
   overlayImmediate?: boolean;
+  /** where the crop sits when the frame is a different shape to the file */
+  objectPosition?: string;
+  /** contain keeps the whole device in frame; the file's own black ground fills the rest */
+  fit?: "cover" | "contain";
 };
 
 export function ImageSlot({
@@ -27,6 +31,8 @@ export function ImageSlot({
   className,
   still,
   overlayImmediate,
+  objectPosition,
+  fit = "cover",
 }: Props) {
   const def = images[id];
   const file = slotFile(def);
@@ -47,8 +53,10 @@ export function ImageSlot({
           sizes={sizes}
           priority={priority}
           unoptimized={file.endsWith(".svg")}
+          style={objectPosition ? { objectPosition } : undefined}
           className={cn(
-            "bw object-cover",
+            "bw",
+            fit === "contain" ? "object-contain" : "object-cover",
             !still &&
               "transition-transform duration-500 ease-[var(--ease-out)] group-hover:scale-[1.02]",
           )}

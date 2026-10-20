@@ -118,12 +118,25 @@ FAQ 24/30 · body 16/24 · small 13/18 · nav 15/20 · label 12/16.
 Spacing 8/16/24/40/48/96; gutters 16 mobile / 40 desktop; section 48 / 96; 12-col grid, max 1440.
 Radius 0 everywhere; 999px buttons only; 24px only for the footer panel.
 
+## Image bands
+
+The renders are the strongest thing the site has, so they carry it. `FullBleed` breaks a section out of the 1440
+container to the viewport width; the home hero is one of those bands, with the wordmark, the claim and the two
+buttons over it and a left-to-right scrim keeping the type legible.
+
+The delivered renders sit on their own near-black ground. A wide band is therefore **composed**, not cropped:
+`hero-band` was built by placing the side view on a canvas filled with the render's own background colour, so the
+device is whole and nothing is upscaled. Cropping a 3/4 render into a wide band lands on a bare torso — check the
+crop before trusting `object-cover`.
+
 ## Style rules
 
 - Exactly one accent word group per headline. Max two weights per headline.
 - A 12–16px solid square marker opens text blocks and marks section corners. Squares only.
 - Photos B&W (`grayscale(1)`); colour only from one `accent-overlay` block over the lower third to half.
   One overlay per section.
+- A heading that must be visible above the fold uses `immediate` (CSS), not the scroll reveal. The
+  `whileInView` path has twice failed to fire for a specific block and left it clipped at `translateY(105%)`.
 - Rows separated by hairlines, not boxes. Form fields = label + underline. Links are underlined text.
 - Motion: reveal fade+24px 400ms `cubic-bezier(.22,1,.36,1)`, 60ms stagger, once; overlays scaleY from the bottom
   600ms; headlines line by line 500ms/80ms; hover = underline, row tint, image 1.02. All off under

@@ -9,6 +9,26 @@ export const hero = {
 };
 
 /** Three claims — the lab-facing argument, in place of audience segments. */
+/** Two large cards: the instrument, and the way it reaches a laboratory. */
+export const paths = {
+  items: [
+    {
+      title: "The system",
+      text: "Four layers, each open where it matters: sensing you can read, control you can rewrite, actuation you can measure, data you can take with you.",
+      href: "/system",
+      image: "page-hero-system" as ImageSlotId,
+      overlay: true,
+    },
+    {
+      title: "Research partnerships",
+      text: "We place instruments with laboratories and get out of the way. You write the protocol, hold the approval, own the data and publish.",
+      href: "/research",
+      image: "device-standalone" as ImageSlotId,
+      overlay: false,
+    },
+  ],
+};
+
 export const claims = {
   heading: "BUILT FOR THE {LAB}",
   items: [
@@ -55,29 +75,27 @@ export const how = {
 
 export const scenarios = {
   heading: "RESEARCH {SCENARIOS}",
+  lead: "What laboratories are setting up with it. Photographs follow as the first sessions are recorded — we would rather show an empty row than a scene we staged.",
   items: [
     {
-      id: "lab-gait-trial" as ImageSlotId,
-      caption:
-        "Overground gait — walking trials across a force-plate runway, device in transparent mode and under assistance.",
-      overlay: true,
+      title: "Overground gait",
+      text: "Walking trials across a force-plate runway, in transparent mode and under assistance.",
     },
     {
-      id: "incline-trial" as ImageSlotId,
-      caption: "Incline and stairs — controlled elevation work where joint moments are highest.",
+      title: "Incline and stairs",
+      text: "Controlled elevation work, where joint moments are highest.",
     },
     {
-      id: "loaded-trial" as ImageSlotId,
-      caption: "Loaded locomotion — carriage tasks with added external load.",
+      title: "Loaded locomotion",
+      text: "Carriage tasks with an added external load.",
     },
     {
-      id: "sprint-trial" as ImageSlotId,
-      caption:
-        "Sprint and change of direction — high-rate movement where control latency is the limiting factor.",
+      title: "Sprint and change of direction",
+      text: "High-rate movement, where control latency is the limiting factor.",
     },
     {
-      id: "transparent-mode" as ImageSlotId,
-      caption: "Extended-duration protocols — multi-hour sessions for fatigue and metabolic work.",
+      title: "Extended-duration protocols",
+      text: "Multi-hour sessions for fatigue and metabolic work.",
     },
   ],
 };
