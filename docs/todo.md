@@ -38,7 +38,11 @@ off. The pages remain reachable by direct link, which is what you asked for.
 **1.3 ~~`ANTHROPIC_API_KEY` sits in the Vercel project.~~ CLOSED · kept at your request**
 Left in place. It is not read by this site.
 
-## 2. Imagery
+## 2. Imagery — all of it is outside the repository
+
+Nothing here can be closed by me. `docs/shot-list.md` is current: 11 slots delivered, 13 outstanding, each with
+its page, aspect, framing and priority. The brief now also states what a wide frame needs and why a neutral-grey
+background would be better, which were the two things it was missing.
 
 **2.1 Six drawn placeholders are visible on live pages.** M · render
 Thirteen of twenty-four slots are still stand-in drawings; six of them render: one each on `/system`,

@@ -13,6 +13,13 @@ accent block added in code. Deliver at least 2× the displayed size — 2400 px 
 
 File location: `/public/images/<slot-id>.webp` (or `.jpg`), then set `src` in `content/images.ts`.
 
+**Wide frames need wide files.** `hero-band` is 16/9 and spans the viewport: deliver it rendered at that
+shape, 2400 px wide, with the device to the right of centre and empty ground on the left for the wordmark.
+The current file was composed by hand from a 3/4 render, which works but cannot be re-cropped.
+
+**Backgrounds.** The delivered renders sit on near-black. On a light page that forces the accent block out of
+`multiply` and reads heavy. Rendering the same angles on neutral grey `#E6E6E6` would remove both problems.
+
 Until a real file exists each slot shows generated stand-in artwork from `/public/images/art/<slot-id>.svg`
 (`npm run art`) — technical line illustrations, there so the layout can be judged. They are placeholders and are
 replaced the moment `src` is set.
