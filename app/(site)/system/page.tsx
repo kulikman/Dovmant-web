@@ -72,33 +72,19 @@ export default function SystemPage() {
       <Section>
         <SectionHeading text={system.data.heading} size="h1" className="mb-8" />
         <p className="mb-10 max-w-[52ch] text-[20px] leading-[26px]">{system.data.text}</p>
-        <table className="w-full border-t border-line text-left text-[16px] leading-6">
-          <thead>
-            <tr className="border-b border-line text-[12px] leading-4 text-ink-muted uppercase">
-              {system.data.columns.map((c) => (
-                <th key={c} scope="col" className="py-3 pr-4 font-medium">
-                  {c}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {system.data.rows.map((row, i) => (
-              <tr
-                key={i}
-                className="border-b border-line transition-colors hover:bg-surface-300/60"
-              >
-                {row.map((cell, j) => (
-                  <td key={j} className={j === 0 ? "py-4 pr-4" : "py-4 pr-4 text-ink-muted"}>
-                    {cell}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <ul className="border-t border-line">
+          {system.data.logged.map((channel) => (
+            <li
+              key={channel}
+              className="flex items-center gap-4 border-b border-line py-4 text-[16px] leading-6 transition-colors hover:bg-surface-300/60"
+            >
+              <SquareMarker size={12} />
+              {channel}
+            </li>
+          ))}
+        </ul>
         <Link href="/specifications" className="link mt-10 inline-block text-[20px] leading-[26px]">
-          See the full specification →
+          Request the specification →
         </Link>
       </Section>
     </>

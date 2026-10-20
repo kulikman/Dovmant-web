@@ -11,7 +11,7 @@ import { about as a } from "@/content/about";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Who we are and why we are building an exoskeleton meant to be measured. Denver, Colorado.",
+    "Who we are and why we are building an exoskeleton meant to be measured. Centennial, Colorado.",
 };
 
 export default function AboutPage() {

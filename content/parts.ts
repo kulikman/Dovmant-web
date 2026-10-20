@@ -5,18 +5,20 @@ export const parts: { id: PartId; label: string; description: string; planned?: 
   {
     id: "control",
     label: "Control unit",
-    description: "Real-time loop at [TBD] Hz. Profiles loaded over [TBD].",
+    description:
+      "Runs the torque profile on a real-time loop and records what it commanded. Loop rate and latency are in the specification.",
   },
   {
     id: "sensors",
     label: "Sensor array",
-    description: "[TBD] — sensor types, axes and sampling rate.",
+    description:
+      "Reads joint state and interaction forces along the leg. Sensor types, axes and rates are in the specification.",
   },
   {
     id: "hip",
     label: "Hip actuator",
     description:
-      "[TBD] N·m peak, [TBD] N·m continuous. Commanded and measured torque are both logged.",
+      "Actuation at the hip. Commanded and measured torque are both logged, and the gap between them is itself a measurement.",
   },
   {
     id: "knee",
@@ -28,16 +30,18 @@ export const parts: { id: PartId; label: string; description: string; planned?: 
   {
     id: "battery",
     label: "Battery",
-    description: "[TBD] Wh, [TBD] h runtime, hot-swappable [TBD].",
+    description: "Carried on the belt. Capacity, runtime and charge time are in the specification.",
   },
   {
     id: "fit",
     label: "Structure and fit",
-    description: "Adjustable over [TBD] segment lengths. Donning time [TBD].",
+    description:
+      "Belt and thigh cuffs adjust to the participant. The fitting range is in the specification.",
   },
   {
     id: "sync",
     label: "Sync port",
-    description: "[TBD] — trigger type and connector.",
+    description:
+      "Hardware trigger for alignment with capture systems. Connector and timing accuracy are in the specification.",
   },
 ];

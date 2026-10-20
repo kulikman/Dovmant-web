@@ -9,13 +9,15 @@ export function StructuredData() {
   const data = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: site.name,
+    name: "Dovmant LLC",
     url: site.url,
     description:
       "Dovmant builds a programmable lower-limb exoskeleton for locomotion research, supplied to biomechanics and performance laboratories.",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Denver",
+      streetAddress: "9300 E Mineral Ave, Suite 318",
+      postalCode: "80112",
+      addressLocality: "Centennial",
       addressRegion: "CO",
       addressCountry: "US",
     },

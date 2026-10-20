@@ -34,7 +34,7 @@ export const how = {
   steps: [
     {
       title: "Sensing",
-      note: "Onboard sensors sample joint state and interaction forces at [TBD] Hz.",
+      note: "Onboard sensors read joint state and interaction forces continuously, and every channel is logged.",
       part: "sensors",
     },
     {
@@ -44,7 +44,7 @@ export const how = {
     },
     {
       title: "Actuation",
-      note: "[TBD] N·m peak at the hip. Total system mass 5–6 kg. A knee module is in development and is not part of the current device.",
+      note: "Actuation at the hip, with commanded and measured torque both recorded. A knee module is in development and is not part of the current device.",
       part: "hip",
     },
     {
@@ -84,20 +84,14 @@ export const scenarios = {
   ],
 };
 
-/** Engineering parameters in place of effectiveness figures. */
-export const specHighlights = {
-  heading: "THE {NUMBERS} THAT MATTER",
-  items: [
-    { param: "System mass", value: "5–6 kg" },
-    { param: "Peak hip torque", value: "[TBD] N·m" },
-    { param: "Residual torque, transparent mode", value: "[TBD] N·m" },
-    { param: "Control loop rate", value: "[TBD] Hz" },
-    { param: "Sensor sampling rate", value: "[TBD] Hz" },
-    { param: "Battery runtime", value: "[TBD] h" },
-    { param: "Data export", value: "CSV, HDF5" },
-    { param: "Sync interface", value: "[TBD]" },
-  ],
-  link: { label: "Full specification sheet", href: "/specifications" },
+/**
+ * No parameters on the site: at this stage they are the work itself, and the
+ * document goes to a named institution rather than to an open page.
+ */
+export const specNote = {
+  heading: "THE {SPECIFICATION}",
+  text: "Peak and continuous torque, loop rate, latency, the telemetry schema, battery and the participant limits are all measured and written down. They are shared with laboratories considering an evaluation, in a document you can attach to a grant application — not published here.",
+  link: { label: "What the document covers", href: "/specifications" },
 };
 
 export const programme = {
@@ -125,7 +119,7 @@ export const faq = {
     },
     {
       q: "What data comes out of it?",
-      a: "Timestamped joint state, commanded and measured torque, and interaction forces, exported as CSV and HDF5. Full schema in the specification sheet.",
+      a: "Timestamped joint state, commanded and measured torque, and interaction forces, exported as CSV and HDF5. The full channel schema is in the specification we send you.",
     },
     {
       q: "Does it synchronise with our capture system?",
@@ -137,7 +131,7 @@ export const faq = {
     },
     {
       q: "What does it cost and how long is delivery?",
-      a: "[TBD]. Price, lead time and warranty terms are on the specification sheet so they can go straight into a grant budget.",
+      a: "Price, lead time and warranty are quoted to your institution in writing, in a form that goes straight into a grant budget. Ask and we will send it.",
     },
     {
       q: "Do you help with instrumentation grant applications?",

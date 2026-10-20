@@ -27,7 +27,7 @@ export const roadmap = {
         },
         {
           title: "Bench characterisation",
-          note: "[TBD] Torque, latency and residual torque measured and published in the specification.",
+          note: "Torque, latency and residual torque measured on the bench and written into the specification we issue.",
           status: "planned",
         },
         {
@@ -44,12 +44,12 @@ export const roadmap = {
       items: [
         {
           title: "Torque profiles",
-          note: "[TBD] Profile format and the interface for loading them.",
+          note: "Profile format and the interface a researcher writes against.",
           status: "active",
         },
         {
           title: "Telemetry schema",
-          note: "[TBD] Channels, units and rates, published in full.",
+          note: "Channels, units and rates documented in full for the laboratories we work with.",
           status: "planned",
         },
         {
@@ -93,7 +93,7 @@ export const roadmap = {
       items: [
         {
           title: "Specification and quotation",
-          note: "[TBD] Published parameters, price, lead time and warranty.",
+          note: "Specification, price, lead time and warranty, issued to a named institution.",
           status: "active",
         },
         {

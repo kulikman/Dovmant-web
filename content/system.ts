@@ -22,17 +22,19 @@ export const system = {
   },
   control: {
     heading: "WRITE YOUR {OWN}",
-    text: "Control profiles are not a menu. Define torque as a function of gait phase, load it over [TBD], run it, and the device records what it commanded alongside what it delivered. The gap between the two is itself a measurement.",
-    note: "[TBD: name the interface — API, SDK, language, profile file format — and link the documentation or the repository once it exists.]",
+    text: "Control profiles are not a menu. Define torque as a function of gait phase, load it onto the controller, run it, and the device records what it commanded alongside what it delivered. The gap between the two is itself a measurement.",
+    note: "The interface, the profile format and the documentation go to laboratories with the specification.",
   },
   data: {
     heading: "OPEN BY {DEFAULT}",
-    text: "Every channel the device logs, with its unit and rate. This table is filled from the real telemetry schema.",
-    columns: ["Field", "Unit", "Rate", "Description"],
-    rows: [
-      ["[TBD]", "[TBD]", "[TBD]", "[TBD]"],
-      ["[TBD]", "[TBD]", "[TBD]", "[TBD]"],
-      ["[TBD]", "[TBD]", "[TBD]", "[TBD]"],
-    ] as string[][],
+    text: "Every channel the device logs is exported in open formats — CSV and HDF5 — with a hardware trigger for alignment against your capture system. What is logged, in what unit and at what rate, is listed channel by channel in the specification we send you.",
+    logged: [
+      "Joint angle and joint state",
+      "Commanded torque",
+      "Measured torque",
+      "Interaction forces at the cuffs",
+      "Mode, profile identifier and every change to either",
+      "Session timestamps aligned to the trigger",
+    ],
   },
 };

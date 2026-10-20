@@ -4,13 +4,13 @@ export const site = {
   tagline:
     "Programmable lower-limb exoskeleton for locomotion research. Open telemetry, controllable torque, transparent mode.",
   heroNote:
-    "Built for biomechanics laboratories and the research arms of performance centres. Based in Denver, Colorado.",
-  location: "Denver, Colorado",
-  address: "[TBD] Street address, Denver, Colorado, USA",
+    "Built for biomechanics laboratories and the research arms of performance centres. Based in Colorado.",
+  location: "Centennial, Colorado",
+  address: "Dovmant LLC, 9300 E Mineral Ave, Suite 318, Centennial, CO 80112, USA",
   /** One mailbox for everything until the company splits them. */
   email: "info@dovmant.tech",
   linkedin: "https://www.linkedin.com/company/dovmant",
-  legalEntity: "[TBD] Legal entity name, Denver, Colorado",
+  legalEntity: "Dovmant LLC, Centennial, Colorado.",
   /** Flip on once the files in /public/video exist (see docs/shot-list.md). */
   heroVideo: process.env.NEXT_PUBLIC_HERO_VIDEO === "1",
   filmVideo: process.env.NEXT_PUBLIC_FILM_VIDEO === "1",

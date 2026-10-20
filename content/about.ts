@@ -1,6 +1,6 @@
 export const about = {
   title: "WHY WE BUILD {THIS}",
-  lead: "Dovmant builds a programmable lower-limb exoskeleton for locomotion research. We are based in Denver, Colorado.",
+  lead: "Dovmant builds a programmable lower-limb exoskeleton for locomotion research. We are based in Centennial, Colorado, on the Front Range.",
   mission: {
     heading: "THE {MISSION}",
     text: "Human locomotion is studied with instruments that either measure without intervening or intervene without measuring. We are building one that does both, and we are building it to be opened, programmed and argued with rather than trusted.",
@@ -24,7 +24,7 @@ export const about = {
   },
   location: {
     heading: "WHERE WE {ARE}",
-    text: "Denver, Colorado. For laboratories and performance groups along the Front Range, that means we can bring a unit to you.",
+    text: "Centennial, Colorado. For laboratories and performance groups along the Front Range, that means we can bring a unit to you.",
   },
   careers: {
     heading: "CAREERS",
@@ -46,7 +46,7 @@ export const contactPage = {
       text: "Grants offices and purchasing. We supply a formal quotation, a letter of support on availability and lead time, and supplier registration details.",
       details: [
         ["Email", "info@dovmant.tech"],
-        ["Legal entity", "[TBD] Legal entity name, Denver, Colorado"],
+        ["Legal entity", "Dovmant LLC, Centennial, Colorado"],
         ["W-9", "Available on request"],
         ["EIN / UEI / SAM", "[TBD] registration details"],
       ] as [string, string][],

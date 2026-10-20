@@ -2,13 +2,12 @@ import Link from "next/link";
 import { FaqContact } from "@/components/sections/FaqContact";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { SpecCards } from "@/components/sections/SpecCards";
 import { ThreeUp } from "@/components/sections/ThreeUp";
 import { ScenarioGallery } from "@/components/sections/ScenarioGallery";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SquareMarker } from "@/components/ui/SquareMarker";
-import { claims, investorStrip, programme, scenarios, specHighlights } from "@/content/home";
+import { claims, investorStrip, programme, scenarios, specNote } from "@/content/home";
 
 export default function Home() {
   return (
@@ -31,14 +30,18 @@ export default function Home() {
       </Section>
 
       <Section>
-        <SectionHeading text={specHighlights.heading} size="h1" className="mb-10 md:mb-16" />
-        <SpecCards items={specHighlights.items} />
-        <Link
-          href={specHighlights.link.href}
-          className="link mt-10 inline-block text-[20px] leading-[26px]"
-        >
-          {specHighlights.link.label} →
-        </Link>
+        <div className="grid grid-cols-12 gap-x-6 gap-y-8">
+          <div className="col-span-12 flex flex-col gap-6 md:col-span-5">
+            <SquareMarker tone="accent" />
+            <SectionHeading text={specNote.heading} size="h1" />
+          </div>
+          <div className="col-span-12 md:col-span-7">
+            <p className="max-w-[52ch] text-[20px] leading-[26px]">{specNote.text}</p>
+            <Link href={specNote.link.href} className="link mt-8 inline-block text-[15px]">
+              {specNote.link.label} →
+            </Link>
+          </div>
+        </div>
       </Section>
 
       <Section>

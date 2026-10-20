@@ -24,6 +24,6 @@ export const performance = {
   },
   cta: {
     heading: "ARRANGE AN ON-SITE {EVALUATION}",
-    text: "We are based in Denver and will bring a unit to you.",
+    text: "We are on the Colorado Front Range and will bring a unit to you.",
   },
 };

@@ -38,11 +38,11 @@ export const legal: Record<
       },
       {
         h: "No clinical claims",
-        p: "Dovmant makes no claim regarding safety or effectiveness for any clinical purpose. We publish engineering parameters and we describe what the instrument lets a laboratory measure and set. We do not publish outcome figures, and we do not interpret the findings of research conducted with the instrument. Where a published study by a third party exists, we may state that the device was used in it, without characterising its result.",
+        p: "Dovmant makes no claim regarding safety or effectiveness for any clinical purpose. We state engineering parameters in the specification we issue, and we describe what the instrument lets a laboratory measure and set. We do not publish outcome figures, and we do not interpret the findings of research conducted with the instrument. Where a published study by a third party exists, we may state that the device was used in it, without characterising its result.",
       },
       {
         h: "Limits of use",
-        p: "The instrument must be used within the torque, range, participant height and participant mass limits published in the specification, and with the safety features enabled. It must not be modified in ways that defeat those limits. It is not intended for use with anyone under 18, for use during competition, or for continuous unsupervised wear. [TBD — confirm each limit against the specification once measured.]",
+        p: "The instrument must be used within the torque, range, participant height and participant mass limits stated in the specification issued with it, and with the safety features enabled. It must not be modified in ways that defeat those limits. It is not intended for use with anyone under 18, for use during competition, or for continuous unsupervised wear. The limits that apply to your unit are stated in the specification issued with it.",
       },
       {
         h: "Incidents",
@@ -62,7 +62,7 @@ export const legal: Record<
     sections: [
       {
         h: "Who we are",
-        p: "Dovmant, [TBD — legal entity name], of Denver, Colorado, United States. For anything in this policy, write to the address on the contact page.",
+        p: "Dovmant LLC, 9300 E Mineral Ave, Suite 318, Centennial, CO 80112, United States. For anything in this policy, write to the address on the contact page.",
       },
       {
         h: "What this site collects",
@@ -109,8 +109,8 @@ export const legal: Record<
         p: "You may read these pages, print them, and quote them with attribution. You may not misrepresent what they say. In particular, nothing here may be repeated in a way that presents the instrument as a medical device or attributes to it a clinical, therapeutic or performance outcome.",
       },
       {
-        h: "Accuracy and values marked [TBD]",
-        p: "Specification values marked [TBD] are not published yet. They are not estimates and must not be treated as provisional figures. Published values describe the instrument as it is at the date on the page, and a figure quoted in a grant application should come from a written quotation rather than from this site.",
+        h: "What this site does not state",
+        p: "Technical parameters and commercial terms are not published on this site. They are issued to a named institution in a specification and a written quotation, and only those documents may be relied upon — including for a figure quoted in a grant application. Nothing on these pages is an offer.",
       },
       {
         h: "Supply of research equipment",
@@ -134,7 +134,7 @@ export const legal: Record<
       },
       {
         h: "Governing law",
-        p: "[TBD — proposed: the laws of the State of Colorado, United States, with the courts of Denver County having jurisdiction. Confirm with counsel.]",
+        p: "The laws of the State of Colorado, United States. [TBD — confirm the venue clause with counsel.]",
       },
     ],
   },

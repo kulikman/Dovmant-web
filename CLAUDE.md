@@ -60,6 +60,17 @@ are allow-listed there by exact phrase.
 | Book a demo                                         | Request a lab evaluation                                    |
 | Medical Disclaimer                                  | Research Use Statement                                      |
 
+## Disclosure policy
+
+Technical parameters and commercial terms are **not published on the site**. Torque, loop rate, latency, the
+telemetry schema, battery figures, participant limits, price and lead time live in a specification and a
+quotation issued to a named institution. At this stage those numbers are the work itself, and an open table
+hands them to a competitor.
+
+The site says the instrument exists, what it lets a laboratory do, and how to ask for the document. Pages name
+the _headings_ the specification covers, never the values. A figure may appear on the site only when the company
+decides it should be public — and then it is a measured value, never an estimate.
+
 ## Other hard rules
 
 1. **No invented facts.** No parameters, certifications, partners, studies, people, prices or dates until confirmed.
@@ -74,18 +85,18 @@ are allow-listed there by exact phrase.
 Nav: System · Specifications · Research · Performance · Roadmap · Investors · About. Header CTA:
 "Request a lab evaluation ↘". Seven items is the ceiling at 1280 — the next page goes in the footer.
 
-| Route                                             | Role                                                                                                    |
-| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| `/`                                               | Short fork into the two pages that matter                                                               |
-| `/system`                                         | What the instrument is made of and what is open to change                                               |
-| `/specifications`                                 | Parameter tables, commercial terms, quotation and grant support — the artefact a PI attaches to a grant |
-| `/research`                                       | Partnership programme, responsibility split, three routes — the conversion page                         |
-| `/performance`                                    | Side branch for performance groups, same regulatory frame                                               |
-| `/about`, `/contact`, `/news`                     | `/news` is empty, out of the nav and out of the sitemap until it has entries                            |
-| `/roadmap`                                        | Five phases with a status per item; dates stay [TBD] because a published date is a promise              |
-| `/investors`                                      | Thesis, why now, market with a source column, model, traction, round, team, deck, contact               |
-| `/research-use`, `/privacy`, `/terms`, `/cookies` | `/terms` data ownership must match the split on `/research`                                             |
-| `/styleguide`                                     | Internal, noindex                                                                                       |
+| Route                                             | Role                                                                                                  |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `/`                                               | Short fork into the two pages that matter                                                             |
+| `/system`                                         | What the instrument is made of and what is open to change                                             |
+| `/specifications`                                 | What the specification covers and how to request it — the document itself goes to a named institution |
+| `/research`                                       | Partnership programme, responsibility split, three routes — the conversion page                       |
+| `/performance`                                    | Side branch for performance groups, same regulatory frame                                             |
+| `/about`, `/contact`, `/news`                     | `/news` is empty, out of the nav and out of the sitemap until it has entries                          |
+| `/roadmap`                                        | Five phases with a status per item; dates stay [TBD] because a published date is a promise            |
+| `/investors`                                      | Thesis, why now, market with a source column, model, traction, round, team, deck, contact             |
+| `/research-use`, `/privacy`, `/terms`, `/cookies` | `/terms` data ownership must match the split on `/research`                                           |
+| `/styleguide`                                     | Internal, noindex                                                                                     |
 
 Removed in v2: `/rehabilitation`, `/investors/data-room`, testimonials, partner logos, the metrics block.
 `next.config.ts` redirects the old URLs.
@@ -153,10 +164,13 @@ first.
 
 ## Open — needs input that only the company has
 
-Publication blockers: peak and continuous torque at knee and hip · control loop rate and sensor-to-actuation
-latency · sync trigger type, connector and what it has actually been verified with · telemetry schema · price, lead
-time, warranty and service terms · legal review of the Research Use Statement, the footer notice and the
-responsibility split · Denver legal entity details for procurement.
+Publication blockers: legal review of the Research Use Statement, the footer notice, the four legal pages and the
+responsibility split. Parameters are no longer a blocker for the site — they went into the document that is
+issued on request (see the disclosure policy above), though they are still needed for that document and for a
+quotation.
+
+Live: dovmant.tech. Entity Dovmant LLC, 9300 E Mineral Ave, Suite 318, Centennial, CO 80112. Mailbox
+info@dovmant.tech, which is also the fallback named in every form confirmation while delivery is unwired.
 
 Before launch but not blocking: the shoot (priority 1 first) · hero video · mode names taken from the firmware ·
 the control-profile interface · team and advisors · three or more real milestones before a timeline goes up.
