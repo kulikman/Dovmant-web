@@ -1,125 +1,106 @@
-# Fix list
+# Task list
 
-**Status: everything that did not depend on an outside answer is done** — §2, §3, §4 in full, and 1.1 and 1.3
-from §1. What remains needs a shoot, a re-render or an answer. 280 checks pass.
+State on 20 October 2026. The site is live at dovmant.tech, 15 pages, no placeholders left in the copy,
+280 checks passing. What follows is what stands between that and a site the company can point a laboratory at.
 
-Found by reading the repository and the current build, not by guesswork. Ordered by what it costs us to leave
-alone. Size: **S** under an hour · **M** half a day · **L** a day or more.
-"Blocked" means the work cannot start until someone outside this repository answers — see
-`docs/site-brief-answers.md` for who.
-
----
-
-## 1. Visible defects
-
-**1.1 ~~The detail row on `/system` mixes photographs with line drawings.~~ DONE** — the row now shows the two delivered frames only; the other two join it when they are shot.
-Four frames side by side: a real macro of the hip actuator, a drawn schematic, a real macro of the cuff, a drawn
-schematic. The two registers next to each other read as a broken page rather than as a style.
-_Fix now:_ show only the two real frames until the others are shot.
-_Fix properly:_ shoot `detail-sensors` and `sync-port-detail` — both already priority 1 and 2 in the shot list.
-
-**1.2 The home gallery is entirely drawings while the hero above it is a photograph.** M
-"Research scenarios" carries five line-art lab scenes directly under a real render. The same mismatch as 1.1,
-over a whole section.
-_Fix now:_ a decision — either drop the gallery to the two or three scenarios we can illustrate honestly, or
-keep it and accept the mixed register until the lab shoot.
-_Blocked on:_ the laboratory shoot (14.3 in the brief).
-
-**1.3 ~~`/roadmap` and `/specifications` share the same hero image.~~ DONE** — the roadmap hero is a tighter crop on the belt and hip actuator, and a test now fails if two pages open with the same slot.
-`page-hero-roadmap.webp` is a copy of `page-hero-specifications.webp`. Two pages with an identical hero look
-like a mistake to anyone who moves between them.
-_Fix:_ crop a different angle from the delivered renders, or shoot the slot.
-
-**1.4 The renders are on near-black, which pushes the accent block out of its blend mode.** S here, theirs there
-A dark frame makes `mix-blend-multiply` invisible, so those slots now paint the block instead of multiplying it.
-It works, but it is a second visual rule to maintain.
-_Fix:_ re-render the same angles on neutral grey `#E6E6E6`, then delete `tone: "dark"` from the registry.
-_Blocked on:_ whoever renders.
-
-**1.5 Seven items in the navigation at 1280.** S
-Fits, with the gap tightened from 40px to 24px below 1280. Watch it: an eighth item will not fit, and the next
-page to be added should go in the footer instead.
-_No action, recorded so the next person does not add one._
-
-## 2. Stale documentation
-
-**2.1 ~~`CLAUDE.md` is behind the build.~~ DONE**
-No `/roadmap` in the page map; the navigation is described as five items when it is seven; "Playwright 188
-checks" when there are 272; the Lighthouse figures predate the real renders and the two new pages.
-
-**2.2 ~~`public/llms.txt` does not know about `/roadmap`.~~ DONE**
-It also still describes `/investors` as a single strip. Language models quote this file; a stale page list comes
-back as a wrong answer about the company.
-
-**2.3 ~~`docs/content-questionnaire.md` says 114 placeholders.~~ DONE** — the fixed number is replaced by the command that counts them.
-The roadmap and the expanded investor page added their own, so the count is now higher. Either regenerate the
-number or drop it — a wrong count makes the document look unmaintained.
-
-**2.4 ~~`docs/reference-review.md` predates both new pages.~~ DONE**
-Harmless, but it claims to describe the site as built.
-
-## 3. Code that no longer earns its place
-
-**3.1 ~~`content/about.ts` still exports `investors`.~~ DONE**
-The investor copy moved to `content/investors.ts` and nothing imports the old export. Two sources of truth for
-the same page is how a page ends up with last month's wording.
-
-**3.2 ~~`WearGallery` is a name from the deleted version of the site.~~ DONE** — now `ScenarioGallery`.
-It renders research scenarios now. Rename to `ScenarioGallery` so the file says what it does.
-
-**3.3 ~~`StatGrid` is only used by the styleguide.~~ DONE** — deleted; the styleguide shows `SpecCards`, which replaced it.
-It was the metrics block, which v2 replaced with `SpecCards`. Either delete it or state in the styleguide that
-it is kept deliberately as a pattern.
-
-**3.4 ~~`stripRich` in `lib/rich.ts` is exported and unused.~~ DONE**
-Left over from when headings carried a screen-reader copy. Delete.
-
-**3.5 ~~`PortraitRow` renders nothing until there is a team.~~ DONE** — a comment in the file says so.
-Correct as written — recorded so nobody deletes it as dead code.
-
-## 4. Measurement and checks
-
-**4.1 ~~Lighthouse has not been re-run.~~ DONE** — five pages measured, figures in `CLAUDE.md`. The home page is 91 with an LCP of 3.5 s simulated, down from 94 and 3.1 s: the photographic hero is heavier than the drawing it replaced.
-The last figures in `CLAUDE.md` are from the build before either. The hero is now a photograph rather than an
-SVG, which changes the picture — probably for the better, but it is unmeasured.
-
-**4.2 ~~No check that a page carries its own hero image.~~ DONE** — a static check over the page sources.
-1.3 would have been caught by a test asserting that no two pages share a hero slot.
-
-**4.3 ~~No check that real photography and stand-in artwork are not mixed inside one section.~~ DONE** — it immediately caught a third instance: the thumbnail in the hero was still a drawing beside the photograph. The styleguide is exempt, since mixing registers is its job.
-1.1 and 1.2 are the same defect twice. A test over the registry could flag any section whose slots are not all
-delivered or all pending.
-
-## 5. Content waiting on an answer
-
-Not defects — the pages are built and will fill themselves the moment the values arrive.
-
-**5.1 `/specifications`: 45 placeholders.** Blocked on engineering and commercial.
-**5.2 `/roadmap`: 22.** Blocked on which dates may be published.
-**5.3 `/investors`: 18.** Blocked on the market sources, the model and the round.
-**5.4 `/system`: 15.** Blocked on the telemetry schema and the control interface.
-**5.5 Legal pages: 14.** Blocked on counsel.
-**5.6 Response time on forms: five places.** One decision — the brief proposes two working days.
-**5.7 Company details: 6.** Entity, address, phone, mailboxes.
-
-## 6. Worth doing, not urgent
-
-**6.1 An accessibility statement.** S — the evidence exists: axe on every page in CI, contrast measured,
-keyboard paths tested, motion disabled under `prefers-reduced-motion`. Drafted in the answers document.
-
-**6.2 Analytics.** S — cookieless, so the cookie page stays as it is. Decide first (17.1), then wire it.
-
-**6.3 A reference dataset and a methods note.** L and theirs to write, but they are the two documents most
-likely to convert a laboratory, and the site has nowhere to put them yet.
-
-**6.4 `Product` structured data.** S — after the specification carries real values. `Organization` is already live.
+**Owner** says who can do it: **me** — in the repository · **you** — a decision or a fact · **counsel** ·
+**render** — whoever makes the renders and shoots · **engineering** — whoever measures.
+**Size:** S under an hour · M half a day · L a day or more.
 
 ---
 
-## Suggested order
+## 1. Before the site is shown to anyone outside the company
 
-1. Everything in §2 and §3 — stale documents and dead code, half a day in total, no dependencies.
-2. 1.1 and 1.3 — the two visible mismatches, fixable today from the renders already delivered.
-3. 4.1, then 4.2 and 4.3 so the same defects cannot return.
-4. 1.2 and 1.4 once the shoot and the re-render are scheduled.
-5. §5 as the answers arrive.
+**1.1 Form submissions reach nobody.** S · you, then me
+`RESEND_API_KEY` is not set, so an enquiry is written to the Vercel runtime log and the visitor is told it was
+received. The confirmation now names `info@dovmant.tech` as a fallback, which is a patch, not a fix. Three
+environment variables and it works: the key, the from address and the to address.
+
+**1.2 The legal pages are published drafts and the domain is open.** S to protect · counsel to resolve
+Every legal page carries "Draft pending review by counsel", the research-use wording defines the regulatory
+position of the device, and the domain has no password and allows indexing. Either send the four pages to counsel
+now, or put the password on until they come back. Project → Settings → Deployment Protection.
+
+**1.3 `ANTHROPIC_API_KEY` sits in the Vercel project.** S · you
+Not added by this work and not used by the site. If nothing needs it, remove it — an unused secret is only a
+liability.
+
+## 2. Imagery
+
+**2.1 Six drawn placeholders are visible on live pages.** M · render
+Thirteen of twenty-four slots are still stand-in drawings; six of them render: one each on `/system`,
+`/investors` and `/about`, two each on `/research` and `/performance`. The home page and `/specifications` are
+fully on real renders.
+
+**2.2 `detail-sensors` is the last priority-1 frame outstanding.** S · render
+A macro of a sensor on its mount. Everything else at priority 1 has been delivered.
+
+**2.3 The laboratory scenes do not exist.** L · you and render
+`lab-gait-trial`, `lab-instrumentation`, `lab-console`, `transparent-mode`, `incline-trial`, `sprint-trial`.
+They carry `/research`, `/performance` and the home scenarios, which is currently a list precisely because there
+is nothing honest to show. Needs a laboratory willing to be photographed and a release from everyone in frame.
+
+**2.4 Re-render the delivered angles on neutral grey.** S · render
+They arrive on near-black. On a light page they read as heavy dark rectangles, and the accent block has to switch
+out of `multiply` for them. On `#E6E6E6` the whole system would be consistent and `tone: "dark"` could go.
+
+**2.5 No hero video.** M · render
+`/public/video` is empty, so the hero shows its poster — a graceful fallback, but the band is built for motion.
+8–12 s, silent, under 3 MB, plus a vertical variant. Then set `NEXT_PUBLIC_HERO_VIDEO=1`.
+
+## 3. Layout
+
+**3.1 The inner pages are in the old composition.** M · me
+The home page now leads with a full-bleed band and large image cards. `/system`, `/research`, `/performance`,
+`/investors` and `/roadmap` still use the earlier hero — text left, framed image right. Worth bringing them into
+line now that the direction is settled.
+
+**3.2 `/news` is published and empty.** S · you
+Deliberate, and it says so. It stays out of the navigation and the sitemap until it has entries. Revisit once
+there is something to report.
+
+## 4. Measurement
+
+**4.1 Analytics is enabled in the project and not instrumented.** S · me
+Vercel Web Analytics and Speed Insights have IDs but the packages are not installed, so nothing is recorded.
+Either add them — both cookieless, so the cookie page stays accurate — or switch them off in the project.
+
+**4.2 Lighthouse has not been re-measured since the home page was rebuilt.** S · me
+The last figures predate the full-bleed band, which replaced an SVG hero with a photograph.
+
+## 5. Facts the site is still missing
+
+**5.1 EIN, UEI and SAM registration.** you
+Procurement currently answers "supplied with the quotation". That works, but a grants office usually checks a
+supplier before the application goes in.
+
+**5.2 Mode names from the firmware.** engineering
+The site names three modes — Transparent, Profile, Adaptive — and no longer says they are provisional. Correct
+them before anyone quotes them in a methods section.
+
+**5.3 Everything in the specification document.** engineering, then you
+No longer a blocker for the site, which now says the document is issued on request. Still needed for the
+document itself, for a quotation, and for the letter of support a grant application asks for.
+`docs/site-brief-questions.md` has the full list; `docs/site-brief-answers.md` has the answers that did not need
+a measurement.
+
+**5.4 Team, advisors and milestones.** you
+The pages are built and will show them the moment the names are confirmed. A timeline needs three or more real
+milestones before it goes up.
+
+## 6. Later
+
+**6.1 A methods note and a reference dataset.** L · you and engineering
+The two documents most likely to convert a laboratory, and the site has nowhere to put them yet.
+
+**6.2 Technical documentation, a firmware changelog, a support address.** L · you
+What a laboratory reads after it buys, and what a careful one asks for before.
+
+**6.3 The investor data room.** M · me, after the first signed LOI.
+
+---
+
+## Deliberately empty
+
+Partner logos, testimonials, the publications table, any effectiveness figure, and the data room. Each of these
+is a decision, not an omission: an empty row says less about us than a fabricated one.
