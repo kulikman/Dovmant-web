@@ -3,9 +3,9 @@
 Copy-paste source for the two records in the Airtable base **Brand Bot → Brand Voice Config**
 (`appV1ajt9EbhM4Gv1 / tblbLdPG4HydcwgMP`). Nothing here has been written into Airtable.
 
-The current records describe the device as an *AI-powered exoskeleton for human augmentation and
-rehabilitation support*. The site describes it as a *programmable lower-limb exoskeleton for
-locomotion research* and bans the word *rehabilitation* outright. Statements about intended use
+The current records describe the device as an _AI-powered exoskeleton for human augmentation and
+rehabilitation support_. The site describes it as a _programmable lower-limb exoskeleton for
+locomotion research_ and bans the word _rehabilitation_ outright. Statements about intended use
 define the regulatory class of the device, so the two channels cannot say different things —
 whichever is wrong, both have to agree, and the site is the version that went through CLAUDE.md.
 
@@ -24,27 +24,27 @@ return to play · return to competition · restores gait · recovery time · rev
 breakthrough · "new" as a claim about the device.
 
 Also never: an outcome figure without a citation to a published third-party study · a
-"better than" comparison with a named competitor · a claim about what the device does *to*
+"better than" comparison with a named competitor · a claim about what the device does _to_
 a person.
 
 ### Replacement table
 
-| Old wording (currently in the base)                 | Use instead                                                 |
-| --------------------------------------------------- | ----------------------------------------------------------- |
-| AI-powered exoskeleton for human augmentation       | Programmable lower-limb exoskeleton for locomotion research |
-| rehabilitation support / rehab                      | locomotion research · research applications                 |
-| patient                                             | participant                                                 |
-| therapist / clinician                               | investigator / research staff                               |
-| therapy protocol                                    | experimental protocol (written by the lab, not by us)       |
-| clinician dashboard                                 | investigator console                                        |
-| metrics (effectiveness figures)                     | specifications (engineering parameters)                     |
-| book a demo                                         | request a lab evaluation                                    |
-| medical disclaimer                                  | Research Use Statement                                      |
+| Old wording (currently in the base)           | Use instead                                                 |
+| --------------------------------------------- | ----------------------------------------------------------- |
+| AI-powered exoskeleton for human augmentation | Programmable lower-limb exoskeleton for locomotion research |
+| rehabilitation support / rehab                | locomotion research · research applications                 |
+| patient                                       | participant                                                 |
+| therapist / clinician                         | investigator / research staff                               |
+| therapy protocol                              | experimental protocol (written by the lab, not by us)       |
+| clinician dashboard                           | investigator console                                        |
+| metrics (effectiveness figures)               | specifications (engineering parameters)                     |
+| book a demo                                   | request a lab evaluation                                    |
+| medical disclaimer                            | Research Use Statement                                      |
 
 ### Disclosure policy — stricter than the firewall, and it binds the bot too
 
 Torque, loop rate, latency, telemetry schema, battery figures, participant limits, price and lead
-time are **not published**. Posts may name the *headings* the specification covers, never the
+time are **not published**. Posts may name the _headings_ the specification covers, never the
 values. A figure may appear only once the company decides it is public, and then it is a measured
 value, never an estimate. Component suppliers and the control-stack internals are part of the same
 work product: do not name them in a post unless the company has decided to make that public.
@@ -287,15 +287,15 @@ counsel — the short line above is a derivative of it and needs the same sign-o
 
 From Content Queue, status `scheduled`:
 
-| Row | Topic | Problem | Rewrite |
-| --- | ----- | ------- | ------- |
-| 43 | Exoskeletons will become AI-powered rehabilitation platforms collecting biomechanical data | "rehabilitation platform" is an intended-use claim | Where instrumented exoskeletons are heading: the device as a measurement platform |
-| 51 | Five predictions for 2030: sub-5000-dollar rehab exoskeletons, insurance coverage, consumer elderly… | rehab, insurance, a price, a date | Five predictions for 2030 for the locomotion-research field — framed as the author's opinion about the field, not about this device |
-| 53 | Reflections on basing Dovmant in Colorado as a Delaware C-Corp. FDA pathways, VC ecosystem… | FDA pathway talk reads as a regulatory claim; also check the entity — the site says Dovmant **LLC**, the base says Delaware C-Corp | Why we chose Colorado — drop the FDA section, confirm the entity first |
-| 54 | The first time I saw someone use an exoskeleton to stand up who had not stood in years | an outcome story about a person | Cut, or retell explicitly as someone else's published work with a citation and no interpretation |
-| 59 | FDA and CE marking were not designed for AI-adaptive medical devices | puts our device in the medical-device category | Keep as industry commentary only if it never refers to Dovmant; safer to cut until counsel has reviewed the Research Use Statement |
-| 45 | Personalised gait models — why every user needs their own AI | borders on an individualised-treatment claim | Why one gait model does not fit every participant |
-| 35, 42, 56, 60 | "How AI is changing exoskeletons", "the nuclear physics to exoskeletons pipeline", "sensor architecture", "actuator technology" | fine as topics — but they will pull in loop rates, latencies and supplier names | Keep; the Master Prompt constraint above is what holds them back |
+| Row            | Topic                                                                                                                           | Problem                                                                                                                            | Rewrite                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| 43             | Exoskeletons will become AI-powered rehabilitation platforms collecting biomechanical data                                      | "rehabilitation platform" is an intended-use claim                                                                                 | Where instrumented exoskeletons are heading: the device as a measurement platform                                                   |
+| 51             | Five predictions for 2030: sub-5000-dollar rehab exoskeletons, insurance coverage, consumer elderly…                            | rehab, insurance, a price, a date                                                                                                  | Five predictions for 2030 for the locomotion-research field — framed as the author's opinion about the field, not about this device |
+| 53             | Reflections on basing Dovmant in Colorado as a Delaware C-Corp. FDA pathways, VC ecosystem…                                     | FDA pathway talk reads as a regulatory claim; also check the entity — the site says Dovmant **LLC**, the base says Delaware C-Corp | Why we chose Colorado — drop the FDA section, confirm the entity first                                                              |
+| 54             | The first time I saw someone use an exoskeleton to stand up who had not stood in years                                          | an outcome story about a person                                                                                                    | Cut, or retell explicitly as someone else's published work with a citation and no interpretation                                    |
+| 59             | FDA and CE marking were not designed for AI-adaptive medical devices                                                            | puts our device in the medical-device category                                                                                     | Keep as industry commentary only if it never refers to Dovmant; safer to cut until counsel has reviewed the Research Use Statement  |
+| 45             | Personalised gait models — why every user needs their own AI                                                                    | borders on an individualised-treatment claim                                                                                       | Why one gait model does not fit every participant                                                                                   |
+| 35, 42, 56, 60 | "How AI is changing exoskeletons", "the nuclear physics to exoskeletons pipeline", "sensor architecture", "actuator technology" | fine as topics — but they will pull in loop rates, latencies and supplier names                                                    | Keep; the Master Prompt constraint above is what holds them back                                                                    |
 
 Rows 1–31 are test runs. Row 22's published post contains "it works for a real person" and
 `#MedTech`; row 24 and row 63 should be re-read against the list above. Several `telegram_media`

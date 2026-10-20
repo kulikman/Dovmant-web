@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   description:
     "A research instrument with programmable torque, open telemetry and a transparent mode. Built for biomechanics and performance laboratories.",
   openGraph: { siteName: site.name, type: "website" },
+  // Lift both this and the note in robots.ts once counsel has signed off the
+  // legal pages — see docs/todo.md 1.2.
+  robots: { index: false, follow: false },
 };
 
 export const viewport: Viewport = { themeColor: "#f2f2f2" };

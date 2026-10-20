@@ -11,19 +11,32 @@ State on 20 October 2026. The site is live at dovmant.tech, 15 pages, no placeho
 
 ## 1. Before the site is shown to anyone outside the company
 
-**1.1 Form submissions reach nobody.** S · you, then me
+**1.1 Form submissions reach nobody.** S · BLOCKED ON YOU
 `RESEND_API_KEY` is not set, so an enquiry is written to the Vercel runtime log and the visitor is told it was
-received. The confirmation now names `info@dovmant.tech` as a fallback, which is a patch, not a fix. Three
-environment variables and it works: the key, the from address and the to address.
+received. The confirmation names `info@dovmant.tech` as a fallback, which is a patch, not a fix.
 
-**1.2 The legal pages are published drafts and the domain is open.** S to protect · counsel to resolve
-Every legal page carries "Draft pending review by counsel", the research-use wording defines the regulatory
-position of the device, and the domain has no password and allows indexing. Either send the four pages to counsel
-now, or put the password on until they come back. Project → Settings → Deployment Protection.
+My half is done: `tests/delivery.spec.ts` exercises the path against a stubbed provider and proves it posts to
+Resend with the configured addresses, carries every field the visitor filled, reports false when nothing is
+configured, and raises rather than swallows a provider error. The first real enquiry will not be the first run of
+this code.
 
-**1.3 `ANTHROPIC_API_KEY` sits in the Vercel project.** S · you
-Not added by this work and not used by the site. If nothing needs it, remove it — an unused secret is only a
-liability.
+Yours: a Resend account, a verified sending domain, then three variables —
+
+```
+npx vercel env add RESEND_API_KEY production
+npx vercel env add CONTACT_FROM_EMAIL production   # e.g. site@dovmant.tech, on the verified domain
+npx vercel env add CONTACT_TO_EMAIL production     # info@dovmant.tech
+npx vercel --prod --force                          # variables are read at build time
+```
+
+**1.2 ~~The legal pages are published drafts and the domain is open.~~ DONE (search) · counsel still to resolve**
+The site is closed to search: every page carries `noindex, nofollow`. Crawling stays allowed deliberately — a
+`robots.txt` disallow can leave an already-indexed URL listed without a snippet, whereas a crawled page carrying
+`noindex` is removed. Both the metadata and the note in `app/robots.ts` are lifted together once counsel signs
+off. The pages remain reachable by direct link, which is what you asked for.
+
+**1.3 ~~`ANTHROPIC_API_KEY` sits in the Vercel project.~~ CLOSED · kept at your request**
+Left in place. It is not read by this site.
 
 ## 2. Imagery
 
