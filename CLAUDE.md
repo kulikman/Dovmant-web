@@ -167,14 +167,16 @@ first.
 
 ## Verified (last run)
 
-- `lint` · `typecheck` · `build` clean; Playwright 280 checks pass — screenshots at 375/768/1280/1440, keyboard,
-  reduced motion, axe (WCAG 2.1 AA) on every page, the claims firewall, and the integrity suite: dead links,
-  missing anchors, broken images, heading order, console errors, horizontal overflow, a painted accent block,
-  one hero image per page, and no section mixing photography with stand-in artwork. CI runs all of it.
-- Lighthouse with the real renders in place: performance `/` 91 · `/specifications` 93 · `/roadmap` 95 ·
-  `/investors` 96 · `/research` 99; accessibility, best practices and SEO 100 on all five. Simulated LCP is
-  3.5 s on `/`, up from 3.1 s with the drawn hero — a photograph is heavier and Lantern charges it to the
-  preloaded hero image. Measured LCP on a throttled device profile was 0.66 s before the swap.
+- `lint` · `typecheck` · `build` clean; Playwright 292 checks pass — screenshots at 375/768/1280/1440, keyboard,
+  reduced motion, axe (WCAG 2.1 AA) on every page, the claims firewall, the integrity suite (dead links, missing
+  anchors, broken images, heading order, console errors, horizontal overflow, a painted accent block, one hero
+  image per page, no section mixing photography with artwork), and the delivery path against a stubbed provider.
+- Lighthouse after the rebuild: performance `/` 93 · `/system` 95 · `/specifications` 95 · `/roadmap` 95 ·
+  `/investors` 95 · `/research` 96. Accessibility and best practices 100 everywhere.
+- **SEO scores 66 on purpose.** The only failing audit is "Page is blocked from indexing" — the site carries
+  `noindex` while the legal pages are drafts (see the task list, 1.2). It returns to 100 when that is lifted.
+- Simulated LCP is 2.8–3.3 s, charged to the preloaded hero image. Measured LCP on a throttled device profile
+  was 0.66 s.
 - Token contrast: every text pair ≥ 4.5:1. `steel` is 3.0:1 — graphics only.
 
 ## Open — needs input that only the company has

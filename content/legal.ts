@@ -66,7 +66,7 @@ export const legal: Record<
       },
       {
         h: "What this site collects",
-        p: "Only what you type into a form and send: your name, your email address, your institution or organisation, and whatever you write in the free-text fields. Which fields appear depends on the form. Nothing is collected before you press send. This site sets no cookies, runs no analytics, and loads nothing from a third party, so there is no tracking of your visit to speak of.",
+        p: "Only what you type into a form and send: your name, your email address, your institution or organisation, and whatever you write in the free-text fields. Which fields appear depends on the form. Nothing is collected before you press send. Beyond that we count page views with a cookieless analytics product that does not identify you — see the cookie policy — and we set no cookies at all.",
       },
       {
         h: "What our hosting provider sees",
@@ -145,11 +145,15 @@ export const legal: Record<
     sections: [
       {
         h: "This site sets no cookies",
-        p: "We set no cookies of any kind, and nothing on these pages is loaded from a third party: no analytics, no embedded players, no fonts or scripts from another domain. There is nothing to consent to, which is why you are not being asked.",
+        p: "We set no cookies of any kind, and there is nothing to consent to, which is why you are not being asked. Nothing on these pages is embedded from another domain either: no players, no fonts or scripts loaded from elsewhere.",
+      },
+      {
+        h: "We do count page views",
+        p: "We use the cookieless analytics built into our hosting platform, Vercel. It records that a page was viewed and from roughly where, it sets no cookie, it stores nothing in your browser, and it does not identify you or follow you to other sites. The script is served from this domain rather than a third party. We use it to see which pages a laboratory reads before it contacts us, and for nothing else.",
       },
       {
         h: "What that means for you",
-        p: "Nothing about your visit is stored in your browser by us, and no third party can observe it through this site. Your browser and your network provider still see the pages you request, as they do for any website, and our hosting provider processes the request in order to serve it.",
+        p: "Nothing about your visit is stored in your browser by us. Your browser and your network provider still see the pages you request, as they do for any website, and our hosting provider processes each request in order to serve it and to count it as described above.",
       },
       {
         h: "Forms",
@@ -157,7 +161,7 @@ export const legal: Record<
       },
       {
         h: "If this changes",
-        p: "If we ever add analytics or embed anything from another domain, this page is updated before the change goes live, and anything that requires consent will ask for it.",
+        p: "If we ever add a product that sets cookies or embeds anything from another domain, this page is updated before the change goes live, and anything that requires consent will ask for it.",
       },
     ],
   },

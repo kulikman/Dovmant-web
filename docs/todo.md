@@ -79,12 +79,18 @@ there is something to report.
 
 ## 4. Measurement
 
-**4.1 Analytics is enabled in the project and not instrumented.** S · me
-Vercel Web Analytics and Speed Insights have IDs but the packages are not installed, so nothing is recorded.
-Either add them — both cookieless, so the cookie page stays accurate — or switch them off in the project.
+**4.1 ~~Analytics is enabled in the project and not instrumented.~~ DONE**
+Vercel Web Analytics and Speed Insights are wired, loaded only on a deployment — their scripts come from the
+Vercel edge, which does not exist locally, so loading them elsewhere only produces 404s. Verified: no third-party
+host is contacted and no cookie is set.
 
-**4.2 Lighthouse has not been re-measured since the home page was rebuilt.** S · me
-The last figures predate the full-bleed band, which replaced an SVG hero with a photograph.
+The cookie and privacy pages were updated in the same change. They had said the site runs no analytics, which
+stopped being true the moment this was added; they now describe exactly what is counted and what is not.
+
+**4.2 ~~Lighthouse has not been re-measured since the home page was rebuilt.~~ DONE**
+Performance 93–96 across six pages, accessibility and best practices 100. SEO reads 66 for one reason only —
+"Page is blocked from indexing" — which is 1.2 working as intended, and returns to 100 when the noindex is
+lifted.
 
 ## 5. Facts the site is still missing
 

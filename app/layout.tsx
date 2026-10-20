@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
 import { site } from "@/content/site";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { StructuredData } from "@/components/StructuredData";
 import "./globals.css";
 
@@ -39,6 +41,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <StructuredData />
+        {/* Cookieless and first-party, so the cookie page stays accurate. Both are
+            served by the Vercel edge, which does not exist locally — loading them
+            outside a deployment only produces 404s in the console. */}
+        {process.env.VERCEL === "1" && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );
