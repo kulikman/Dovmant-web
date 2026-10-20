@@ -179,6 +179,20 @@ first.
   was 0.66 s.
 - Token contrast: every text pair ≥ 4.5:1. `steel` is 3.0:1 — graphics only.
 
+## Do not poll the live domain
+
+Verifying a deploy by curling `dovmant.tech` in a loop trips Vercel's automatic bot mitigation: every request
+starts answering `403` with `x-vercel-mitigated: challenge`, and a real browser sees a "Security Checkpoint"
+page until the traffic stops. The site is not down when this happens — it is defending itself against us.
+
+Poll the deployment state through the API instead:
+
+```
+GET https://api.vercel.com/v6/deployments?projectId=<id>&teamId=<id>&limit=3
+```
+
+and check the page once, in a browser, when the state reads READY.
+
 ## Open — needs input that only the company has
 
 Publication blockers: legal review of the Research Use Statement, the footer notice, the four legal pages and the

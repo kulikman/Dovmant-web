@@ -92,7 +92,7 @@ Performance 93–96 across six pages, accessibility and best practices 100. SEO 
 "Page is blocked from indexing" — which is 1.2 working as intended, and returns to 100 when the noindex is
 lifted.
 
-## 5. Facts the site is still missing
+## 5. Facts the site is still missing — none of this can be closed from the repository
 
 **5.1 EIN, UEI and SAM registration.** you
 Procurement currently answers "supplied with the quotation". That works, but a grants office usually checks a
@@ -112,7 +112,7 @@ a measurement.
 The pages are built and will show them the moment the names are confirmed. A timeline needs three or more real
 milestones before it goes up.
 
-## 6. Later
+## 6. Later — not started, deliberately
 
 **6.1 A methods note and a reference dataset.** L · you and engineering
 The two documents most likely to convert a laboratory, and the site has nowhere to put them yet.
