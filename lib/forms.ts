@@ -29,7 +29,7 @@ export const forms = {
   "home-evaluation": {
     submit: "Request a lab evaluation",
     subject: "Lab evaluation request (home)",
-    done: "Thank you. We will come back to you about a lab evaluation. [TBD: response time]",
+    done: "Thank you — your message has been received. If you need an answer quickly, write to info@dovmant.tech directly and it reaches the same people.",
     fields: [
       { name: "name", label: "Full name", required: true, autoComplete: "name" },
       { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
@@ -61,7 +61,7 @@ export const forms = {
   "lab-evaluation": {
     submit: "Request a lab evaluation",
     subject: "Lab evaluation request",
-    done: "Thank you. We will come back to you about a lab evaluation. [TBD: response time]",
+    done: "Thank you — your message has been received. If you need an answer quickly, write to info@dovmant.tech directly and it reaches the same people.",
     fields: [
       { name: "institution", label: "Institution", required: true, wide: true },
       {
@@ -85,7 +85,7 @@ export const forms = {
   quotation: {
     submit: "Request a quotation",
     subject: "Quotation request",
-    done: "Thank you. We will send a formal quotation. [TBD: response time]",
+    done: "Thank you — your request has been received. For anything urgent, write to info@dovmant.tech and we will answer from there.",
     fields: [
       { name: "institution", label: "Institution", required: true },
       { name: "name", label: "Principal investigator", required: true, autoComplete: "name" },
@@ -103,7 +103,7 @@ export const forms = {
   "performance-evaluation": {
     submit: "Arrange an evaluation",
     subject: "On-site evaluation request",
-    done: "Thank you. We will come back to you about an on-site evaluation. [TBD: response time]",
+    done: "Thank you — your request has been received. You can also reach us directly at info@dovmant.tech.",
     fields: [
       { name: "organisation", label: "Organisation", required: true },
       { name: "role", label: "Role", required: true },
@@ -121,7 +121,7 @@ export const forms = {
   deck: {
     submit: "Request the deck",
     subject: "Deck request",
-    done: "Thank you. We review every request and share the deck directly. [TBD: response time]",
+    done: "Thank you — we review every request and share the deck directly. You can also write to info@dovmant.tech.",
     fields: [
       { name: "name", label: "Name", required: true, autoComplete: "name" },
       { name: "fund", label: "Fund / organisation", required: true },
@@ -133,7 +133,7 @@ export const forms = {
   investor: {
     submit: "Send",
     subject: "Investor enquiry",
-    done: "Thank you. We answer investor messages ourselves and will come back to you. [TBD: response time]",
+    done: "Thank you — we answer investor messages ourselves. You can also write to info@dovmant.tech.",
     fields: [
       { name: "name", label: "Name", required: true, autoComplete: "name" },
       { name: "fund", label: "Fund / organisation", required: true },
@@ -145,7 +145,7 @@ export const forms = {
   general: {
     submit: "Send",
     subject: "General enquiry",
-    done: "Thank you. We have received your message. [TBD: response time]",
+    done: "Thank you — your message has been received. You can also write to info@dovmant.tech directly.",
     fields: [
       { name: "name", label: "Full name", required: true, autoComplete: "name" },
       { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },

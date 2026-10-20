@@ -41,6 +41,8 @@ const ALLOWED_PHRASES = [
   "makes no claim regarding safety or effectiveness for any clinical purpose",
   "no clinical claims",
   "is not a medical device",
+  // terms of use, forbidding exactly this reading of the site
+  "presents the instrument as a medical device or attributes to it a clinical, therapeutic or performance outcome",
 ];
 
 const strip = (text: string) => {

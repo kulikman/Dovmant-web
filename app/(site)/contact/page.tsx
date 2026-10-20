@@ -47,8 +47,16 @@ export default function ContactPage() {
 
       <address className="mt-12 border-t border-line pt-8 text-[13px] leading-[18px] text-ink-muted not-italic">
         <p>{site.address}</p>
-        <p className="mt-3">{site.phone}</p>
-        <p className="mt-3">{site.email}</p>
+        <p className="mt-3">
+          <a href={`mailto:${site.email}`} className="link">
+            {site.email}
+          </a>
+        </p>
+        <p className="mt-3">
+          <a href={site.linkedin} className="link" rel="noreferrer">
+            LinkedIn ↗
+          </a>
+        </p>
       </address>
     </Section>
   );

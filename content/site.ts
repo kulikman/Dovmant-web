@@ -7,10 +7,9 @@ export const site = {
     "Built for biomechanics laboratories and the research arms of performance centres. Based in Denver, Colorado.",
   location: "Denver, Colorado",
   address: "[TBD] Street address, Denver, Colorado, USA",
-  phone: "[TBD] +1 000 000 0000",
-  email: "[TBD] hello@dovmant.example",
-  grantsEmail: "[TBD] procurement@dovmant.example",
-  researchEmail: "[TBD] research@dovmant.example",
+  /** One mailbox for everything until the company splits them. */
+  email: "info@dovmant.tech",
+  linkedin: "https://www.linkedin.com/company/dovmant",
   legalEntity: "[TBD] Legal entity name, Denver, Colorado",
   /** Flip on once the files in /public/video exist (see docs/shot-list.md). */
   heroVideo: process.env.NEXT_PUBLIC_HERO_VIDEO === "1",
@@ -68,11 +67,14 @@ export const footerColumns: { title: string; links: NavItem[] }[] = [
       { label: "Roadmap", href: "/roadmap" },
     ],
   },
-];
-
-export const legalLinks: NavItem[] = [
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
-  { label: "Research Use Statement", href: "/research-use" },
-  { label: "Cookies", href: "/cookies" },
+  {
+    title: "Legal",
+    links: [
+      { label: "Research Use Statement", href: "/research-use" },
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
+      { label: "Cookies", href: "/cookies" },
+      { label: "Accessibility", href: "/accessibility" },
+    ],
+  },
 ];

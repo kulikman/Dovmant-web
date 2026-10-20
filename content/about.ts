@@ -45,10 +45,10 @@ export const contactPage = {
       heading: "PROCUREMENT AND {GRANTS}",
       text: "Grants offices and purchasing. We supply a formal quotation, a letter of support on availability and lead time, and supplier registration details.",
       details: [
-        ["Email", "[TBD] procurement@dovmant.example"],
+        ["Email", "info@dovmant.tech"],
         ["Legal entity", "[TBD] Legal entity name, Denver, Colorado"],
-        ["W-9", "[TBD] available on request"],
-        ["Supplier registration", "[TBD] registration details"],
+        ["W-9", "Available on request"],
+        ["EIN / UEI / SAM", "[TBD] registration details"],
       ] as [string, string][],
       form: "quotation" as const,
     },

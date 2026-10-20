@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { footerColumns, legalLinks, researchUseNotice, site } from "@/content/site";
+import { footerColumns, researchUseNotice, site } from "@/content/site";
 import { ImageSlot } from "@/components/media/ImageSlot";
 import { SquareMarker } from "@/components/ui/SquareMarker";
 import { Wordmark } from "@/components/ui/Wordmark";
@@ -15,10 +15,18 @@ export function Footer() {
           </div>
           <address className="col-span-12 text-[13px] leading-[18px] text-ink-muted not-italic md:col-span-3">
             <p>{site.address}</p>
-            <p className="mt-4">{site.phone}</p>
-            <p className="mt-4">{site.email}</p>
+            <p className="mt-4">
+              <a href={`mailto:${site.email}`} className="link">
+                {site.email}
+              </a>
+            </p>
+            <p className="mt-4">
+              <a href={site.linkedin} className="link" rel="noreferrer">
+                LinkedIn ↗
+              </a>
+            </p>
           </address>
-          <div className="col-span-12 grid grid-cols-2 gap-6 text-[13px] leading-[18px] md:col-span-6 md:grid-cols-4 md:pr-[220px]">
+          <div className="col-span-12 grid grid-cols-2 gap-6 text-[13px] leading-[18px] md:col-span-6 md:grid-cols-5 md:pr-[220px]">
             {footerColumns.map((c) => (
               <nav key={c.title} aria-label={c.title}>
                 <p className="mb-3 text-[12px] leading-4 font-medium uppercase">{c.title}</p>
@@ -38,19 +46,10 @@ export function Footer() {
         <p className="mt-16 max-w-[90ch] border-t border-line pt-6 text-[13px] leading-[18px] text-ink-muted md:pr-[220px]">
           {researchUseNotice}
         </p>
-        <div className="mt-8 flex flex-wrap items-end justify-between gap-4 pb-6 text-[13px] leading-[18px] text-ink-muted">
+        <div className="mt-8 pb-6 text-[13px] leading-[18px] text-ink-muted">
           <p>
             © {new Date().getFullYear()} Dovmant. {site.legalEntity}
           </p>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 md:pr-[220px]">
-            {legalLinks.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} className="link">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
         <div className="absolute right-0 bottom-0 hidden w-[200px] md:block">
           <ImageSlot id="footer-render" aspect="1/1" overlay="bottom-half" sizes="200px" still />
