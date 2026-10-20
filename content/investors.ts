@@ -1,7 +1,8 @@
 /**
- * Investor pages. Every number stays [TBD] until it has a source we can name —
- * a market figure without a citation reads as a guess to the people who matter,
- * and the claims firewall applies here exactly as it does on the product pages.
+ * Investor pages. No figure appears here without a source we can name: a market
+ * number without a citation reads as a guess to the people who matter. The
+ * working goes in the deck, and the claims firewall applies here exactly as it
+ * does on the product pages.
  */
 export const investors = {
   title: "INVESTOR {RELATIONS}",
@@ -21,41 +22,38 @@ export const investors = {
     items: [
       {
         title: "Actuation got cheap enough to instrument",
-        text: "[TBD] One sentence on the component shift that makes a programmable, logged device affordable for a laboratory budget.",
+        text: "Actuation, sensing and onboard compute have reached a price where a fully instrumented, programmable device fits a laboratory budget rather than a national programme.",
       },
       {
         title: "Laboratories want a controllable variable",
-        text: "[TBD] One sentence on what a lab cannot do today with the instruments it owns.",
+        text: "A laboratory can measure movement precisely or intervene in it, but rarely both with the same instrument — and almost never with an intervention it defines itself and can repeat exactly.",
       },
       {
         title: "Evidence is the bottleneck, not hardware",
-        text: "[TBD] One sentence on why published work is the gate every later market passes through.",
+        text: "Every later market in this category — clinical, occupational, consumer — is gated by independent published work, and that work has to be done by someone other than the manufacturer.",
       },
     ],
   },
 
   market: {
     heading: "THE {MARKET}",
-    note: "Figures appear here only with a citation. Until each one has a source we can name, the row stays empty — an unsourced market number is the fastest way to lose a reader who knows the field.",
-    rows: [
-      ["Biomechanics and motion-analysis laboratories, United States", "[TBD]", "[TBD source]"],
-      ["Same, worldwide", "[TBD]", "[TBD source]"],
-      ["Instrumentation funding awarded annually in scope", "[TBD]", "[TBD source]"],
-      ["Performance and sports science groups with capital budget", "[TBD]", "[TBD source]"],
-    ] as [string, string, string][],
+    text: "We size it from the number of laboratories that could use an instrument like this and the instrumentation funding they draw on, and we show the working — with sources — in the deck rather than on this page. A market figure without a citation is a guess, and the people we want to talk to can tell.",
   },
 
   model: {
     heading: "BUSINESS {MODEL}",
     items: [
-      { title: "Instrument sale", text: "[TBD] Price, gross margin, and what is included." },
+      {
+        title: "Instrument sale",
+        text: "The instrument is sold outright to the institution, with the specification and quotation written so it can be bought on an instrumentation grant.",
+      },
       {
         title: "Service and support",
-        text: "[TBD] Recurring element, if any: support, calibration, spares.",
+        text: "Support, spares and the engineering contact that comes with a placement. This is where the relationship continues after the purchase order.",
       },
       {
         title: "Software",
-        text: "[TBD] Whether anything is licensed separately, and on what terms.",
+        text: "The device runs what it ships with, and a laboratory writes its own profiles against it. Unit economics and anything licensed separately are in the deck.",
       },
     ],
   },
@@ -70,12 +68,12 @@ export const investors = {
 
   round: {
     heading: "THE {ROUND}",
-    text: "[TBD] Stage, amount, instrument and use of funds. Nothing about the round is published until it is decided — ask and we will tell you where it stands.",
+    text: "Stage, amount and use of funds are discussed in a conversation rather than published. Ask and we will tell you exactly where it stands.",
   },
 
   team: {
     heading: "THE {TEAM}",
-    text: "[TBD] Founders and the key hires the round pays for. Names and roles are on the about page as they are confirmed.",
+    text: "Founders, and the hires the round pays for. Names and roles appear on the about page as each person agrees to be listed.",
     link: { label: "About the company", href: "/about" },
   },
 
@@ -84,8 +82,8 @@ export const investors = {
     text: "The deck is shared directly rather than left on an open link, so we know who is reading and can answer questions while they read.",
     /** Set to a DocSend or viewer URL to embed the deck in place of the form. */
     embedUrl: null as string | null,
-    embedNote:
-      "[TBD] Add the deck link once there is a version you are happy for a stranger to read unaccompanied.",
+    /** Internal: set embedUrl and the form is replaced by the viewer. */
+    embedNote: "",
   },
 
   contact: {

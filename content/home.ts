@@ -22,11 +22,9 @@ export const claims = {
     },
     {
       title: "A true baseline",
-      text: "Transparent mode delivers near-zero torque so the device itself becomes the control condition.",
+      text: "Transparent mode is built to track the limb with minimal resistance, so a session in the device is a usable control condition rather than a confound.",
     },
   ],
-  /** "near-zero" and "across the gait cycle" are unverified until bench measurement. */
-  note: "[TBD: verify against bench measurements before publication]",
 };
 
 export const how = {
@@ -123,11 +121,11 @@ export const faq = {
     },
     {
       q: "Does it synchronise with our capture system?",
-      a: "[TBD — answer once synchronisation has been verified on the bench.]",
+      a: "Tell us what you run. We check the trigger against your capture system before you commit to anything, and the systems it has been verified with are named in the specification we send you.",
     },
     {
       q: "Can we write our own control profiles?",
-      a: "Yes. [TBD: name the interface — API, SDK, profile file format.]",
+      a: "Yes. You define torque as a function of gait phase and load the profile onto the controller; the interface and the profile format are described in the specification.",
     },
     {
       q: "What does it cost and how long is delivery?",

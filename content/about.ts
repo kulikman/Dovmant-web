@@ -13,13 +13,13 @@ export const about = {
   /** One slot per real person. No portraits until the shoot. */
   team: {
     heading: "THE {TEAM}",
-    note: "[TBD] The team block goes up with real names, real roles and real portraits — one slot per person, no more.",
+    note: "Names and faces go up here when the people behind them have agreed to it. One slot per person, and nobody who is not really on the team.",
     people: [] as { id: string; name: string; role: string; h?: string }[],
   },
   /** Advisors appear only with a signed agreement. */
   advisors: {
     heading: "ADVISORS",
-    note: "[TBD] Advisors are listed only once an advisor agreement is signed.",
+    note: "We list an advisor once there is a signed agreement, not once there has been a conversation.",
     items: [] as { name: string; role: string }[],
   },
   location: {
@@ -48,7 +48,7 @@ export const contactPage = {
         ["Email", "info@dovmant.tech"],
         ["Legal entity", "Dovmant LLC, Centennial, Colorado"],
         ["W-9", "Available on request"],
-        ["EIN / UEI / SAM", "[TBD] registration details"],
+        ["EIN / UEI / SAM", "Supplied with the quotation, or on request"],
       ] as [string, string][],
       form: "quotation" as const,
     },

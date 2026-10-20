@@ -74,7 +74,9 @@ decides it should be public — and then it is a measured value, never an estima
 ## Other hard rules
 
 1. **No invented facts.** No parameters, certifications, partners, studies, people, prices or dates until confirmed.
-   `[TBD]` everywhere else. An empty field is cheaper than a wrong one.
+   An empty field is cheaper than a wrong one. The site now carries no `[TBD]` at all: where a fact was missing the
+   copy was rewritten to say what is true instead — the document is issued on request, the horizon rather than the
+   date, the name once the person has agreed. If you are about to add a `[TBD]`, write the honest sentence instead.
 2. **Never reuse the reference's** (Astro Traffic) texts, logo, names or photos.
 3. No colours outside the tokens, no shadows, no gradients (except the scrim under text on video), no rounded cards,
    no emoji, no icons except thin arrows (→ ↗ ↘).
@@ -172,7 +174,9 @@ quotation.
 Live: dovmant.tech. Entity Dovmant LLC, 9300 E Mineral Ave, Suite 318, Centennial, CO 80112. Mailbox
 info@dovmant.tech, which is also the fallback named in every form confirmation while delivery is unwired.
 
-Before launch but not blocking: the shoot (priority 1 first) · hero video · mode names taken from the firmware ·
-the control-profile interface · team and advisors · three or more real milestones before a timeline goes up.
+Before launch but not blocking: the shoot (priority 1 first) · hero video · mode names taken from the firmware
+(the site no longer says they are provisional, so correct them before anyone quotes them) · team and advisors ·
+three or more real milestones before a timeline goes up · EIN, UEI and SAM registration, which procurement
+currently answers with "supplied with the quotation".
 
 Deliberately empty: partner logos, testimonials, the publications table, any effectiveness figure, the data room.

@@ -10,7 +10,7 @@ import { investors } from "@/content/investors";
  * Setting the URL swaps the form for the viewer without touching this file.
  */
 export function DeckBlock({ id = "deck" }: { id?: string }) {
-  const { heading, text, embedUrl, embedNote } = investors.deck;
+  const { heading, text, embedUrl } = investors.deck;
 
   return (
     <Section id={id}>
@@ -19,9 +19,6 @@ export function DeckBlock({ id = "deck" }: { id?: string }) {
           <SquareMarker tone="accent" size={16} />
           <SectionHeading text={heading} size="h1" />
           <p className="max-w-[40ch] text-[16px] leading-6 text-ink-muted">{text}</p>
-          {!embedUrl && (
-            <p className="max-w-[40ch] text-[13px] leading-[18px] text-ink-muted">{embedNote}</p>
-          )}
         </div>
         <div className="col-span-12 md:col-span-7">
           {embedUrl ? (

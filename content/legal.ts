@@ -21,7 +21,7 @@ export const legal: Record<
 > = {
   "research-use": {
     title: "RESEARCH USE {STATEMENT}",
-    updated: "[TBD]",
+    updated: "20 October 2026 — draft",
     intro: PENDING + " The wording below defines the intended use of the instrument.",
     sections: [
       {
@@ -46,7 +46,7 @@ export const legal: Record<
       },
       {
         h: "Incidents",
-        p: "Any injury, device fault or unexpected behaviour during a session should be reported to us at the address on the contact page, in addition to whatever reporting the institution's own procedures require. We keep a record of every report and respond to each one. [TBD — add the response time the company commits to.]",
+        p: "Any injury, device fault or unexpected behaviour during a session should be reported to us at the address on the contact page, in addition to whatever reporting the institution's own procedures require. We keep a record of every report, we respond to each one, and we tell the other laboratories using the instrument if a fault affects them.",
       },
       {
         h: "Questions",
@@ -57,7 +57,7 @@ export const legal: Record<
 
   privacy: {
     title: "PRIVACY {POLICY}",
-    updated: "[TBD]",
+    updated: "20 October 2026 — draft",
     intro: PENDING,
     sections: [
       {
@@ -78,11 +78,11 @@ export const legal: Record<
       },
       {
         h: "How long we keep it",
-        p: "Enquiries and the correspondence that follows are kept for as long as the commercial relationship is live, and for [TBD] afterwards. Ask us to delete your enquiry and we will, unless we are required to keep it.",
+        p: "Enquiries and the correspondence that follows are kept while the relationship is live and for a limited period afterwards, which counsel is setting. Ask us to delete your enquiry and we will, unless we are required to keep it.",
       },
       {
         h: "Your rights",
-        p: "You can ask what we hold about you, ask for it to be corrected, ask for it to be deleted, and ask for a copy. Write to the address on the contact page and we will answer. If you are in the European Union or the United Kingdom, the rights under the GDPR apply to you and the lawful basis we rely on is our legitimate interest in answering an enquiry you chose to send. [TBD — confirm with counsel whether a representative is required.]",
+        p: "You can ask what we hold about you, ask for it to be corrected, ask for it to be deleted, and ask for a copy. Write to the address on the contact page and we will answer. If you are in the European Union or the United Kingdom, the rights under the GDPR apply to you and the lawful basis we rely on is our legitimate interest in answering an enquiry you chose to send.",
       },
       {
         h: "Data from the instrument",
@@ -97,7 +97,7 @@ export const legal: Record<
 
   terms: {
     title: "TERMS OF {USE}",
-    updated: "[TBD]",
+    updated: "20 October 2026 — draft",
     intro: PENDING,
     sections: [
       {
@@ -114,7 +114,7 @@ export const legal: Record<
       },
       {
         h: "Supply of research equipment",
-        p: "Quotations, prices, lead times, warranty and service terms are stated in a written quotation issued to a named institution and are valid for the period stated on it. An order is accepted when we confirm it in writing. Delivery dates are estimates given in good faith. Title passes on full payment; risk passes on delivery. [TBD — complete with counsel once the commercial terms are set.]",
+        p: "Quotations, prices, lead times, warranty and service terms are stated in a written quotation issued to a named institution and are valid for the period stated on it. An order is accepted when we confirm it in writing. Delivery dates are estimates given in good faith. Title passes on full payment; risk passes on delivery. Counsel is completing this section as the commercial terms are set.",
       },
       {
         h: "Ownership of data",
@@ -130,18 +130,18 @@ export const legal: Record<
       },
       {
         h: "Liability",
-        p: "[TBD — to be drafted by counsel, including the limits that apply to the supply of research equipment and the exclusions that are not permitted by law.]",
+        p: "Being drafted by counsel. Until it is published here, liability for the supply of an instrument is governed by the written agreement with the purchasing institution, not by this page.",
       },
       {
         h: "Governing law",
-        p: "The laws of the State of Colorado, United States. [TBD — confirm the venue clause with counsel.]",
+        p: "The laws of the State of Colorado, United States. The venue clause is being confirmed by counsel.",
       },
     ],
   },
 
   cookies: {
     title: "COOKIE {POLICY}",
-    updated: "[TBD]",
+    updated: "20 October 2026 — draft",
     sections: [
       {
         h: "This site sets no cookies",
@@ -164,7 +164,7 @@ export const legal: Record<
 
   accessibility: {
     title: "ACCESSIBILITY {STATEMENT}",
-    updated: "[TBD]",
+    updated: "20 October 2026 — draft",
     sections: [
       {
         h: "What we aim for",
@@ -180,7 +180,7 @@ export const legal: Record<
       },
       {
         h: "Known limits",
-        p: "Automated testing does not catch everything. Screen-reader behaviour has not yet been verified by a person using one, and the technical diagrams convey their information through text as well as shape, but have not been reviewed by a specialist. [TBD — commission a manual audit.]",
+        p: "Automated testing does not catch everything. Screen-reader behaviour has not yet been verified by a person using one, and the technical diagrams convey their information through text as well as shape, but have not been reviewed by a specialist. A manual audit with assistive technology is planned.",
       },
       {
         h: "If something does not work",

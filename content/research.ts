@@ -31,21 +31,21 @@ export const research = {
     items: [
       {
         title: "Purchase",
-        text: "Outright purchase with a specification sheet and quotation built for instrumentation grant submissions. [TBD: price, lead time]",
+        text: "Outright purchase, with a specification and a written quotation built for instrumentation grant submissions. Price, lead time and warranty are quoted to your institution.",
       },
       {
         title: "Loan for a defined study",
-        text: "A unit placed for the duration of one protocol, with integration support. Terms [TBD].",
+        text: "A unit placed for the duration of one protocol, with integration support. Terms are agreed per study and depend on its length and what it asks of the hardware.",
       },
       {
         title: "Co-developed programme",
-        text: "A longer engagement where protocol requirements feed back into the hardware roadmap. For laboratories prepared to work on an instrument that is still evolving. Terms [TBD].",
+        text: "A longer engagement where protocol requirements feed back into the hardware roadmap. For laboratories prepared to work on an instrument that is still evolving. Terms are written per programme, and the feedback concerns the hardware — we are not a sponsor of your research.",
       },
     ],
   },
   integration: {
     heading: "IT HAS TO FIT YOUR {LAB}",
-    text: "Synchronisation has been verified with [TBD]. If your setup is not listed, tell us what you run and we will work out whether it integrates before you commit to anything.",
+    text: "Tell us what you run — capture system, force plates, EMG — and we check the trigger against it before you commit to anything. We name the systems it has been verified with rather than claiming compatibility in general.",
   },
   publications: {
     heading: "PUBLISHED {WORK}",

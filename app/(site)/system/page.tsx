@@ -44,7 +44,6 @@ export default function SystemPage() {
       <Section>
         <SectionHeading text={system.modes.heading} size="h1" className="mb-10 md:mb-16" />
         <ThreeUp items={system.modes.items} numbered />
-        <p className="mt-8 text-[13px] leading-[18px] text-ink-muted">{system.modes.note}</p>
       </Section>
 
       <Section>

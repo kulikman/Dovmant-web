@@ -50,36 +50,14 @@ export default function InvestorsPage() {
       </Section>
 
       <Section>
-        <SectionHeading text={inv.market.heading} size="h1" className="mb-8" />
-        <p className="mb-10 max-w-[60ch] text-[16px] leading-6 text-ink-muted">{inv.market.note}</p>
-        <table className="w-full border-t border-line text-left text-[16px] leading-6">
-          <caption className="sr-only">Market</caption>
-          <thead>
-            <tr className="border-b border-line text-[12px] leading-4 text-ink-muted uppercase">
-              <th scope="col" className="py-3 pr-4 font-medium">
-                Segment
-              </th>
-              <th scope="col" className="py-3 pr-4 font-medium">
-                Figure
-              </th>
-              <th scope="col" className="py-3 font-medium">
-                Source
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {inv.market.rows.map(([segment, figure, source]) => (
-              <tr
-                key={segment}
-                className="border-b border-line transition-colors hover:bg-surface-300/60"
-              >
-                <td className="py-4 pr-4">{segment}</td>
-                <td className="py-4 pr-4">{figure}</td>
-                <td className="py-4 text-ink-muted">{source}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="grid grid-cols-12 gap-x-6 gap-y-8">
+          <div className="col-span-12 md:col-span-5">
+            <SectionHeading text={inv.market.heading} size="h1" />
+          </div>
+          <p className="col-span-12 max-w-[56ch] text-[20px] leading-[26px] md:col-span-7">
+            {inv.market.text}
+          </p>
+        </div>
       </Section>
 
       <Section>

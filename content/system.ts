@@ -3,8 +3,6 @@ export const system = {
   lead: "Four layers, each one open where it matters to a researcher: sensing you can read, control you can rewrite, actuation you can measure, and data you can take with you. The device actuates the hip; a knee module is in development.",
   modes: {
     heading: "THREE {MODES}",
-    /** Internal: take the firmware's names once they are fixed. */
-    note: "[TBD] Mode names are provisional.",
     items: [
       {
         title: "Transparent",

@@ -17,7 +17,6 @@ export default function Home() {
       <Section>
         <SectionHeading text={claims.heading} size="h1" className="mb-10 md:mb-16" />
         <ThreeUp items={claims.items} />
-        <p className="mt-8 text-[13px] leading-[18px] text-ink-muted">{claims.note}</p>
       </Section>
 
       <HowItWorks />
