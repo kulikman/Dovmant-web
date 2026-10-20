@@ -175,7 +175,7 @@ export const images = {
     "Research partnerships",
     "Hero: laboratory instrumentation, B&W",
     "Vertical frame, capture rig",
-    2,
+    1,
   ),
   "page-hero-performance": s(
     "/performance",
@@ -191,7 +191,7 @@ export const images = {
     "About Dovmant",
     "Hero: workshop or bench, B&W",
     "Vertical frame",
-    3,
+    2,
   ),
   "page-hero-roadmap": s(
     "/roadmap",
@@ -207,7 +207,7 @@ export const images = {
     "Investor relations",
     "Hero: device studio render, B&W",
     "Vertical frame",
-    3,
+    2,
   ),
   "faq-render": s(
     "/",
